@@ -352,33 +352,23 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
             <span>▼</span>
           </button>
           <div class="custom-dropdown-content" id="custom-dropdown-list">
-            <div class="dropdown-group-title">Neurodivergências & Desenvolvimento</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd', 'AH/SD (Altas Habilidades / Superdotação)')">AH/SD (Altas Habilidades / Superdotação)</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('dupla_excepcionalidade', 'Dupla Excepcionalidade (AH/SD + Neurodivergência)')">Dupla Excepcionalidade (AH/SD + Neurodivergência)</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('tdah', 'TDAH (Déficit de Atenção / Hiperatividade)')">TDAH (Déficit de Atenção / Hiperatividade)</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('tea', 'TEA (Espectro Autista)')">TEA (Espectro Autista)</div>
-            
-            <div class="dropdown-group-title">Transtornos de Humor & Afetivos</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('transtorno_bipolar', 'Transtorno Bipolar / Ciclotimia')">Transtorno Bipolar / Ciclotimia</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('depressao', 'Transtorno Depressivo (Unipolar)')">Transtorno Depressivo (Unipolar)</div>
-            
-            <div class="dropdown-group-title">Transtornos de Personalidade</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('borderline', 'Transtorno de Personalidade Borderline (TPB)')">Transtorno de Personalidade Borderline (TPB)</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('personalidade_geral', 'Outros Transtornos de Personalidade')">Outros Transtornos de Personalidade</div>
-            
-            <div class="dropdown-group-title">Saúde Específica & Comportamental</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('transtornos_alimentares', 'Transtornos Alimentares')">Transtornos Alimentares</div>
-            
-            <div class="dropdown-group-title">Momentos Vitais & Saúde Mental Geral</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('burnout', 'Burnout / Exaustão Profissional & Acadêmica')">Burnout / Exaustão Profissional & Acadêmica</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('luto_perdas', 'Luto, Crises e Rupturas Relacionais')">Luto, Crises e Rupturas Relacionais</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('geral', 'Geral / Saúde Mental & Bem-Estar')">Geral / Saúde Mental & Bem-Estar</div>
-          </div>
-        </div>
-        <input type="hidden" id="select-perfil-diagnostico" value="ahsd">
-      </div>
-      <input type="date" id="data-registro" class="seletor-data-input" onchange="carregarRegistroData(this.value)">
-    </div>
+            <div class="custom-dropdown-content" id="custom-dropdown-list">
+    <div class="dropdown-group-title">Perfis Principais AH/SD</div>
+    <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_academico', 'AH/SD - Perfil Acadêmico / Intelectual')">AH/SD - Perfil Acadêmico / Intelectual</div>
+    <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_criativo', 'AH/SD - Perfil Criativo-Produtivo')">AH/SD - Perfil Criativo-Produtivo</div>
+    <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_lideranca', 'AH/SD - Perfil Liderança / Social')">AH/SD - Perfil Liderança / Social</div>
+    <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_psicomotor', 'AH/SD - Perfil Psicomotor / Artístico')">AH/SD - Perfil Psicomotor / Artístico</div>
+    
+    <div class="dropdown-group-title">Dupla Excepcionalidade (2e)</div>
+    <div class="dropdown-item" onclick="selecionarPerfilCustom('dupla_tdah', 'Dupla Excepcionalidade: AH/SD + TDAH')">Dupla Excepcionalidade: AH/SD + TDAH</div>
+    <div class="dropdown-item" onclick="selecionarPerfilCustom('dupla_tea', 'Dupla Excepcionalidade: AH/SD + TEA')">Dupla Excepcionalidade: AH/SD + TEA</div>
+    <div class="dropdown-item" onclick="selecionarPerfilCustom('dupla_ahsd_outros', 'Dupla Excepcionalidade: AH/SD + Outras Neurodivergências')">Dupla Excepcionalidade: AH/SD + Outras Neurodivergências</div>
+
+    <div class="dropdown-group-title">Momentos de Desregulação & Crises</div>
+    <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_boreout', 'AH/SD - Boreout / Subestimulação Crônica')">AH/SD - Boreout / Subestimulação Crônica</div>
+    <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_burnout', 'AH/SD - Burnout por Mascaramento Social')">AH/SD - Burnout por Mascaramento Social</div>
+    <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_crise_existencial', 'AH/SD - Crise / Depressão Existencial')">AH/SD - Crise / Depressão Existencial</div>
+</div>
 
     <!-- Seção: Dimensão Neuroemocional -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
@@ -1131,18 +1121,46 @@ const opcoesAtalhos = {
 };
 
 const perfisFoco = {
-  ahsd: { nome: "AH/SD (Altas Habilidades / Superdotação)", prioridades: ["nutricao_intelectual", "crise_existencial", "autocompaixao", "ansiedade"] },
-  dupla_excepcionalidade: { nome: "Dupla Excepcionalidade (AH/SD + Neurodivergência)", prioridades: ["nutricao_intelectual", "crise_existencial", "foco_estudos", "sobrecarga"] },
-  tdah: { nome: "TDAH (Déficit de Atenção / Hiperatividade)", prioridades: ["foco_estudos", "rotina_domestica", "qualidade_sono", "produtividade_criativa"] },
-  tea: { nome: "TEA (Transtorno do Espectro Autista)", prioridades: ["sobrecarga", "rotinas_autocuidado", "relacionamento", "conexao_social"] },
-  transtorno_bipolar: { nome: "Transtorno Bipolar / Ciclotimia", prioridades: ["vitalidade", "qualidade_sono", "cuidados_medicos", "ansiedade"] },
-  depressao: { nome: "Transtorno Depressivo (Unipolar)", prioridades: ["vitalidade", "qualidade_sono", "crise_existencial", "conexao_social"] },
-  borderline: { nome: "Transtorno de Personalidade Borderline (TPB)", prioridades: ["ansiedade", "vitalidade", "relacionamento", "conexao_social"] },
-  personalidade_geral: { nome: "Outros Transtornos de Personalidade", prioridades: ["autocompaixao", "relacionamento", "rotina_domestica", "ansiedade"] },
-  transtornos_alimentares: { nome: "Transtornos Alimentares", prioridades: ["alimentacao", "autocompaixao", "rotinas_autocuidado", "ansiedade"] },
-  burnout: { nome: "Burnout / Exaustão Profissional & Acadêmica", prioridades: ["qualidade_sono", "vitalidade", "crise_existencial", "sobrecarga"] },
-  luto_perdas: { nome: "Luto, Crises e Rupturas Relacionais", prioridades: ["vitalidade", "ansiedade", "crise_existencial", "conexao_social"] },
-  geral: { nome: "Geral / Saúde Mental & Bem-Estar", prioridades: ["ansiedade", "vitalidade", "alimentacao", "qualidade_sono"] }
+    ahsd_academico: { 
+        nome: "AH/SD - Perfil Acadêmico / Intelectual", 
+        prioridades: ["nutricao_intelectual", "crise_existencial", "autocompaixao", "ansiedade"] 
+    },
+    ahsd_criativo: { 
+        nome: "AH/SD - Perfil Criativo-Produtivo", 
+        prioridades: ["produtividade_criativa", "nutricao_intelectual", "foco_estudos", "autocompaixao"] 
+    },
+    ahsd_lideranca: { 
+        nome: "AH/SD - Perfil Liderança / Social", 
+        prioridades: ["relacionamento", "conexao_social", "crise_existencial", "autocompaixao"] 
+    },
+    ahsd_psicomotor: { 
+        nome: "AH/SD - Perfil Psicomotor / Artístico", 
+        prioridades: ["vitalidade", "exercicios", "sobrecarga", "produtividade_criativa"] 
+    },
+    dupla_tdah: { 
+        nome: "Dupla Excepcionalidade: AH/SD + TDAH", 
+        prioridades: ["foco_estudos", "rotina_domestica", "nutricao_intelectual", "qualidade_sono"] 
+    },
+    dupla_tea: { 
+        nome: "Dupla Excepcionalidade: AH/SD + TEA", 
+        prioridades: ["sobrecarga", "rotinas_autocuidado", "conexao_social", "nutricao_intelectual"] 
+    },
+    dupla_ahsd_outros: { 
+        nome: "Dupla Excepcionalidade: AH/SD + Outras Neurodivergências", 
+        prioridades: ["sobrecarga", "autocompaixao", "nutricao_intelectual", "ansiedade"] 
+    },
+    ahsd_boreout: { 
+        nome: "AH/SD - Boreout / Subestimulação Crônica", 
+        prioridades: ["nutricao_intelectual", "vitalidade", "crise_existencial", "hobbies"] 
+    },
+    ahsd_burnout: { 
+        nome: "AH/SD - Burnout por Mascaramento Social", 
+        prioridades: ["sobrecarga", "vitalidade", "qualidade_sono", "autocompaixao"] 
+    },
+    ahsd_crise_existencial: { 
+        nome: "AH/SD - Crise / Depressão Existencial", 
+        prioridades: ["crise_existencial", "autocompaixao", "conexao_social", "ansiedade"] 
+    }
 };
 
 const nomesCriterios = {
@@ -1836,4 +1854,5 @@ window.onload = function() {
 </script>
 </body>
 </html>
+
 
