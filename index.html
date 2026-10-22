@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Psicoeducativo de Autorregulação</title>
+<title>Dashboard Psicoeducativo de Autorregulação - AH/SD</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
 
@@ -345,34 +345,31 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   <div id="aba-registro" class="aba-conteudo active">
     <div class="seletor-topo-container">
       <div class="perfil-box">
-        <span class="perfil-label">Perfil / Laudo:</span>
+        <span class="perfil-label">Perfil / Traço Predominante:</span>
         <div class="custom-dropdown" id="custom-dropdown-perfil">
           <button type="button" class="custom-dropdown-btn" onclick="toggleDropdown(event)">
             <span id="custom-dropdown-selected-text">Selecionar Perfil...</span>
             <span>▼</span>
           </button>
           <div class="custom-dropdown-content" id="custom-dropdown-list">
-            <div class="dropdown-group-title">Perfis Principais AH/SD</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_multipotencial', 'AH/SD - Multipotencial / Misto (Intelectual, Criativo e Artístico)')">AH/SD - Multipotencial / Misto (Intelectual, Criativo e Artístico)</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_academico', 'AH/SD - Perfil Acadêmico / Intelectual Profundo')">AH/SD - Perfil Acadêmico / Intelectual Profundo</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_criativo', 'AH/SD - Perfil Criativo-Produtivo')">AH/SD - Perfil Criativo-Produtivo</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_lideranca', 'AH/SD - Perfil Liderança / Social')">AH/SD - Perfil Liderança / Social</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_psicomotor', 'AH/SD - Perfil Psicomotor / Artístico-Sensorial')">AH/SD - Perfil Psicomotor / Artístico-Sensorial</div>
+            <div class="dropdown-group-title">Traços & Excitabilidades (Dabrowski)</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_intelectual_imaginativo', 'Mente Intelectual & Imaginativa (Alto Fluxo)')">Mente Intelectual & Imaginativa (Alto Fluxo)</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_emocional_sensivel', 'Hipersensibilidade Emocional & Estética')">Hipersensibilidade Emocional & Estética</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_psicomotor_criativo', 'Perfil Criativo & Psicomotor (Energia Ativa)')">Perfil Criativo & Psicomotor (Energia Ativa)</div>
             
-            <div class="dropdown-group-title">Dupla Excepcionalidade (2e)</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('dupla_tdah', 'Dupla Excepcionalidade: AH/SD + TDAH')">Dupla Excepcionalidade: AH/SD + TDAH</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('dupla_tea', 'Dupla Excepcionalidade: AH/SD + TEA')">Dupla Excepcionalidade: AH/SD + TEA</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('dupla_ahsd_outros', 'Dupla Excepcionalidade: AH/SD + Outras Neurodivergências')">Dupla Excepcionalidade: AH/SD + Outras Neurodivergências</div>
+            <div class="dropdown-group-title">Complexidades & Dupla Excepcionalidade</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_assincronia', 'Assincronia de Desenvolvimento (Mente vs. Emoção)')">Assincronia de Desenvolvimento (Mente vs. Emoção)</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('dupla_excepcionalidade_2e', 'Dupla Excepcionalidade (2e: AH/SD + Neurodivergência)')">Dupla Excepcionalidade (2e: AH/SD + Neurodivergência)</div>
 
-            <div class="dropdown-group-title">Momentos de Desregulação & Crises</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_boreout', 'AH/SD - Boreout / Subestimulação Crônica')">AH/SD - Boreout / Subestimulação Crônica</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_burnout', 'AH/SD - Burnout por Mascaramento Social')">AH/SD - Burnout por Mascaramento Social</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_crise_existencial', 'AH/SD - Crise / Depressão Existencial')">AH/SD - Crise / Depressão Existencial</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_crise_justica', 'AH/SD - Crise por Indignação Moral / Senso de Justiça')">AH/SD - Crise por Indignação Moral / Senso de Justiça</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_esponja_empatica', 'AH/SD - Sobrecarga por Empatia / Exaustão Compassiva')">AH/SD - Sobrecarga por Empatia / Exaustão Compassiva</div>
+            <div class="dropdown-group-title">Crises, Desregulação & Impostor</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_boreout', 'Boreout / Subestimulação Crônica')">Boreout / Subestimulação Crônica</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_burnout_mascara', 'Burnout por Mascaramento Social')">Burnout por Mascaramento Social</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_sindrome_impostor', 'Síndrome do Impostor & Autocrítica Severa')">Síndrome do Impostor & Autocrítica Severa</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_crise_existencial', 'Crise / Depressão Existencial & Injustiça')">Crise / Depressão Existencial & Injustiça</div>
           </div>
         </div>
       </div>
+      <input type="hidden" id="select-perfil-diagnostico" value="ahsd_intelectual_imaginativo">
       <input type="date" id="data-registro" class="seletor-data-input" onchange="carregarRegistroData(this.value)">
     </div>
 
@@ -387,6 +384,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         <div class="criterio-legenda">1 = Nó no peito/pensamentos travados em loop; 3 = Desconforto leve, mas executando tarefas; 5 = Corpo calmo e pensamentos fluidos.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
+
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
           <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
           <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
@@ -1127,57 +1125,41 @@ const opcoesAtalhos = {
 };
 
 const perfisFoco = {
-    ahsd_multipotencial: { 
-        nome: "AH/SD - Multipotencial / Misto", 
-        prioridades: ["nutricao_intelectual", "produtividade_criativa", "crise_existencial", "autocompaixao"] 
+    ahsd_intelectual_imaginativo: { 
+        nome: "Mente Intelectual & Imaginativa (Alto Fluxo)", 
+        prioridades: ["nutricao_intelectual", "foco_estudos", "ansiedade", "crise_existencial"] 
     },
-    ahsd_academico: { 
-        nome: "AH/SD - Perfil Acadêmico / Intelectual Profundo", 
-        prioridades: ["nutricao_intelectual", "crise_existencial", "autocompaixao", "ansiedade"] 
+    ahsd_emocional_sensivel: { 
+        nome: "Hipersensibilidade Emocional & Estética", 
+        prioridades: ["sobrecarga", "autocompaixao", "relacionamento", "conexao_social"] 
     },
-    ahsd_criativo: { 
-        nome: "AH/SD - Perfil Criativo-Produtivo", 
-        prioridades: ["produtividade_criativa", "nutricao_intelectual", "foco_estudos", "autocompaixao"] 
+    ahsd_psicomotor_criativo: { 
+        nome: "Perfil Criativo & Psicomotor (Energia Ativa)", 
+        prioridades: ["vitalidade", "exercicios", "produtividade_criativa", "hobbies"] 
     },
-    ahsd_lideranca: { 
-        nome: "AH/SD - Perfil Liderança / Social", 
-        prioridades: ["relacionamento", "conexao_social", "crise_existencial", "autocompaixao"] 
+    ahsd_assincronia: { 
+        nome: "Assincronia de Desenvolvimento (Mente vs. Emoção)", 
+        prioridades: ["crise_existencial", "autocompaixao", "ansiedade", "nutricao_intelectual"] 
     },
-    ahsd_psicomotor: { 
-        nome: "AH/SD - Perfil Psicomotor / Artístico-Sensorial", 
-        prioridades: ["vitalidade", "exercicios", "sobrecarga", "produtividade_criativa"] 
-    },
-    dupla_tdah: { 
-        nome: "Dupla Excepcionalidade: AH/SD + TDAH", 
-        prioridades: ["foco_estudos", "rotina_domestica", "nutricao_intelectual", "qualidade_sono"] 
-    },
-    dupla_tea: { 
-        nome: "Dupla Excepcionalidade: AH/SD + TEA", 
-        prioridades: ["sobrecarga", "rotinas_autocuidado", "conexao_social", "nutricao_intelectual"] 
-    },
-    dupla_ahsd_outros: { 
-        nome: "Dupla Excepcionalidade: AH/SD + Outras Neurodivergências", 
-        prioridades: ["sobrecarga", "autocompaixao", "nutricao_intelectual", "ansiedade"] 
+    dupla_excepcionalidade_2e: { 
+        nome: "Dupla Excepcionalidade (2e)", 
+        prioridades: ["foco_estudos", "sobrecarga", "rotina_domestica", "qualidade_sono"] 
     },
     ahsd_boreout: { 
-        nome: "AH/SD - Boreout / Subestimulação Crônica", 
+        nome: "Boreout / Subestimulação Crônica", 
         prioridades: ["nutricao_intelectual", "vitalidade", "crise_existencial", "hobbies"] 
     },
-    ahsd_burnout: { 
-        nome: "AH/SD - Burnout por Mascaramento Social", 
+    ahsd_burnout_mascara: { 
+        nome: "Burnout por Mascaramento Social", 
         prioridades: ["sobrecarga", "vitalidade", "qualidade_sono", "autocompaixao"] 
     },
+    ahsd_sindrome_impostor: { 
+        nome: "Síndrome do Impostor & Autocrítica Severa", 
+        prioridades: ["autocompaixao", "ansiedade", "produtividade_criativa", "crise_existencial"] 
+    },
     ahsd_crise_existencial: { 
-        nome: "AH/SD - Crise / Depressão Existencial", 
+        nome: "Crise / Depressão Existencial & Injustiça", 
         prioridades: ["crise_existencial", "autocompaixao", "conexao_social", "ansiedade"] 
-    },
-    ahsd_crise_justica: { 
-        nome: "AH/SD - Crise por Indignação Moral / Senso de Justiça", 
-        prioridades: ["crise_existencial", "ansiedade", "relacionamento", "autocompaixao"] 
-    },
-    ahsd_esponja_empatica: { 
-        nome: "AH/SD - Sobrecarga por Empatia / Exaustão Compassiva", 
-        prioridades: ["sobrecarga", "vitalidade", "autocompaixao", "conexao_social"] 
     }
 };
 
@@ -1277,7 +1259,7 @@ function fecharModalMapaFora(event) {
 
 function alterarPerfilDiagnostico(perfilChave) {
   localStorage.setItem('dashboard_clinica_perfil', perfilChave);
-  const config = perfisFoco[perfilChave] || perfisFoco.ahsd_multipotencial;
+  const config = perfisFoco[perfilChave] || perfisFoco.ahsd_intelectual_imaginativo;
   document.querySelectorAll('.criterio-card').forEach(card => {
     const key = card.getAttribute('data-key');
     if (config.prioridades.includes(key)) {
@@ -1426,7 +1408,7 @@ function salvarRegistroDiario() {
     dadosCriterios[key] = { valor: val, observacao: obs };
   });
 
-  const perfilAtual = document.getElementById('select-perfil-diagnostico').value || 'ahsd_multipotencial';
+  const perfilAtual = document.getElementById('select-perfil-diagnostico').value || 'ahsd_intelectual_imaginativo';
   const registro = {
     data: dataSelecionada,
     perfil: perfilAtual,
@@ -1529,8 +1511,8 @@ function renderizarEvolucao() {
   const qtdRegistros = ultimos30.length;
   const dataInicio = formatarDataBR(ultimos30[0].data);
   const dataFim = formatarDataBR(ultimos30[qtdRegistros - 1].data);
-  const perfilChave = document.getElementById('select-perfil-diagnostico').value || 'ahsd_multipotencial';
-  const perfilNome = perfisFoco[perfilChave] ? perfisFoco[perfilChave].nome : perfisFoco.ahsd_multipotencial.nome;
+  const perfilChave = document.getElementById('select-perfil-diagnostico').value || 'ahsd_intelectual_imaginativo';
+  const perfilNome = perfisFoco[perfilChave] ? perfisFoco[perfilChave].nome : perfisFoco.ahsd_intelectual_imaginativo.nome;
 
   let diasSobrecargaOk = 0;
   ultimos30.forEach(reg => {
@@ -1717,8 +1699,8 @@ function gerarPDFMensal() {
     return;
   }
 
-  const perfilChave = document.getElementById('select-perfil-diagnostico').value || 'ahsd_multipotencial';
-  const perfilNome = perfisFoco[perfilChave] ? perfisFoco[perfilChave].nome : perfisFoco.ahsd_multipotencial.nome;
+  const perfilChave = document.getElementById('select-perfil-diagnostico').value || 'ahsd_intelectual_imaginativo';
+  const perfilNome = perfisFoco[perfilChave] ? perfisFoco[perfilChave].nome : perfisFoco.ahsd_intelectual_imaginativo.nome;
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
@@ -1859,8 +1841,8 @@ window.onload = function() {
   const inputData = document.getElementById('data-registro');
   inputData.value = hoje;
 
-  const perfilSalvo = localStorage.getItem('dashboard_clinica_perfil') || 'ahsd_multipotencial';
-  const nomeInicial = perfisFoco[perfilSalvo] ? perfisFoco[perfilSalvo].nome : perfisFoco.ahsd_multipotencial.nome;
+  const perfilSalvo = localStorage.getItem('dashboard_clinica_perfil') || 'ahsd_intelectual_imaginativo';
+  const nomeInicial = perfisFoco[perfilSalvo] ? perfisFoco[perfilSalvo].nome : perfisFoco.ahsd_intelectual_imaginativo.nome;
   document.getElementById('select-perfil-diagnostico').value = perfilSalvo;
   document.getElementById('custom-dropdown-selected-text').innerText = nomeInicial;
 
