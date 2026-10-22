@@ -752,31 +752,32 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   <button class="footer-link" onclick="abrirModalTermos()">Termos de Uso & Privacidade</button>
 </footer>
 
-<!-- Modal de Guia: Dificuldade em Nomear Sentimentos -->
+<!-- Modal de Guia: Estratégico para AH/SD -->
 <div class="modal-overlay" id="modal-guia-sentimentos" onclick="fecharModalGuiaSentimentosFora(event)">
   <div class="modal-box">
     <div class="modal-header">
-      <span>Guia: Dificuldade com Sentimentos?</span>
+      <span>Guia Estratégico: Navegando pelas Intensidades AH/SD</span>
       <button class="modal-close" onclick="fecharModalGuiaSentimentos()">&times;</button>
     </div>
     <div class="modal-body">
-      <h3>O que fazer quando você só sente "uma coisa ruim" ou "estou triste"?</h3>
-      <p>Muitas vezes nosso cérebro não consegue encontrar a palavra exata para o sentimento (ex: "estou frustrado com os estudos"). Em vez disso, o corpo envia sinais de sobrecarga física e perda de função.</p>
+      <h3>O que fazer quando você sente "uma confusão mental" ou exaustão difusa?</h3>
+      <p>No cérebro com Altas Habilidades/Superdotação, o esgotamento muitas vezes não se manifesta como uma emoção simples, mas como um colapso executivo ou sobrecarga de processamento associativo.</p>
       
-      <h3>Como usar este aplicativo para descobrir o que está acontecendo:</h3>
-      <p><strong>1. Pare de tentar adivinhar a palavra do sentimento.</strong><br>
-      Não se preocupe em saber se é tristeza, raiva ou ansiedade.</p>
+      <h3>Como usar este aplicativo estrategicamente:</h3>
       
-      <p><strong>2. Avalie fatos concretos:</strong></p>
+      <p><strong>1. Descarte o rótulo emocional genérico:</strong><br>
+      Não gaste energia tentando adivinhar se está "triste" ou "ansioso". O cérebro AH/SD traduz cansaço intelectual ou tédio em sintomas físicos e mentais complexos.</p>
+      
+      <p><strong>2. Rastreie a origem do desgaste pelas lentes da teoria:</strong></p>
       <ul>
-        <li>Conseguiu comer no tempo certo? (Alimentação)</li>
-        <li>Conseguiu focar 15 minutos sem travar? (Foco)</li>
-        <li>O corpo está muito pesado? (Energia / Vitalidade)</li>
+        <li><strong>Mente em loop / Exigência excessiva?</strong> Pode ser Síndrome do Impostor ou Excitabilidade Intelectual desregulada.</li>
+        <li><strong>Sensação de vazio ou "para que fazer isso?":</strong> Indício de Boreout (subestimulação crônica) ou Crise Existencial.</li>
+        <li><strong>Corpo pesado e irritação com barulhos/luzes:</strong> Sobrecarga Sensorial ou Exaustão Empática / Burnout por Mascaramento.</li>
       </ul>
       
-      <p><strong>3. Use os botões de atalho:</strong> Eles ajudam a colar descrições corporais no campo de nota sem você precisar digitar muito.</p>
+      <p><strong>3. Use os botões de atalho:</strong> Eles servem para registrar as nuances do seu estado atual de forma rápida, poupando esforço cognitivo em momentos de exaustão.</p>
       
-      <p><strong>4. Veja o Saldo Diário:</strong> Se o saldo der negativo, isso prova matematicamente que seu corpo está sem recursos hoje. Isso afasta a falsa sensação de que você está "com preguiça" ou "sendo fraco".</p>
+      <p><strong>4. Confirme no Saldo Diário:</strong> Se o saldo estiver negativo, você tem a prova matemática de que o seu sistema nervoso gastou mais do que repôs. Isso valida seu cansaço e afasta qualquer culpa infundada.</p>
     </div>
   </div>
 </div>
@@ -985,7 +986,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 </div>
 
 <script>
-// Função para expandir e encolher as seções de categorias
 function toggleSecao(elementoTitulo) {
   const grupo = elementoTitulo.nextElementSibling;
   const seta = elementoTitulo.querySelector('.categoria-seta');
@@ -997,7 +997,6 @@ function toggleSecao(elementoTitulo) {
   }
 }
 
-// Base de dados das opções de atalhos ajustáveis dinamicamente de acordo com a nota de 1 a 5
 const opcoesAtalhos = {
   ansiedade: {
     1: ["Aperto/Nó no peito", "Pensamento em loop", "Agitação física", "Ombros tensos", "Medo de errar/falhar"],
@@ -1134,7 +1133,6 @@ const opcoesAtalhos = {
   }
 };
 
-// Mapeamento científico atualizado das prioridades clínicas para os 3 anéis + demais traços
 const perfisFocoMap = {
     excitabilidade_intelectual: ["nutricao_intelectual", "foco_estudos", "ansiedade", "crise_existencial"],
     excitabilidade_emocional: ["sobrecarga", "autocompaixao", "relacionamento", "conexao_social"],
