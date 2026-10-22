@@ -353,10 +353,11 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           </button>
           <div class="custom-dropdown-content" id="custom-dropdown-list">
             <div class="dropdown-group-title">Perfis Principais AH/SD</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_academico', 'AH/SD - Perfil Acadêmico / Intelectual')">AH/SD - Perfil Acadêmico / Intelectual</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_multipotencial', 'AH/SD - Multipotencial / Misto (Intelectual, Criativo e Artístico)')">AH/SD - Multipotencial / Misto (Intelectual, Criativo e Artístico)</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_academico', 'AH/SD - Perfil Acadêmico / Intelectual Profundo')">AH/SD - Perfil Acadêmico / Intelectual Profundo</div>
             <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_criativo', 'AH/SD - Perfil Criativo-Produtivo')">AH/SD - Perfil Criativo-Produtivo</div>
             <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_lideranca', 'AH/SD - Perfil Liderança / Social')">AH/SD - Perfil Liderança / Social</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_psicomotor', 'AH/SD - Perfil Psicomotor / Artístico')">AH/SD - Perfil Psicomotor / Artístico</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_psicomotor', 'AH/SD - Perfil Psicomotor / Artístico-Sensorial')">AH/SD - Perfil Psicomotor / Artístico-Sensorial</div>
             
             <div class="dropdown-group-title">Dupla Excepcionalidade (2e)</div>
             <div class="dropdown-item" onclick="selecionarPerfilCustom('dupla_tdah', 'Dupla Excepcionalidade: AH/SD + TDAH')">Dupla Excepcionalidade: AH/SD + TDAH</div>
@@ -367,6 +368,8 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
             <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_boreout', 'AH/SD - Boreout / Subestimulação Crônica')">AH/SD - Boreout / Subestimulação Crônica</div>
             <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_burnout', 'AH/SD - Burnout por Mascaramento Social')">AH/SD - Burnout por Mascaramento Social</div>
             <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_crise_existencial', 'AH/SD - Crise / Depressão Existencial')">AH/SD - Crise / Depressão Existencial</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_crise_justica', 'AH/SD - Crise por Indignação Moral / Senso de Justiça')">AH/SD - Crise por Indignação Moral / Senso de Justiça</div>
+            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_esponja_empatica', 'AH/SD - Sobrecarga por Empatia / Exaustão Compassiva')">AH/SD - Sobrecarga por Empatia / Exaustão Compassiva</div>
           </div>
         </div>
       </div>
@@ -1124,8 +1127,12 @@ const opcoesAtalhos = {
 };
 
 const perfisFoco = {
+    ahsd_multipotencial: { 
+        nome: "AH/SD - Multipotencial / Misto", 
+        prioridades: ["nutricao_intelectual", "produtividade_criativa", "crise_existencial", "autocompaixao"] 
+    },
     ahsd_academico: { 
-        nome: "AH/SD - Perfil Acadêmico / Intelectual", 
+        nome: "AH/SD - Perfil Acadêmico / Intelectual Profundo", 
         prioridades: ["nutricao_intelectual", "crise_existencial", "autocompaixao", "ansiedade"] 
     },
     ahsd_criativo: { 
@@ -1137,7 +1144,7 @@ const perfisFoco = {
         prioridades: ["relacionamento", "conexao_social", "crise_existencial", "autocompaixao"] 
     },
     ahsd_psicomotor: { 
-        nome: "AH/SD - Perfil Psicomotor / Artístico", 
+        nome: "AH/SD - Perfil Psicomotor / Artístico-Sensorial", 
         prioridades: ["vitalidade", "exercicios", "sobrecarga", "produtividade_criativa"] 
     },
     dupla_tdah: { 
@@ -1163,6 +1170,14 @@ const perfisFoco = {
     ahsd_crise_existencial: { 
         nome: "AH/SD - Crise / Depressão Existencial", 
         prioridades: ["crise_existencial", "autocompaixao", "conexao_social", "ansiedade"] 
+    },
+    ahsd_crise_justica: { 
+        nome: "AH/SD - Crise por Indignação Moral / Senso de Justiça", 
+        prioridades: ["crise_existencial", "ansiedade", "relacionamento", "autocompaixao"] 
+    },
+    ahsd_esponja_empatica: { 
+        nome: "AH/SD - Sobrecarga por Empatia / Exaustão Compassiva", 
+        prioridades: ["sobrecarga", "vitalidade", "autocompaixao", "conexao_social"] 
     }
 };
 
@@ -1262,7 +1277,7 @@ function fecharModalMapaFora(event) {
 
 function alterarPerfilDiagnostico(perfilChave) {
   localStorage.setItem('dashboard_clinica_perfil', perfilChave);
-  const config = perfisFoco[perfilChave] || perfisFoco.ahsd_academico;
+  const config = perfisFoco[perfilChave] || perfisFoco.ahsd_multipotencial;
   document.querySelectorAll('.criterio-card').forEach(card => {
     const key = card.getAttribute('data-key');
     if (config.prioridades.includes(key)) {
@@ -1411,7 +1426,7 @@ function salvarRegistroDiario() {
     dadosCriterios[key] = { valor: val, observacao: obs };
   });
 
-  const perfilAtual = document.getElementById('select-perfil-diagnostico').value || 'ahsd_academico';
+  const perfilAtual = document.getElementById('select-perfil-diagnostico').value || 'ahsd_multipotencial';
   const registro = {
     data: dataSelecionada,
     perfil: perfilAtual,
@@ -1514,8 +1529,8 @@ function renderizarEvolucao() {
   const qtdRegistros = ultimos30.length;
   const dataInicio = formatarDataBR(ultimos30[0].data);
   const dataFim = formatarDataBR(ultimos30[qtdRegistros - 1].data);
-  const perfilChave = document.getElementById('select-perfil-diagnostico').value || 'ahsd_academico';
-  const perfilNome = perfisFoco[perfilChave] ? perfisFoco[perfilChave].nome : perfisFoco.ahsd_academico.nome;
+  const perfilChave = document.getElementById('select-perfil-diagnostico').value || 'ahsd_multipotencial';
+  const perfilNome = perfisFoco[perfilChave] ? perfisFoco[perfilChave].nome : perfisFoco.ahsd_multipotencial.nome;
 
   let diasSobrecargaOk = 0;
   ultimos30.forEach(reg => {
@@ -1702,8 +1717,8 @@ function gerarPDFMensal() {
     return;
   }
 
-  const perfilChave = document.getElementById('select-perfil-diagnostico').value || 'ahsd_academico';
-  const perfilNome = perfisFoco[perfilChave] ? perfisFoco[perfilChave].nome : perfisFoco.ahsd_academico.nome;
+  const perfilChave = document.getElementById('select-perfil-diagnostico').value || 'ahsd_multipotencial';
+  const perfilNome = perfisFoco[perfilChave] ? perfisFoco[perfilChave].nome : perfisFoco.ahsd_multipotencial.nome;
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
@@ -1844,8 +1859,8 @@ window.onload = function() {
   const inputData = document.getElementById('data-registro');
   inputData.value = hoje;
 
-  const perfilSalvo = localStorage.getItem('dashboard_clinica_perfil') || 'ahsd_academico';
-  const nomeInicial = perfisFoco[perfilSalvo] ? perfisFoco[perfilSalvo].nome : perfisFoco.ahsd_academico.nome;
+  const perfilSalvo = localStorage.getItem('dashboard_clinica_perfil') || 'ahsd_multipotencial';
+  const nomeInicial = perfisFoco[perfilSalvo] ? perfisFoco[perfilSalvo].nome : perfisFoco.ahsd_multipotencial.nome;
   document.getElementById('select-perfil-diagnostico').value = perfilSalvo;
   document.getElementById('custom-dropdown-selected-text').innerText = nomeInicial;
 
