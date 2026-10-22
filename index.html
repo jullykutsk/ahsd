@@ -354,17 +354,17 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           </button>
           <div class="custom-dropdown-content" id="custom-dropdown-list" onclick="event.stopPropagation()">
             
-            <div class="dropdown-group-title">1. O Ser, Sentir & Refletir (Dabrowski)</div>
+            <div class="dropdown-group-title">1. O Ser, Sentir & Refletir (Dabrowski & Desenvolvimento)</div>
             <label class="dropdown-item"><input type="checkbox" value="excitabilidade_intelectual" onchange="atualizarPerfisSelecionados()"> Excitabilidade Intelectual</label>
             <label class="dropdown-item"><input type="checkbox" value="excitabilidade_emocional" onchange="atualizarPerfisSelecionados()"> Excitabilidade Emocional & Empatia Profunda</label>
             <label class="dropdown-item"><input type="checkbox" value="excitabilidade_imaginativa" onchange="atualizarPerfisSelecionados()"> Excitabilidade Imaginativa</label>
             <label class="dropdown-item"><input type="checkbox" value="excitabilidade_psicomotora" onchange="atualizarPerfisSelecionados()"> Excitabilidade Psicomotora</label>
             <label class="dropdown-item"><input type="checkbox" value="excitabilidade_sensorial" onchange="atualizarPerfisSelecionados()"> Excitabilidade Sensorial / Estética</label>
+            <label class="dropdown-item"><input type="checkbox" value="assincronia_desenvolvimento" onchange="atualizarPerfisSelecionados()"> Assincronia de Desenvolvimento</label>
 
-            <div class="dropdown-group-title">2. O Fazer & Realizar (Renzulli & Assincronia)</div>
-            <label class="dropdown-item"><input type="checkbox" value="habilidade_assincronia" onchange="atualizarPerfisSelecionados()"> Habilidade Acima da Média & Assincronia</label>
-            <label class="dropdown-item"><input type="checkbox" value="comprometimento_tarefa" onchange="atualizarPerfisSelecionados()"> Comprometimento com a Tarefa / Hiperfoco</label>
-            <label class="dropdown-item"><input type="checkbox" value="perfil_criativo_produtivo" onchange="atualizarPerfisSelecionados()"> Perfil Criativo-Produtivo</label>
+            <div class="dropdown-group-title">2. O Fazer, Realizar & Cognição (Renzulli & 2e)</div>
+            <label class="dropdown-item"><input type="checkbox" value="comprometimento_tarefa" onchange="atualizarPerfisSelecionados()"> Comprometimento com a Tarefa / Hiperfoco (Renzulli)</label>
+            <label class="dropdown-item"><input type="checkbox" value="perfil_criativo_produtivo" onchange="atualizarPerfisSelecionados()"> Perfil Criativo-Produtivo (Renzulli)</label>
             <label class="dropdown-item"><input type="checkbox" value="dupla_excepcionalidade_2e" onchange="atualizarPerfisSelecionados()"> Dupla Excepcionalidade (2e)</label>
 
             <div class="dropdown-group-title">3. Vínculos & Empatia Moral</div>
@@ -755,7 +755,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 <div class="modal-overlay" id="modal-guia-sentimentos" onclick="fecharModalGuiaSentimentosFora(event)">
   <div class="modal-box">
     <div class="modal-header">
-      <span>Guia: Dificuldade em Nomear Sentimentos?</span>
+      <span>Guia: Dificuldade com Sentimentos?</span>
       <button class="modal-close" onclick="fecharModalGuiaSentimentos()">&times;</button>
     </div>
     <div class="modal-body">
@@ -1133,14 +1133,14 @@ const opcoesAtalhos = {
   }
 };
 
-// Mapeamento científico das prioridades clínicas de cada traço/crise
+// Mapeamento científico atualizado das prioridades clínicas
 const perfisFocoMap = {
     excitabilidade_intelectual: ["nutricao_intelectual", "foco_estudos", "ansiedade", "crise_existencial"],
     excitabilidade_emocional: ["sobrecarga", "autocompaixao", "relacionamento", "conexao_social"],
     excitabilidade_imaginativa: ["nutricao_intelectual", "produtividade_criativa", "crise_existencial"],
     excitabilidade_psicomotora: ["vitalidade", "exercicios", "sobrecarga"],
     excitabilidade_sensorial: ["sobrecarga", "qualidade_sono", "hobbies"],
-    habilidade_assincronia: ["crise_existencial", "autocompaixao", "nutricao_intelectual", "ansiedade"],
+    assincronia_desenvolvimento: ["crise_existencial", "autocompaixao", "nutricao_intelectual", "ansiedade"],
     comprometimento_tarefa: ["foco_estudos", "nutricao_intelectual", "qualidade_sono"],
     perfil_criativo_produtivo: ["produtividade_criativa", "nutricao_intelectual", "foco_estudos"],
     dupla_excepcionalidade_2e: ["foco_estudos", "sobrecarga", "rotina_domestica", "qualidade_sono"],
@@ -1215,7 +1215,6 @@ window.addEventListener('click', function() {
   }
 });
 
-// Atualiza o texto do botão e recalcula as prioridades quando checkboxes mudam
 function atualizarPerfisSelecionados() {
   const checkboxes = document.querySelectorAll('#custom-dropdown-list input[type="checkbox"]');
   const selecionados = [];
@@ -1293,7 +1292,6 @@ function mudarAba(abaId, btnElement) {
   }
 }
 
-// Atualização dinâmica dos botões de atalho ao selecionar uma nota na escala
 function selecionarValor(btn, valor) {
   const card = btn.closest('.criterio-card');
   card.querySelectorAll('.btn-escala').forEach(b => b.classList.remove('selected'));
@@ -1813,7 +1811,7 @@ function gerarPDFMensal() {
     y += 6;
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
-    doc.text("3. PAUTA PARA LA SESSÃO / REFLEXÕES DO PACIENTE", 14, y);
+    doc.text("3. PAUTA PARA A SESSÃO / REFLEXÕES DO PACIENTE", 14, y);
     y += 6;
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
@@ -1849,7 +1847,6 @@ window.onload = function() {
   const inputData = document.getElementById('data-registro');
   inputData.value = hoje;
 
-  // Carrega múltiplos perfis salvos ou padrão
   const perfisSalvos = JSON.parse(localStorage.getItem('dashboard_clinica_perfis_multi') || '["excitabilidade_intelectual"]');
   perfisSalvos.forEach(val => {
     const cb = document.querySelector(`#custom-dropdown-list input[value="${val}"]`);
