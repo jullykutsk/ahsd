@@ -363,8 +363,9 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
             <label class="dropdown-item"><input type="checkbox" value="assincronia_desenvolvimento" onchange="atualizarPerfisSelecionados()"> Assincronia de Desenvolvimento</label>
 
             <div class="dropdown-group-title">2. O Fazer, Realizar & Cognição (Renzulli & 2e)</div>
-            <label class="dropdown-item"><input type="checkbox" value="comprometimento_tarefa" onchange="atualizarPerfisSelecionados()"> Comprometimento com a Tarefa / Hiperfoco (Renzulli)</label>
-            <label class="dropdown-item"><input type="checkbox" value="perfil_criativo_produtivo" onchange="atualizarPerfisSelecionados()"> Perfil Criativo-Produtivo (Renzulli)</label>
+            <label class="dropdown-item"><input type="checkbox" value="habilidade_acima_media" onchange="atualizarPerfisSelecionados()"> Habilidade Acima da Média (Renzulli - Anel 1)</label>
+            <label class="dropdown-item"><input type="checkbox" value="comprometimento_tarefa" onchange="atualizarPerfisSelecionados()"> Comprometimento com a Tarefa / Hiperfoco (Renzulli - Anel 2)</label>
+            <label class="dropdown-item"><input type="checkbox" value="criatividade" onchange="atualizarPerfisSelecionados()"> Criatividade (Renzulli - Anel 3)</label>
             <label class="dropdown-item"><input type="checkbox" value="dupla_excepcionalidade_2e" onchange="atualizarPerfisSelecionados()"> Dupla Excepcionalidade (2e)</label>
 
             <div class="dropdown-group-title">3. Vínculos & Empatia Moral</div>
@@ -1133,7 +1134,7 @@ const opcoesAtalhos = {
   }
 };
 
-// Mapeamento científico atualizado das prioridades clínicas
+// Mapeamento científico atualizado das prioridades clínicas para os 3 anéis + demais traços
 const perfisFocoMap = {
     excitabilidade_intelectual: ["nutricao_intelectual", "foco_estudos", "ansiedade", "crise_existencial"],
     excitabilidade_emocional: ["sobrecarga", "autocompaixao", "relacionamento", "conexao_social"],
@@ -1141,8 +1142,9 @@ const perfisFocoMap = {
     excitabilidade_psicomotora: ["vitalidade", "exercicios", "sobrecarga"],
     excitabilidade_sensorial: ["sobrecarga", "qualidade_sono", "hobbies"],
     assincronia_desenvolvimento: ["crise_existencial", "autocompaixao", "nutricao_intelectual", "ansiedade"],
+    habilidade_acima_media: ["nutricao_intelectual", "foco_estudos", "produtividade_criativa"],
     comprometimento_tarefa: ["foco_estudos", "nutricao_intelectual", "qualidade_sono"],
-    perfil_criativo_produtivo: ["produtividade_criativa", "nutricao_intelectual", "foco_estudos"],
+    criatividade: ["produtividade_criativa", "nutricao_intelectual", "hobbies"],
     dupla_excepcionalidade_2e: ["foco_estudos", "sobrecarga", "rotina_domestica", "qualidade_sono"],
     intensidade_relacional: ["relacionamento", "conexao_social", "autocompaixao"],
     exaustao_empatica: ["sobrecarga", "autocompaixao", "crise_existencial", "vitalidade"],
