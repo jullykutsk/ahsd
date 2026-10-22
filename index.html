@@ -150,7 +150,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .dropdown-group-title:first-child { margin-top: 0; }
 .dropdown-item {
   padding: 8px 12px; font-size: 0.78rem; color: var(--text-dimmed); cursor: pointer; border-radius: 6px;
-  display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; transition: background 0.15s;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 2px; transition: background 0.15s;
   user-select: none;
 }
 .dropdown-item:hover { background: var(--cat-bg); color: var(--text-main); }
@@ -346,25 +346,37 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   <div id="aba-registro" class="aba-conteudo active">
     <div class="seletor-topo-container">
       <div class="perfil-box">
-        <span class="perfil-label">Traços & Momentos (Múltipla Escolha):</span>
+        <span class="perfil-label">Traços, Ser & Fazer (Múltipla Escolha):</span>
         <div class="custom-dropdown" id="custom-dropdown-perfil">
           <button type="button" class="custom-dropdown-btn" onclick="toggleDropdown(event)">
-            <span id="custom-dropdown-selected-text">Selecionar Traços/Momentos...</span>
+            <span id="custom-dropdown-selected-text">Selecionar Dimensões AH/SD...</span>
             <span>▼</span>
           </button>
           <div class="custom-dropdown-content" id="custom-dropdown-list" onclick="event.stopPropagation()">
-            <div class="dropdown-group-title">Excitabilidades & Características (Dabrowski)</div>
-            <label class="dropdown-item"><input type="checkbox" value="ahsd_intelectual_imaginativo" onchange="atualizarPerfisSelecionados()"> Mente Intelectual & Imaginativa</label>
-            <label class="dropdown-item"><input type="checkbox" value="ahsd_emocional_sensivel" onchange="atualizarPerfisSelecionados()"> Hipersensibilidade Emocional & Estética</label>
-            <label class="dropdown-item"><input type="checkbox" value="ahsd_psicomotor_criativo" onchange="atualizarPerfisSelecionados()"> Perfil Criativo & Psicomotor (Energia Ativa)</label>
-            <label class="dropdown-item"><input type="checkbox" value="ahsd_assincronia" onchange="atualizarPerfisSelecionados()"> Assincronia de Desenvolvimento</label>
+            
+            <div class="dropdown-group-title">1. O Ser, Sentir & Refletir (Dabrowski)</div>
+            <label class="dropdown-item"><input type="checkbox" value="excitabilidade_intelectual" onchange="atualizarPerfisSelecionados()"> Excitabilidade Intelectual</label>
+            <label class="dropdown-item"><input type="checkbox" value="excitabilidade_emocional" onchange="atualizarPerfisSelecionados()"> Excitabilidade Emocional & Empatia Profunda</label>
+            <label class="dropdown-item"><input type="checkbox" value="excitabilidade_imaginativa" onchange="atualizarPerfisSelecionados()"> Excitabilidade Imaginativa</label>
+            <label class="dropdown-item"><input type="checkbox" value="excitabilidade_psicomotora" onchange="atualizarPerfisSelecionados()"> Excitabilidade Psicomotora</label>
+            <label class="dropdown-item"><input type="checkbox" value="excitabilidade_sensorial" onchange="atualizarPerfisSelecionados()"> Excitabilidade Sensorial / Estética</label>
+
+            <div class="dropdown-group-title">2. O Fazer & Realizar (Renzulli & Assincronia)</div>
+            <label class="dropdown-item"><input type="checkbox" value="habilidade_assincronia" onchange="atualizarPerfisSelecionados()"> Habilidade Acima da Média & Assincronia</label>
+            <label class="dropdown-item"><input type="checkbox" value="comprometimento_tarefa" onchange="atualizarPerfisSelecionados()"> Comprometimento com a Tarefa / Hiperfoco</label>
+            <label class="dropdown-item"><input type="checkbox" value="perfil_criativo_produtivo" onchange="atualizarPerfisSelecionados()"> Perfil Criativo-Produtivo</label>
             <label class="dropdown-item"><input type="checkbox" value="dupla_excepcionalidade_2e" onchange="atualizarPerfisSelecionados()"> Dupla Excepcionalidade (2e)</label>
 
-            <div class="dropdown-group-title">Crises, Desregulação & Impostor</div>
-            <label class="dropdown-item"><input type="checkbox" value="ahsd_boreout" onchange="atualizarPerfisSelecionados()"> Boreout / Subestimulação Crônica</label>
-            <label class="dropdown-item"><input type="checkbox" value="ahsd_burnout_mascara" onchange="atualizarPerfisSelecionados()"> Burnout por Mascaramento Social</label>
-            <label class="dropdown-item"><input type="checkbox" value="ahsd_sindrome_impostor" onchange="atualizarPerfisSelecionados()"> Síndrome do Impostor & Autocrítica</label>
-            <label class="dropdown-item"><input type="checkbox" value="ahsd_crise_existencial" onchange="atualizarPerfisSelecionados()"> Crise / Depressão Existencial & Injustiça</label>
+            <div class="dropdown-group-title">3. Vínculos & Empatia Moral</div>
+            <label class="dropdown-item"><input type="checkbox" value="intensidade_relacional" onchange="atualizarPerfisSelecionados()"> Intensidade Relacional & Vínculos por Admiração</label>
+            <label class="dropdown-item"><input type="checkbox" value="exaustao_empatica" onchange="atualizarPerfisSelecionados()"> Exaustão Empática & Sobrecarga Moral</label>
+
+            <div class="dropdown-group-title">4. Momentos de Desregulação & Crises</div>
+            <label class="dropdown-item"><input type="checkbox" value="boreout" onchange="atualizarPerfisSelecionados()"> Boreout / Subestimulação Crônica</label>
+            <label class="dropdown-item"><input type="checkbox" value="burnout_mascaramento" onchange="atualizarPerfisSelecionados()"> Burnout por Mascaramento Social</label>
+            <label class="dropdown-item"><input type="checkbox" value="sindrome_impostor" onchange="atualizarPerfisSelecionados()"> Síndrome do Impostor & Autocrítica Severa</label>
+            <label class="dropdown-item"><input type="checkbox" value="crise_existencial" onchange="atualizarPerfisSelecionados()"> Crise Existencial & Angústia Filosófica</label>
+
           </div>
         </div>
       </div>
@@ -1121,17 +1133,23 @@ const opcoesAtalhos = {
   }
 };
 
-// Mapeamento das prioridades clínicas de cada traço/crise
+// Mapeamento científico das prioridades clínicas de cada traço/crise
 const perfisFocoMap = {
-    ahsd_intelectual_imaginativo: ["nutricao_intelectual", "foco_estudos", "ansiedade", "crise_existencial"],
-    ahsd_emocional_sensivel: ["sobrecarga", "autocompaixao", "relacionamento", "conexao_social"],
-    ahsd_psicomotor_criativo: ["vitalidade", "exercicios", "produtividade_criativa", "hobbies"],
-    ahsd_assincronia: ["crise_existencial", "autocompaixao", "ansiedade", "nutricao_intelectual"],
+    excitabilidade_intelectual: ["nutricao_intelectual", "foco_estudos", "ansiedade", "crise_existencial"],
+    excitabilidade_emocional: ["sobrecarga", "autocompaixao", "relacionamento", "conexao_social"],
+    excitabilidade_imaginativa: ["nutricao_intelectual", "produtividade_criativa", "crise_existencial"],
+    excitabilidade_psicomotora: ["vitalidade", "exercicios", "sobrecarga"],
+    excitabilidade_sensorial: ["sobrecarga", "qualidade_sono", "hobbies"],
+    habilidade_assincronia: ["crise_existencial", "autocompaixao", "nutricao_intelectual", "ansiedade"],
+    comprometimento_tarefa: ["foco_estudos", "nutricao_intelectual", "qualidade_sono"],
+    perfil_criativo_produtivo: ["produtividade_criativa", "nutricao_intelectual", "foco_estudos"],
     dupla_excepcionalidade_2e: ["foco_estudos", "sobrecarga", "rotina_domestica", "qualidade_sono"],
-    ahsd_boreout: ["nutricao_intelectual", "vitalidade", "crise_existencial", "hobbies"],
-    ahsd_burnout_mascara: ["sobrecarga", "vitalidade", "qualidade_sono", "autocompaixao"],
-    ahsd_sindrome_impostor: ["autocompaixao", "ansiedade", "produtividade_criativa", "crise_existencial"],
-    ahsd_crise_existencial: ["crise_existencial", "autocompaixao", "conexao_social", "ansiedade"]
+    intensidade_relacional: ["relacionamento", "conexao_social", "autocompaixao"],
+    exaustao_empatica: ["sobrecarga", "autocompaixao", "crise_existencial", "vitalidade"],
+    boreout: ["nutricao_intelectual", "vitalidade", "crise_existencial", "hobbies"],
+    burnout_mascaramento: ["sobrecarga", "vitalidade", "qualidade_sono", "autocompaixao"],
+    sindrome_impostor: ["autocompaixao", "ansiedade", "produtividade_criativa", "crise_existencial"],
+    crise_existencial: ["crise_existencial", "autocompaixao", "conexao_social", "ansiedade"]
 };
 
 const nomesCriterios = {
@@ -1212,11 +1230,11 @@ function atualizarPerfisSelecionados() {
 
   const textoBtn = document.getElementById('custom-dropdown-selected-text');
   if (selecionados.length === 0) {
-    textoBtn.innerText = "Selecionar Traços/Momentos...";
+    textoBtn.innerText = "Selecionar Dimensões AH/SD...";
   } else if (selecionados.length === 1) {
     textoBtn.innerText = selecionados[0];
   } else {
-    textoBtn.innerText = `${selecionados.length} selecionados (Misto)`;
+    textoBtn.innerText = `${selecionados.length} dimensões selecionadas`;
   }
 
   aplicarFocosCombinados(chavesSelecionadas);
@@ -1224,7 +1242,6 @@ function atualizarPerfisSelecionados() {
 }
 
 function aplicarFocosCombinados(chavesArray) {
-  // Une todas as prioridades de todos os perfis selecionados (sem duplicatas)
   let prioridadesUnificadas = [];
   chavesArray.forEach(chave => {
     if (perfisFocoMap[chave]) {
@@ -1796,7 +1813,7 @@ function gerarPDFMensal() {
     y += 6;
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
-    doc.text("3. PAUTA PARA A SESSÃO / REFLEXÕES DO PACIENTE", 14, y);
+    doc.text("3. PAUTA PARA LA SESSÃO / REFLEXÕES DO PACIENTE", 14, y);
     y += 6;
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
@@ -1833,7 +1850,7 @@ window.onload = function() {
   inputData.value = hoje;
 
   // Carrega múltiplos perfis salvos ou padrão
-  const perfisSalvos = JSON.parse(localStorage.getItem('dashboard_clinica_perfis_multi') || '["ahsd_intelectual_imaginativo"]');
+  const perfisSalvos = JSON.parse(localStorage.getItem('dashboard_clinica_perfis_multi') || '["excitabilidade_intelectual"]');
   perfisSalvos.forEach(val => {
     const cb = document.querySelector(`#custom-dropdown-list input[value="${val}"]`);
     if (cb) cb.checked = true;
