@@ -151,9 +151,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .dropdown-item {
   padding: 8px 12px; font-size: 0.78rem; color: var(--text-dimmed); cursor: pointer; border-radius: 6px;
   display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; transition: background 0.15s;
+  user-select: none;
 }
 .dropdown-item:hover { background: var(--cat-bg); color: var(--text-main); }
-.dropdown-item.selected::after { content: "✓"; color: var(--accent-color); font-size: 0.8rem; }
+.dropdown-item input[type="checkbox"] { accent-color: var(--accent-color); cursor: pointer; }
 
 .seletor-data-input {
   width: 100%; background: var(--btn-bg); border: 1px solid var(--border-light); color: var(--text-main);
@@ -190,7 +191,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 }
 .criterio-card.prioritario { border: 2px solid var(--accent-color); background: var(--card-prioritario); }
 .criterio-card.prioritario::before {
-  content: "Foco Clínico do Perfil"; display: inline-block; font-size: 0.72rem; font-weight: bold;
+  content: "Foco Clínico Selecionado"; display: inline-block; font-size: 0.72rem; font-weight: bold;
   color: var(--accent-color); margin-bottom: 6px; background: var(--cat-bg); padding: 2px 8px; border-radius: 4px;
 }
 .criterio-nome { font-size: 0.95rem; font-weight: bold; color: var(--text-main); margin-bottom: 6px; }
@@ -345,31 +346,28 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   <div id="aba-registro" class="aba-conteudo active">
     <div class="seletor-topo-container">
       <div class="perfil-box">
-        <span class="perfil-label">Perfil / Traço Predominante:</span>
+        <span class="perfil-label">Traços & Momentos (Múltipla Escolha):</span>
         <div class="custom-dropdown" id="custom-dropdown-perfil">
           <button type="button" class="custom-dropdown-btn" onclick="toggleDropdown(event)">
-            <span id="custom-dropdown-selected-text">Selecionar Perfil...</span>
+            <span id="custom-dropdown-selected-text">Selecionar Traços/Momentos...</span>
             <span>▼</span>
           </button>
-          <div class="custom-dropdown-content" id="custom-dropdown-list">
-            <div class="dropdown-group-title">Traços & Excitabilidades (Dabrowski)</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_intelectual_imaginativo', 'Mente Intelectual & Imaginativa (Alto Fluxo)')">Mente Intelectual & Imaginativa (Alto Fluxo)</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_emocional_sensivel', 'Hipersensibilidade Emocional & Estética')">Hipersensibilidade Emocional & Estética</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_psicomotor_criativo', 'Perfil Criativo & Psicomotor (Energia Ativa)')">Perfil Criativo & Psicomotor (Energia Ativa)</div>
-            
-            <div class="dropdown-group-title">Complexidades & Dupla Excepcionalidade</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_assincronia', 'Assincronia de Desenvolvimento (Mente vs. Emoção)')">Assincronia de Desenvolvimento (Mente vs. Emoção)</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('dupla_excepcionalidade_2e', 'Dupla Excepcionalidade (2e: AH/SD + Neurodivergência)')">Dupla Excepcionalidade (2e: AH/SD + Neurodivergência)</div>
+          <div class="custom-dropdown-content" id="custom-dropdown-list" onclick="event.stopPropagation()">
+            <div class="dropdown-group-title">Excitabilidades & Características (Dabrowski)</div>
+            <label class="dropdown-item"><input type="checkbox" value="ahsd_intelectual_imaginativo" onchange="atualizarPerfisSelecionados()"> Mente Intelectual & Imaginativa</label>
+            <label class="dropdown-item"><input type="checkbox" value="ahsd_emocional_sensivel" onchange="atualizarPerfisSelecionados()"> Hipersensibilidade Emocional & Estética</label>
+            <label class="dropdown-item"><input type="checkbox" value="ahsd_psicomotor_criativo" onchange="atualizarPerfisSelecionados()"> Perfil Criativo & Psicomotor (Energia Ativa)</label>
+            <label class="dropdown-item"><input type="checkbox" value="ahsd_assincronia" onchange="atualizarPerfisSelecionados()"> Assincronia de Desenvolvimento</label>
+            <label class="dropdown-item"><input type="checkbox" value="dupla_excepcionalidade_2e" onchange="atualizarPerfisSelecionados()"> Dupla Excepcionalidade (2e)</label>
 
             <div class="dropdown-group-title">Crises, Desregulação & Impostor</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_boreout', 'Boreout / Subestimulação Crônica')">Boreout / Subestimulação Crônica</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_burnout_mascara', 'Burnout por Mascaramento Social')">Burnout por Mascaramento Social</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_sindrome_impostor', 'Síndrome do Impostor & Autocrítica Severa')">Síndrome do Impostor & Autocrítica Severa</div>
-            <div class="dropdown-item" onclick="selecionarPerfilCustom('ahsd_crise_existencial', 'Crise / Depressão Existencial & Injustiça')">Crise / Depressão Existencial & Injustiça</div>
+            <label class="dropdown-item"><input type="checkbox" value="ahsd_boreout" onchange="atualizarPerfisSelecionados()"> Boreout / Subestimulação Crônica</label>
+            <label class="dropdown-item"><input type="checkbox" value="ahsd_burnout_mascara" onchange="atualizarPerfisSelecionados()"> Burnout por Mascaramento Social</label>
+            <label class="dropdown-item"><input type="checkbox" value="ahsd_sindrome_impostor" onchange="atualizarPerfisSelecionados()"> Síndrome do Impostor & Autocrítica</label>
+            <label class="dropdown-item"><input type="checkbox" value="ahsd_crise_existencial" onchange="atualizarPerfisSelecionados()"> Crise / Depressão Existencial & Injustiça</label>
           </div>
         </div>
       </div>
-      <input type="hidden" id="select-perfil-diagnostico" value="ahsd_intelectual_imaginativo">
       <input type="date" id="data-registro" class="seletor-data-input" onchange="carregarRegistroData(this.value)">
     </div>
 
@@ -384,7 +382,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         <div class="criterio-legenda">1 = Nó no peito/pensamentos travados em loop; 3 = Desconforto leve, mas executando tarefas; 5 = Corpo calmo e pensamentos fluidos.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
-
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
           <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
           <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
@@ -1124,43 +1121,17 @@ const opcoesAtalhos = {
   }
 };
 
-const perfisFoco = {
-    ahsd_intelectual_imaginativo: { 
-        nome: "Mente Intelectual & Imaginativa (Alto Fluxo)", 
-        prioridades: ["nutricao_intelectual", "foco_estudos", "ansiedade", "crise_existencial"] 
-    },
-    ahsd_emocional_sensivel: { 
-        nome: "Hipersensibilidade Emocional & Estética", 
-        prioridades: ["sobrecarga", "autocompaixao", "relacionamento", "conexao_social"] 
-    },
-    ahsd_psicomotor_criativo: { 
-        nome: "Perfil Criativo & Psicomotor (Energia Ativa)", 
-        prioridades: ["vitalidade", "exercicios", "produtividade_criativa", "hobbies"] 
-    },
-    ahsd_assincronia: { 
-        nome: "Assincronia de Desenvolvimento (Mente vs. Emoção)", 
-        prioridades: ["crise_existencial", "autocompaixao", "ansiedade", "nutricao_intelectual"] 
-    },
-    dupla_excepcionalidade_2e: { 
-        nome: "Dupla Excepcionalidade (2e)", 
-        prioridades: ["foco_estudos", "sobrecarga", "rotina_domestica", "qualidade_sono"] 
-    },
-    ahsd_boreout: { 
-        nome: "Boreout / Subestimulação Crônica", 
-        prioridades: ["nutricao_intelectual", "vitalidade", "crise_existencial", "hobbies"] 
-    },
-    ahsd_burnout_mascara: { 
-        nome: "Burnout por Mascaramento Social", 
-        prioridades: ["sobrecarga", "vitalidade", "qualidade_sono", "autocompaixao"] 
-    },
-    ahsd_sindrome_impostor: { 
-        nome: "Síndrome do Impostor & Autocrítica Severa", 
-        prioridades: ["autocompaixao", "ansiedade", "produtividade_criativa", "crise_existencial"] 
-    },
-    ahsd_crise_existencial: { 
-        nome: "Crise / Depressão Existencial & Injustiça", 
-        prioridades: ["crise_existencial", "autocompaixao", "conexao_social", "ansiedade"] 
-    }
+// Mapeamento das prioridades clínicas de cada traço/crise
+const perfisFocoMap = {
+    ahsd_intelectual_imaginativo: ["nutricao_intelectual", "foco_estudos", "ansiedade", "crise_existencial"],
+    ahsd_emocional_sensivel: ["sobrecarga", "autocompaixao", "relacionamento", "conexao_social"],
+    ahsd_psicomotor_criativo: ["vitalidade", "exercicios", "produtividade_criativa", "hobbies"],
+    ahsd_assincronia: ["crise_existencial", "autocompaixao", "ansiedade", "nutricao_intelectual"],
+    dupla_excepcionalidade_2e: ["foco_estudos", "sobrecarga", "rotina_domestica", "qualidade_sono"],
+    ahsd_boreout: ["nutricao_intelectual", "vitalidade", "crise_existencial", "hobbies"],
+    ahsd_burnout_mascara: ["sobrecarga", "vitalidade", "qualidade_sono", "autocompaixao"],
+    ahsd_sindrome_impostor: ["autocompaixao", "ansiedade", "produtividade_criativa", "crise_existencial"],
+    ahsd_crise_existencial: ["crise_existencial", "autocompaixao", "conexao_social", "ansiedade"]
 };
 
 const nomesCriterios = {
@@ -1226,13 +1197,49 @@ window.addEventListener('click', function() {
   }
 });
 
-function selecionarPerfilCustom(valorChave, textoNome) {
-  document.getElementById('select-perfil-diagnostico').value = valorChave;
-  document.getElementById('custom-dropdown-selected-text').innerText = textoNome;
-  document.querySelectorAll('.dropdown-item').forEach(el => el.classList.remove('selected'));
-  if(event && event.currentTarget) event.currentTarget.classList.add('selected');
-  document.getElementById('custom-dropdown-list').classList.remove('open');
-  alterarPerfilDiagnostico(valorChave);
+// Atualiza o texto do botão e recalcula as prioridades quando checkboxes mudam
+function atualizarPerfisSelecionados() {
+  const checkboxes = document.querySelectorAll('#custom-dropdown-list input[type="checkbox"]');
+  const selecionados = [];
+  const chavesSelecionadas = [];
+
+  checkboxes.forEach(cb => {
+    if (cb.checked) {
+      selecionados.push(cb.parentElement.innerText.trim());
+      chavesSelecionadas.push(cb.value);
+    }
+  });
+
+  const textoBtn = document.getElementById('custom-dropdown-selected-text');
+  if (selecionados.length === 0) {
+    textoBtn.innerText = "Selecionar Traços/Momentos...";
+  } else if (selecionados.length === 1) {
+    textoBtn.innerText = selecionados[0];
+  } else {
+    textoBtn.innerText = `${selecionados.length} selecionados (Misto)`;
+  }
+
+  aplicarFocosCombinados(chavesSelecionadas);
+  localStorage.setItem('dashboard_clinica_perfis_multi', JSON.stringify(chavesSelecionadas));
+}
+
+function aplicarFocosCombinados(chavesArray) {
+  // Une todas as prioridades de todos os perfis selecionados (sem duplicatas)
+  let prioridadesUnificadas = [];
+  chavesArray.forEach(chave => {
+    if (perfisFocoMap[chave]) {
+      prioridadesUnificadas = prioridadesUnificadas.concat(perfisFocoMap[chave]);
+    }
+  });
+
+  document.querySelectorAll('.criterio-card').forEach(card => {
+    const key = card.getAttribute('data-key');
+    if (prioridadesUnificadas.includes(key)) {
+      card.classList.add('prioritario');
+    } else {
+      card.classList.remove('prioritario');
+    }
+  });
 }
 
 function abrirModalGuiaSentimentos() {
@@ -1255,19 +1262,6 @@ function fecharModalFora(event) {
 }
 function fecharModalMapaFora(event) {
   if (event.target.id === 'modal-mapa') fecharModalMapa();
-}
-
-function alterarPerfilDiagnostico(perfilChave) {
-  localStorage.setItem('dashboard_clinica_perfil', perfilChave);
-  const config = perfisFoco[perfilChave] || perfisFoco.ahsd_intelectual_imaginativo;
-  document.querySelectorAll('.criterio-card').forEach(card => {
-    const key = card.getAttribute('data-key');
-    if (config.prioridades.includes(key)) {
-      card.classList.add('prioritario');
-    } else {
-      card.classList.remove('prioritario');
-    }
-  });
 }
 
 function mudarAba(abaId, btnElement) {
@@ -1408,10 +1402,12 @@ function salvarRegistroDiario() {
     dadosCriterios[key] = { valor: val, observacao: obs };
   });
 
-  const perfilAtual = document.getElementById('select-perfil-diagnostico').value || 'ahsd_intelectual_imaginativo';
+  const checkboxes = document.querySelectorAll('#custom-dropdown-list input[type="checkbox"]:checked');
+  const perfisAtuais = Array.from(checkboxes).map(cb => cb.value);
+
   const registro = {
     data: dataSelecionada,
-    perfil: perfilAtual,
+    perfis: perfisAtuais,
     timestamp: new Date().getTime(),
     saldo: calcularSaldoAtual(),
     criterios: dadosCriterios
@@ -1511,8 +1507,6 @@ function renderizarEvolucao() {
   const qtdRegistros = ultimos30.length;
   const dataInicio = formatarDataBR(ultimos30[0].data);
   const dataFim = formatarDataBR(ultimos30[qtdRegistros - 1].data);
-  const perfilChave = document.getElementById('select-perfil-diagnostico').value || 'ahsd_intelectual_imaginativo';
-  const perfilNome = perfisFoco[perfilChave] ? perfisFoco[perfilChave].nome : perfisFoco.ahsd_intelectual_imaginativo.nome;
 
   let diasSobrecargaOk = 0;
   ultimos30.forEach(reg => {
@@ -1526,12 +1520,12 @@ function renderizarEvolucao() {
   const regMaisRecente = ultimos30[qtdRegistros - 1];
 
   if (qtdRegistros === 1) {
-    textoTendencia = `Início do acompanhamento diário com foco no perfil <strong>${perfilNome}</strong>. Em <strong>100% dos registros</strong>, os níveis de autorregulação apresentam estado inicial preservado.`;
+    textoTendencia = `Início do acompanhamento diário. Em <strong>100% dos registros</strong>, os níveis de autorregulação apresentam estado inicial preservado.`;
   } else {
     if (pctSobrecargaOk >= 60) {
       textoTendencia = `Observa-se uma <strong>melhora na estabilidade emocional</strong> nos registros mais recentes. Em <strong>${pctSobrecargaOk}% dos dias registrados</strong>, os níveis de sobrecarga mantiveram-se sob controle.`;
     } else {
-      textoTendencia = `Identifica-se período de <strong>maior vulnerabilidade neuroemocional</strong> para o perfil selecionado. Em apenas <strong>${pctSobrecargaOk}% dos dias</strong> a sobrecarga esteve totalmente sob controle.`;
+      textoTendencia = `Identifica-se período de <strong>maior vulnerabilidade neuroemocional</strong>. Em apenas <strong>${pctSobrecargaOk}% dos dias</strong> a sobrecarga esteve totalmente sob controle.`;
     }
   }
 
@@ -1555,7 +1549,7 @@ function renderizarEvolucao() {
   }
 
   resumoContainer.innerHTML = `
-    <div class="prontuario-subtitulo">Acompanhamento do período de ${dataInicio} a ${dataFim} (${qtdRegistros} registro${qtdRegistros > 1 ? 's' : ''}) - <strong>Perfil: ${perfilNome}</strong>:</div>
+    <div class="prontuario-subtitulo">Acompanhamento do período de ${dataInicio} a ${dataFim} (${qtdRegistros} registro${qtdRegistros > 1 ? 's' : ''}):</div>
     <div class="prontuario-topico">• <strong>Tendência:</strong> ${textoTendencia}</div>
     <div class="prontuario-topico">• <strong>Resumo das Anotações:</strong> ${textoResumoAnotacoes}</div>
   `;
@@ -1699,16 +1693,13 @@ function gerarPDFMensal() {
     return;
   }
 
-  const perfilChave = document.getElementById('select-perfil-diagnostico').value || 'ahsd_intelectual_imaginativo';
-  const perfilNome = perfisFoco[perfilChave] ? perfisFoco[perfilChave].nome : perfisFoco.ahsd_intelectual_imaginativo.nome;
-
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
   doc.text("RELATÓRIO PSICOEDUCATIVO DE AUTORREGULAÇÃO", 14, 18);
 
   doc.setFontSize(8.5);
   doc.setFont("helvetica", "normal");
-  doc.text(`Data de Emissão: ${new Date().toLocaleDateString('pt-BR')} | Perfil Acompanhado: ${perfilNome}`, 14, 24);
+  doc.text(`Data de Emissão: ${new Date().toLocaleDateString('pt-BR')} | Monitoramento AH/SD`, 14, 24);
 
   const ultimos30 = historico.slice(0, 30);
   const qtdRegistros = ultimos30.length;
@@ -1841,12 +1832,14 @@ window.onload = function() {
   const inputData = document.getElementById('data-registro');
   inputData.value = hoje;
 
-  const perfilSalvo = localStorage.getItem('dashboard_clinica_perfil') || 'ahsd_intelectual_imaginativo';
-  const nomeInicial = perfisFoco[perfilSalvo] ? perfisFoco[perfilSalvo].nome : perfisFoco.ahsd_intelectual_imaginativo.nome;
-  document.getElementById('select-perfil-diagnostico').value = perfilSalvo;
-  document.getElementById('custom-dropdown-selected-text').innerText = nomeInicial;
+  // Carrega múltiplos perfis salvos ou padrão
+  const perfisSalvos = JSON.parse(localStorage.getItem('dashboard_clinica_perfis_multi') || '["ahsd_intelectual_imaginativo"]');
+  perfisSalvos.forEach(val => {
+    const cb = document.querySelector(`#custom-dropdown-list input[value="${val}"]`);
+    if (cb) cb.checked = true;
+  });
+  atualizarPerfisSelecionados();
 
-  alterarPerfilDiagnostico(perfilSalvo);
   carregarRegistroData(hoje);
   carregarPauta();
   renderizarTodosAtalhos();
