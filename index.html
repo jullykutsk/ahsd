@@ -834,7 +834,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quanto effort social foi necessário para transitar nos grupos hoje? Houve esgotamento de empatia?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quanto esforço social foi necessário para transitar nos grupos hoje? Houve esgotamento de empatia?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="hobbies">
@@ -1196,7 +1196,7 @@ const opcoesAtalhos = {
     5: ["Serenidade cognitiva", "Visão sistêmica clara", "Paz mental"]
   },
   crise_existencial: {
-    1: ["Sensação de futilidade", "Para que fazer isso?", "Desconexão de valores", "Vazio intelectual"],
+    1: ["Sensação de futilidade", "Para que fazer isso?", "Desconexão de valores", "V vazio intelectual"],
     2: ["Questionamentos profundos", "Busca por sentido", "Desalinho com rotina"],
     3: ["Rotina neutra", "Propósito em avaliação"],
     4: ["Ação com sentido", "Alinhamento ético", "Utilidade clara"],
@@ -1879,62 +1879,114 @@ function gerarPDFSemanal() {
     return;
   }
 
+  // --- CABEÇALHO DO PDF ---
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
-  doc.text("RELATÓRIO PSICOEDUCATIVO SEMANAL DE AUTORREGULAÇÃO", 14, 18);
+  doc.text("RELATÓRIO PSICOEDUCATIVO CLÍNICO - CICLO SEMANAL", 14, 18);
 
   doc.setFontSize(8.5);
   doc.setFont("helvetica", "normal");
-  doc.text(`Data de Emissão: ${new Date().toLocaleDateString('pt-BR')} | Monitoramento AH/SD (Ciclo 7 Dias)`, 14, 24);
+  doc.text(`Data de Emissão: ${new Date().toLocaleDateString('pt-BR')} | Monitoramento Especializado AH/SD`, 14, 24);
 
   const ultimos7 = historicoCiclo;
   const qtdRegistros = ultimos7.length;
   const dataInicio = formatarDataBR(ultimos7[qtdRegistros - 1].data);
   const dataFim = formatarDataBR(ultimos7[0].data);
 
-  let contNivel1 = 0;
-  let contPositivos = 0;
-  let contNegativos = 0;
+  // --- ANÁLISE QUANTITATIVA E QUALITATIVA ---
+  let somaSaldos = 0;
+  let pontosPositivosList = [];
+  let pontosAtencaoList = [];
 
   ultimos7.forEach(reg => {
+    somaSaldos += reg.saldo;
     Object.keys(reg.criterios).forEach(key => {
       const val = reg.criterios[key].valor;
-      if (val === 1) contNivel1++;
-      if (val >= 4) contPositivos++;
-      if (val <= 2) contNegativos++;
+      const nomeCrit = nomesCriterios[key] || key;
+      const obs = reg.criterios[key].observacao;
+      
+      if (val >= 4) {
+        pontosPositivosList.push(`• [${formatarDataBR(reg.data)}] ${nomeCrit} (Nível ${val})${obs ? ': ' + obs : ''}`);
+      }
+      if (val === 1 || val === 2) {
+        pontosAtencaoList.push(`• [${formatarDataBR(reg.data)}] ${nomeCrit} (Nível ${val})${obs ? ': ' + obs : ''}`);
+      }
     });
   });
 
+  const mediaSaldo = (somaSaldos / qtdRegistros).toFixed(1);
+
+  let y = 32;
   doc.setFont("helvetica", "bold");
   doc.setFontSize(10);
-  doc.text("1. SÍNTESE DA SEMANA E INCIDÊNCIAS", 14, 32);
+  doc.text("1. SUMÁRIO EXECUTIVO & INDICADORES DO PERÍODO", 14, y);
+  y += 6;
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8.5);
-  doc.text(`Janela: ${dataInicio} a ${dataFim} | Registros analisados: ${qtdRegistros}`, 14, 38);
-  doc.text(`• Critérios marcados com Nível 1 (Gatilhos Críticos): ${contNivel1}`, 16, 44);
-  doc.text(`• Incidências Positivas Recorrentes (Níveis 4 e 5): ${contPositivos}`, 16, 50);
-  doc.text(`• Incidências Negativas Recorrentes (Níveis 1 e 2): ${contNegativos}`, 16, 56);
+  doc.text(`Janela de Análise: ${dataInicio} a ${dataFim} (${qtdRegistros} registros computados)`, 16, y);
+  y += 5;
+  doc.text(`Média de Saldo Emocional do Ciclo: ${mediaSaldo > 0 ? '+' + mediaSaldo : mediaSaldo}`, 16, y);
+  y += 8;
 
-  doc.setDrawColor(200, 200, 200);
-  doc.line(14, 60, 196, 60);
-
+  // --- PONTOS POSITIVOS ---
   doc.setFont("helvetica", "bold");
   doc.setFontSize(10);
-  doc.text("2. HISTÓRICO DIÁRIO E NOTAS COMPORTAMENTAIS", 14, 67);
+  doc.text("2. PONTOS POSITIVOS & RECURSOS (Níveis 4 e 5)", 14, y);
+  y += 6;
 
-  let y = 74;
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  if (pontosPositivosList.length > 0) {
+    pontosPositivosList.slice(0, 6).forEach(item => {
+      if (y > 270) { doc.addPage(); y = 20; }
+      const linhasPos = doc.splitTextToSize(item, 180);
+      doc.text(linhasPos, 16, y);
+      y += (linhasPos.length * 5);
+    });
+  } else {
+    doc.text("Nenhum registro de pico positivo (4 ou 5) destacado no período.", 16, y);
+    y += 5;
+  }
+  y += 4;
+
+  // --- PONTOS DE ATENÇÃO ---
+  if (y > 240) { doc.addPage(); y = 20; }
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(10);
+  doc.text("3. PONTOS DE ATENÇÃO & GATILHOS (Níveis 1 e 2)", 14, y);
+  y += 6;
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  if (pontosAtencaoList.length > 0) {
+    pontosAtencaoList.slice(0, 6).forEach(item => {
+      if (y > 270) { doc.addPage(); y = 20; }
+      const linhasAtencao = doc.splitTextToSize(item, 180);
+      doc.text(linhasAtencao, 16, y);
+      y += (linhasAtencao.length * 5);
+    });
+  } else {
+    doc.text("Nenhum ponto de alerta crítico (1 ou 2) registrado no período.", 16, y);
+    y += 5;
+  }
+  y += 6;
+
+  // --- HISTÓRICO DIÁRIO DETALHADO ---
+  if (y > 230) { doc.addPage(); y = 20; }
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(10);
+  doc.text("4. EVOLUÇÃO DIÁRIA E RELATOS COMPORTAMENTAIS", 14, y);
+  y += 6;
+
   historicoCiclo.forEach((reg) => {
-    if (y > 265) {
-      doc.addPage();
-      y = 20;
-    }
+    if (y > 265) { doc.addPage(); y = 20; }
     const dataFormatada = new Date(reg.data + 'T00:00:00').toLocaleDateString('pt-BR');
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(9.5);
+    doc.setFontSize(9);
     doc.setTextColor(0, 0, 0);
-    doc.text(`Data: ${dataFormatada} | Saldo Emocional: ${reg.saldo > 0 ? '+' + reg.saldo : reg.saldo}`, 14, y);
-    y += 6;
+    doc.text(`Data: ${dataFormatada} | Saldo do Dia: ${reg.saldo > 0 ? '+' + reg.saldo : reg.saldo}`, 14, y);
+    y += 5;
 
     Object.keys(reg.criterios).forEach(key => {
       const item = reg.criterios[key];
@@ -1948,10 +2000,7 @@ function gerarPDFSemanal() {
         }
 
         const parteBase = `  • ${nomesCriterios[key] || key}: Nível ${item.valor}`;
-        if (y > 265) {
-          doc.addPage();
-          y = 20;
-        }
+        if (y > 270) { doc.addPage(); y = 20; }
         doc.text(parteBase, 16, y);
 
         if (item.observacao) {
@@ -1968,21 +2017,18 @@ function gerarPDFSemanal() {
     y += 4;
   });
 
+  // --- PAUTA PARA A SESSÃO ---
   doc.setTextColor(0,0,0);
   const pautaTexto = localStorage.getItem('dashboard_clinica_pauta') || "";
   if (pautaTexto.trim() !== "") {
-    if (y > 230) {
-      doc.addPage();
-      y = 20;
-    } else {
-      y += 6;
-    }
+    if (y > 230) { doc.addPage(); y = 20; }
+    y += 4;
     doc.setDrawColor(200, 200, 200);
     doc.line(14, y, 196, y);
     y += 6;
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
-    doc.text("3. PAUTA PARA A SESSÃO / REFLEXÕES DO PACIENTE", 14, y);
+    doc.text("5. PAUTA PARA A SESSÃO / REFLEXÕES DO PACIENTE", 14, y);
     y += 6;
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
@@ -1991,25 +2037,24 @@ function gerarPDFSemanal() {
     y += (linhasPauta.length * 5) + 6;
   }
 
-  if (y > 250) {
-    doc.addPage();
-    y = 20;
-  }
-  y += 6;
+  // --- AVISO LEGAL ---
+  if (y > 250) { doc.addPage(); y = 20; }
+  y += 4;
   doc.setDrawColor(220, 220, 220);
   doc.line(14, y, 196, y);
   y += 6;
   doc.setFont("helvetica", "italic");
   doc.setFontSize(7.5);
   doc.setTextColor(100, 100, 100);
-  const avisoLegal = "Nota técnica: esta avaliação não substitui um profissional psicólogo/psiquiatra é apenas um instrumento de anotações que pode contribuir com a relação terapêutica entre paciente e profissional.";
+  const avisoLegal = "Nota técnica: esta avaliação não substitui um profissional psicólogo/psiquiatra; é um instrumento de autogestão e anotações para apoiar a relação terapêutica.";
   const linhasAviso = doc.splitTextToSize(avisoLegal, 180);
   doc.text(linhasAviso, 14, y);
 
+  // --- REINÍCIO DO CICLO ---
   const dataUltimoRegistro = ultimos7[0].data;
   localStorage.setItem('dashboard_clinica_ultima_data_pdf', dataUltimoRegistro);
 
-  doc.save(`Relatorio_Psicoeducativo_Semanal_${new Date().toISOString().split('T')[0]}.pdf`);
+  doc.save(`Relatorio_Psicoeducativo_Avancado_${new Date().toISOString().split('T')[0]}.pdf`);
 
   if (document.getElementById('aba-evolucao').classList.contains('active')) {
     renderizarEvolucao();
