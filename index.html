@@ -197,35 +197,18 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 
 /* Título de Critério Clicável com Seta */
 .criterio-nome {
-  font-size: 0.95rem;
-  font-weight: bold;
-  color: var(--text-main);
-  margin-bottom: 6px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  user-select: none;
-  transition: color 0.2s;
+  font-size: 0.95rem; font-weight: bold; color: var(--text-main); margin-bottom: 6px;
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  user-select: none; transition: color 0.2s;
 }
 .criterio-nome:hover { color: var(--accent-color); }
-.criterio-nome-seta {
-  font-size: 0.75rem;
-  color: var(--accent-color);
-  transition: transform 0.3s ease;
-}
+.criterio-nome-seta { font-size: 0.75rem; color: var(--accent-color); transition: transform 0.3s ease; }
 
 /* Caixa de Dicas Práticas Psicoeducativas */
 .caixa-dica-pratica {
-  display: none;
-  background: var(--cat-bg);
-  border: 1px dashed var(--accent-color);
-  border-radius: 8px;
-  padding: 10px 12px;
-  margin-bottom: 10px;
-  font-size: 0.8rem;
-  color: var(--text-dimmed);
-  line-height: 1.45;
+  display: none; background: var(--cat-bg); border: 1px dashed var(--accent-color);
+  border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; font-size: 0.8rem;
+  color: var(--text-dimmed); line-height: 1.45;
 }
 .caixa-dica-pratica.aberta { display: block; }
 .caixa-dica-pratica strong { color: var(--accent-color); }
@@ -243,28 +226,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .btn-escala.selected { background: var(--accent-color); color: #ffffff; border-color: var(--accent-hover); }
 
 /* Botões de Atalhos / Tags */
-.atalhos-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
-}
+.atalhos-container { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .btn-atalho {
-  background: var(--tag-bg);
-  border: 1px solid var(--border-light);
-  color: var(--text-main);
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: inline-flex;
-  align-items: center;
+  background: var(--tag-bg); border: 1px solid var(--border-light); color: var(--text-main);
+  padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; cursor: pointer;
+  transition: all 0.2s; display: inline-flex; align-items: center;
 }
-.btn-atalho:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-}
+.btn-atalho:hover { border-color: var(--accent-color); color: var(--accent-color); }
 
 .anotacao-criterio {
   width: 100%; background: var(--btn-bg); border: 1px solid var(--border-light); border-radius: 6px;
@@ -343,7 +311,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 
 .autor-credito { margin-top: 16px; padding-top: 10px; border-top: 1px dashed var(--border-color); text-align: center; font-size: 0.75rem; color: var(--text-muted); font-style: italic; }
 </style>
+
+<!-- Importação correta do jsPDF e do Plugin autoTable -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body data-theme="light">
@@ -877,7 +848,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         Importar
         <input type="file" accept=".json" onchange="importarBackupJSON(event)">
       </label>
-      <button class="btn-discreto" onclick="gerarPDFSemanal()">PDF da Semana</button>
+      <button class="btn-discreto" onclick="gerarPDFSemanal()">PDF da Semana (Sofisticado)</button>
     </div>
 
     <div class="card">
@@ -1869,9 +1840,10 @@ function importarBackupJSON(event) {
   reader.readAsText(file);
 }
 
+// ==================== MOTOR PDF SOFISTICADO (COM AUTOTABLE) ====================
 function gerarPDFSemanal() {
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
+  const doc = new jsPDF('p', 'mm', 'a4');
   const historicoCiclo = obterDadosCicloAtual().slice().reverse();
 
   if (historicoCiclo.length === 0) {
@@ -1879,183 +1851,126 @@ function gerarPDFSemanal() {
     return;
   }
 
-  // --- CABEÇALHO DO PDF ---
+  // Cabeçalho institucional com barra superior decorativa
+  doc.setFillColor(184, 134, 107); // Cor elegante acentuada
+  doc.rect(14, 12, 182, 3, 'F');
+
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(13);
-  doc.text("RELATÓRIO PSICOEDUCATIVO CLÍNICO - CICLO SEMANAL", 14, 18);
+  doc.setFontSize(14);
+  doc.setTextColor(50, 50, 50);
+  doc.text("RELATÓRIO PSICOEDUCATIVO CLÍNICO", 14, 22);
 
   doc.setFontSize(8.5);
   doc.setFont("helvetica", "normal");
-  doc.text(`Data de Emissão: ${new Date().toLocaleDateString('pt-BR')} | Monitoramento Especializado AH/SD`, 14, 24);
+  doc.setTextColor(100, 100, 100);
+  doc.text(`Emitido em: ${new Date().toLocaleDateString('pt-BR')} | Módulo de Monitoramento Especializado AH/SD`, 14, 27);
 
-  const ultimos7 = historicoCiclo;
-  const qtdRegistros = ultimos7.length;
-  const dataInicio = formatarDataBR(ultimos7[qtdRegistros - 1].data);
-  const dataFim = formatarDataBR(ultimos7[0].data);
+  let y = 35;
 
-  let somaSaldos = 0;
-  let pontosPositivosList = [];
-  let pontosAtencaoList = [];
-
-  ultimos7.forEach(reg => {
-    somaSaldos += reg.saldo;
-    Object.keys(reg.criterios).forEach(key => {
-      const val = reg.criterios[key].valor;
-      const nomeCrit = nomesCriterios[key] || key;
-      const obs = reg.criterios[key].observacao;
-      
-      if (val >= 4) {
-        pontosPositivosList.push(`• [${formatarDataBR(reg.data)}] ${nomeCrit} (Nível ${val})${obs ? ': ' + obs : ''}`);
-      }
-      if (val === 1 || val === 2) {
-        pontosAtencaoList.push(`• [${formatarDataBR(reg.data)}] ${nomeCrit} (Nível ${val})${obs ? ': ' + obs : ''}`);
-      }
-    });
-  });
-
-  const mediaSaldo = (somaSaldos / qtdRegistros).toFixed(1);
-
-  let y = 32;
+  // --- TABELA 1: SUMÁRIO EXECUTIVO ---
   doc.setFont("helvetica", "bold");
   doc.setFontSize(10);
-  doc.text("1. SUMÁRIO EXECUTIVO & INDICADORES DO PERÍODO", 14, y);
-  y += 6;
-
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(8.5);
-  doc.text(`Janela de Análise: ${dataInicio} a ${dataFim} (${qtdRegistros} registros computados)`, 16, y);
-  y += 5;
-  doc.text(`Média de Saldo Emocional do Ciclo: ${mediaSaldo > 0 ? '+' + mediaSaldo : mediaSaldo}`, 16, y);
-  y += 8;
-
-  // --- PONTOS POSITIVOS ---
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(10);
-  doc.text("2. PONTOS POSITIVOS & RECURSOS (Níveis 4 e 5)", 14, y);
-  y += 6;
-
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(8.5);
-  if (pontosPositivosList.length > 0) {
-    pontosPositivosList.slice(0, 6).forEach(item => {
-      if (y > 270) { doc.addPage(); y = 20; }
-      const linhasPos = doc.splitTextToSize(item, 180);
-      doc.text(linhasPos, 16, y);
-      y += (linhasPos.length * 5);
-    });
-  } else {
-    doc.text("Nenhum registro de pico positivo (4 ou 5) destacado no período.", 16, y);
-    y += 5;
-  }
+  doc.setTextColor(50, 50, 50);
+  doc.text("1. SUMÁRIO EXECUTIVO E INDICADORES DO PERÍODO", 14, y);
   y += 4;
 
-  // --- PONTOS DE ATENÇÃO ---
-  if (y > 240) { doc.addPage(); y = 20; }
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(10);
-  doc.text("3. PONTOS DE ATENÇÃO & GATILHOS (Níveis 1 e 2)", 14, y);
-  y += 6;
+  let somaSaldo = 0;
+  historicoCiclo.forEach(h => somaSaldo += h.saldo);
+  const mediaSaldo = (somaSaldo / historicoCiclo.length).toFixed(1);
 
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(8.5);
-  if (pontosAtencaoList.length > 0) {
-    pontosAtencaoList.slice(0, 6).forEach(item => {
-      if (y > 270) { doc.addPage(); y = 20; }
-      const linhasAtencao = doc.splitTextToSize(item, 180);
-      doc.text(linhasAtencao, 16, y);
-      y += (linhasAtencao.length * 5);
-    });
-  } else {
-    doc.text("Nenhum ponto de alerta crítico (1 ou 2) registrado no período.", 16, y);
-    y += 5;
-  }
-  y += 6;
-
-  // --- HISTÓRICO DIÁRIO E NOTAS ESCRITAS ---
-  if (y > 230) { doc.addPage(); y = 20; }
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(10);
-  doc.text("4. EVOLUÇÃO DIÁRIA E NOTAS COMPORTAMENTAIS", 14, y);
-  y += 6;
-
-  historicoCiclo.forEach((reg) => {
-    if (y > 265) { doc.addPage(); y = 20; }
-    const dataFormatada = new Date(reg.data + 'T00:00:00').toLocaleDateString('pt-BR');
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(9);
-    doc.setTextColor(0, 0, 0);
-    doc.text(`Data: ${dataFormatada} | Saldo do Dia: ${reg.saldo > 0 ? '+' + reg.saldo : reg.saldo}`, 14, y);
-    y += 5;
-
-    Object.keys(reg.criterios).forEach(key => {
-      const item = reg.criterios[key];
-      // Garante que imprime se tiver nota escrita OU se o valor for diferente de neutro (3)
-      if ((item.observacao && item.observacao.trim() !== "") || item.valor !== 3) {
-        if (item.valor === 1) {
-          doc.setFont("helvetica", "bold");
-          doc.setTextColor(180, 40, 40);
-        } else {
-          doc.setFont("helvetica", "normal");
-          doc.setTextColor(60, 60, 60);
-        }
-
-        const textoCriterio = `  • ${nomesCriterios[key] || key}: Nível ${item.valor}`;
-        if (y > 270) { doc.addPage(); y = 20; }
-        doc.text(textoCriterio, 16, y);
-        y += 4;
-
-        // Se houver nota escrita pelo usuário, imprime logo abaixo em destaque
-        if (item.observacao && item.observacao.trim() !== "") {
-          if (y > 270) { doc.addPage(); y = 20; }
-          doc.setFont("helvetica", "italic");
-          doc.setTextColor(100, 70, 40);
-          const linhasObs = doc.splitTextToSize(`    Nota: "${item.observacao}"`, 175);
-          doc.text(linhasObs, 16, y);
-          y += (linhasObs.length * 4.5) + 2;
-        }
-      }
-    });
-    y += 4;
+  doc.autoTable({
+    startY: y,
+    head: [['Janela de Análise', 'Total de Registros', 'Saldo Emocional Médio', 'Status do Ciclo']],
+    body: [[
+      `${formatarDataBR(historicoCiclo[historicoCiclo.length-1].data)} a ${formatarDataBR(historicoCiclo[0].data)}`,
+      historicoCiclo.length,
+      mediaSaldo > 0 ? `+${mediaSaldo}` : mediaSaldo,
+      mediaSaldo >= 0 ? 'Estável / Regulado' : 'Sobrecarga Ativa'
+    ]],
+    theme: 'grid',
+    headStyles: { fillColor: [184, 134, 107], textColor: [255, 255, 255], fontStyle: 'bold', fontSize: 8.5 },
+    bodyStyles: { fontSize: 8.5, textColor: [60, 60, 60] },
+    margin: { left: 14, right: 14 }
   });
 
-  // --- PAUTA PARA A SESSÃO ---
-  doc.setTextColor(0,0,0);
-  const pautaTexto = localStorage.getItem('dashboard_clinica_pauta') || "";
-  if (pautaTexto.trim() !== "") {
-    if (y > 230) { doc.addPage(); y = 20; }
-    y += 4;
-    doc.setDrawColor(200, 200, 200);
-    doc.line(14, y, 196, y);
-    y += 6;
+  y = doc.lastAutoTable.finalY + 10;
+
+  // --- TABELA 2: MAPEAMENTO DE RECURSOS E NOTAS ESCRITAS ---
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(10);
+  doc.text("2. MAPEAMENTO DE RECURSOS, GATILHOS E NOTAS CLÍNICAS", 14, y);
+  y += 4;
+
+  let linhasTabelaMapeamento = [];
+  historicoCiclo.forEach(reg => {
+    Object.keys(reg.criterios).forEach(k => {
+      const c = reg.criterios[k];
+      const nome = nomesCriterios[k] || k;
+      // Inclui na tabela se houver nota escrita ou desvio crítico (1, 2, 4, 5)
+      if (c.valor >= 4 || c.valor <= 2 || (c.observacao && c.observacao.trim() !== "")) {
+        linhasTabelaMapeamento.push([
+          formatarDataBR(reg.data),
+          nome,
+          `Nível ${c.valor}`,
+          c.observacao || 'Nenhum relato textual adicional'
+        ]);
+      }
+    });
+  });
+
+  if (linhasTabelaMapeamento.length === 0) {
+    linhasTabelaMapeamento.push(['-', 'Nenhum desvio crítico registrado', '-', 'Registros mantidos na faixa de neutralidade']);
+  }
+
+  doc.autoTable({
+    startY: y,
+    head: [['Data', 'Dimensão / Critério', 'Escala', 'Notas & Observações do Paciente']],
+    body: linhasTabelaMapeamento,
+    theme: 'striped',
+    headStyles: { fillColor: [74, 66, 59], textColor: [255, 255, 255], fontSize: 8.5 },
+    bodyStyles: { fontSize: 8, textColor: [50, 50, 50] },
+    columnStyles: { 
+      0: { cellWidth: 22 }, 
+      1: { cellWidth: 50 }, 
+      2: { cellWidth: 20 }, 
+      3: { cellWidth: 90 } 
+    },
+    margin: { left: 14, right: 14 }
+  });
+
+  y = doc.lastAutoTable.finalY + 10;
+
+  // --- TABELA 3: PAUTA PARA A SESSÃO TERAPÊUTICA ---
+  const pauta = localStorage.getItem('dashboard_clinica_pauta') || "";
+  if (pauta.trim() !== "") {
+    if (y > 220) { doc.addPage(); y = 20; }
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
-    doc.text("5. PAUTA PARA A SESSÃO / REFLEXÕES DO PACIENTE", 14, y);
-    y += 6;
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(9);
-    const linhasPauta = doc.splitTextToSize(pautaTexto, 180);
-    doc.text(linhasPauta, 14, y);
-    y += (linhasPauta.length * 5) + 6;
+    doc.text("3. PAUTA E TÓPICOS PARA A SESSÃO TERAPÊUTICA", 14, y);
+    y += 4;
+
+    doc.autoTable({
+      startY: y,
+      body: [[pauta]],
+      theme: 'plain',
+      styles: { fillColor: [244, 239, 233], textColor: [50, 50, 50], fontSize: 8.5, cellPadding: 6 },
+      margin: { left: 14, right: 14 }
+    });
+    y = doc.lastAutoTable.finalY + 10;
   }
 
-  // --- AVISO LEGAL ---
-  if (y > 250) { doc.addPage(); y = 20; }
-  y += 4;
-  doc.setDrawColor(220, 220, 220);
-  doc.line(14, y, 196, y);
-  y += 6;
+  // --- RODAPÉ E AVISO TÉCNICO ---
+  if (y > 260) { doc.addPage(); y = 20; }
   doc.setFont("helvetica", "italic");
   doc.setFontSize(7.5);
-  doc.setTextColor(100, 100, 100);
-  const avisoLegal = "Nota técnica: esta avaliação não substitui um profissional psicólogo/psiquiatra; é um instrumento de autogestão e anotações para apoiar a relação terapêutica.";
-  const linhasAviso = doc.splitTextToSize(avisoLegal, 180);
-  doc.text(linhasAviso, 14, y);
+  doc.setTextColor(120, 120, 120);
+  doc.text("Nota técnica: Instrumento auxiliar de autogestão e monitoramento voltado à relação terapêutica e suporte clínico.", 14, y);
 
-  // --- REINÍCIO DO CICLO ---
-  const dataUltimoRegistro = ultimos7[0].data;
+  // Atualiza a última data do PDF para controle de ciclo
+  const dataUltimoRegistro = historicoCiclo[0].data;
   localStorage.setItem('dashboard_clinica_ultima_data_pdf', dataUltimoRegistro);
 
-  doc.save(`Relatorio_Psicoeducativo_Avancado_${new Date().toISOString().split('T')[0]}.pdf`);
+  doc.save(`Relatorio_Clinico_Sofisticado_${new Date().toISOString().split('T')[0]}.pdf`);
 
   if (document.getElementById('aba-evolucao').classList.contains('active')) {
     renderizarEvolucao();
@@ -2083,6 +1998,5 @@ window.onload = function() {
   renderizarTodosAtalhos();
 };
 </script>
-
 </body>
 </html>
