@@ -1196,7 +1196,7 @@ const opcoesAtalhos = {
     5: ["Serenidade cognitiva", "Visão sistêmica clara", "Paz mental"]
   },
   crise_existencial: {
-    1: ["Sensação de futilidade", "Para que fazer isso?", "Desconexão de valores", "V vazio intelectual"],
+    1: ["Sensação de futilidade", "Para que fazer isso?", "Desconexão de valores", "Vazio intelectual"],
     2: ["Questionamentos profundos", "Busca por sentido", "Desalinho com rotina"],
     3: ["Rotina neutra", "Propósito em avaliação"],
     4: ["Ação com sentido", "Alinhamento ético", "Utilidade clara"],
@@ -1893,7 +1893,6 @@ function gerarPDFSemanal() {
   const dataInicio = formatarDataBR(ultimos7[qtdRegistros - 1].data);
   const dataFim = formatarDataBR(ultimos7[0].data);
 
-  // --- ANÁLISE QUANTITATIVA E QUALITATIVA ---
   let somaSaldos = 0;
   let pontosPositivosList = [];
   let pontosAtencaoList = [];
@@ -1972,11 +1971,11 @@ function gerarPDFSemanal() {
   }
   y += 6;
 
-  // --- HISTÓRICO DIÁRIO DETALHADO ---
+  // --- HISTÓRICO DIÁRIO E NOTAS ESCRITAS ---
   if (y > 230) { doc.addPage(); y = 20; }
   doc.setFont("helvetica", "bold");
   doc.setFontSize(10);
-  doc.text("4. EVOLUÇÃO DIÁRIA E RELATOS COMPORTAMENTAIS", 14, y);
+  doc.text("4. EVOLUÇÃO DIÁRIA E NOTAS COMPORTAMENTAIS", 14, y);
   y += 6;
 
   historicoCiclo.forEach((reg) => {
@@ -1990,7 +1989,8 @@ function gerarPDFSemanal() {
 
     Object.keys(reg.criterios).forEach(key => {
       const item = reg.criterios[key];
-      if (item.observacao || item.valor !== 3) {
+      // Garante que imprime se tiver nota escrita OU se o valor for diferente de neutro (3)
+      if ((item.observacao && item.observacao.trim() !== "") || item.valor !== 3) {
         if (item.valor === 1) {
           doc.setFont("helvetica", "bold");
           doc.setTextColor(180, 40, 40);
@@ -1999,19 +1999,20 @@ function gerarPDFSemanal() {
           doc.setTextColor(60, 60, 60);
         }
 
-        const parteBase = `  • ${nomesCriterios[key] || key}: Nível ${item.valor}`;
+        const textoCriterio = `  • ${nomesCriterios[key] || key}: Nível ${item.valor}`;
         if (y > 270) { doc.addPage(); y = 20; }
-        doc.text(parteBase, 16, y);
+        doc.text(textoCriterio, 16, y);
+        y += 4;
 
-        if (item.observacao) {
-          const parteObs = ` ("${item.observacao}")`;
-          const larguraBase = doc.getTextWidth(parteBase);
-          doc.setTextColor(150, 60, 40);
+        // Se houver nota escrita pelo usuário, imprime logo abaixo em destaque
+        if (item.observacao && item.observacao.trim() !== "") {
+          if (y > 270) { doc.addPage(); y = 20; }
           doc.setFont("helvetica", "italic");
-          const linhasObs = doc.splitTextToSize(parteObs, 180 - larguraBase);
-          doc.text(linhasObs, 16 + larguraBase, y);
+          doc.setTextColor(100, 70, 40);
+          const linhasObs = doc.splitTextToSize(`    Nota: "${item.observacao}"`, 175);
+          doc.text(linhasObs, 16, y);
+          y += (linhasObs.length * 4.5) + 2;
         }
-        y += 5;
       }
     });
     y += 4;
