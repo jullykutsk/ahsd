@@ -173,7 +173,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .aba-conteudo { display: none; }
 .aba-conteudo.active { display: block; }
 
-/* Acordeão de Categorias */
+/* Acordeão de Categorias Principal */
 .categoria-titulo {
   display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; font-weight: 600;
   color: var(--text-dimmed); margin: 18px 0 10px 0; background: var(--cat-bg);
@@ -194,7 +194,42 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   content: "Foco Clínico Selecionado (AH/SD)"; display: inline-block; font-size: 0.72rem; font-weight: bold;
   color: var(--accent-color); margin-bottom: 6px; background: var(--cat-bg); padding: 2px 8px; border-radius: 4px;
 }
-.criterio-nome { font-size: 0.95rem; font-weight: bold; color: var(--text-main); margin-bottom: 6px; }
+
+/* Título de Criterio Clicável com Seta */
+.criterio-nome {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: var(--text-main);
+  margin-bottom: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: color 0.2s;
+}
+.criterio-nome:hover { color: var(--accent-color); }
+.criterio-nome-seta {
+  font-size: 0.75rem;
+  color: var(--accent-color);
+  transition: transform 0.3s ease;
+}
+
+/* Caixa de Dicas Práticas Psicoeducativas */
+.caixa-dica-pratica {
+  display: none;
+  background: var(--cat-bg);
+  border: 1px dashed var(--accent-color);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  color: var(--text-dimmed);
+  line-height: 1.45;
+}
+.caixa-dica-pratica.aberta { display: block; }
+.caixa-dica-pratica strong { color: var(--accent-color); }
+
 .criterio-legenda {
   background: var(--legenda-bg); border-radius: 6px; padding: 8px 10px; font-size: 0.78rem;
   color: var(--text-muted); margin-bottom: 10px; line-height: 1.35;
@@ -382,7 +417,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
     <div class="categoria-grupo recolhido">
       <div class="criterio-card" data-key="ansiedade">
-        <div class="criterio-nome">Ruminação Mental & Hiperconexão de Ideias</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Ruminação Mental & Hiperconexão de Ideias</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Mude de suporte imediatamente (brain dump em papel sem filtro) ou imponha um temporizador de 15 min. Se o cérebro estiver em loop, troque o estímulo para algo prático/físico para quebrar o ciclo analítico.
+        </div>
         <div class="criterio-legenda">1 = Mente travada em loop associativo / Exaustão analítica; 3 = Pensamento acelerado mas funcional; 5 = Clareza mental e fluxo fluido.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -396,7 +437,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="crise_existencial">
-        <div class="criterio-nome">Vazio de Propósito & Angústia Filosófica</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Vazio de Propósito & Angústia Filosófica</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Rehaute o foco para a micro-escala. Não tente resolver o sentido do universo hoje; foque no impacto prático e útil para 1 pessoa ou em concluir uma micro-tarefa alinhada aos seus valores.
+        </div>
         <div class="criterio-legenda">1 = Desconexão total ("para que fazer isso se tudo é efêmero?"); 3 = Cumprindo obrigações de forma neutra; 5 = Senso claro de utilidade e alinhamento com valores profundos.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -410,7 +457,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="vitalidade">
-        <div class="criterio-nome">Bateria Neurobiológica & Exaustão de Recursos</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Bateria Neurobiológica & Exaustão de Recursos</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Reduza drasticamente a carga executiva. Elimine decisões não essenciais pelo resto do dia e aceite o repouso absoluto sem culpa.
+        </div>
         <div class="criterio-legenda">1 = Colapso de energia por sobrecarga cognitiva; 3 = Bateria suficiente apenas para o essencial; 5 = Vigor físico e mental integrado.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -424,7 +477,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="sobrecarga">
-        <div class="criterio-nome">Sensibilidade Ambiental & Sobrecarga Sensorial</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Sensibilidade Ambiental & Sobrecarga Sensorial</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Crie um refúgio de baixo estímulo (fones com cancelamento de ruído, iluminação suave, silêncio). Fique 20 minutos com entrada sensorial reduzida.
+        </div>
         <div class="criterio-legenda">1 = Hipersensibilidade aguda a ruídos, luzes ou demandas sociais; 3 = Incômodo pontual tolerável; 5 = Ambiente regulado e seguro.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -438,7 +497,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="autocompaixao">
-        <div class="criterio-nome">Perfeccionismo Destrutivo & Autocrítica</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Perfeccionismo Destrutivo & Autocrítica</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Adote o critério do "suficientemente bom". Pergunte-se: "Se um amigo com o mesmo perfil estivesse passando por isso, o que eu diria a ele?"
+        </div>
         <div class="criterio-legenda">1 = Cobrança implacável por não atingir padrões inalcançáveis; 3 = Aceitação oscilante de falhas; 5 = Diálogo interno compassivo e realista.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -459,7 +524,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
     <div class="categoria-grupo recolhido">
       <div class="criterio-card" data-key="nutricao_intelectual">
-        <div class="criterio-nome">Fome Cognitiva / Subestimulação (Boreout)</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Fome Cognitiva / Subestimulação (Boreout)</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Injete complexidade intencional. Leia um artigo acadêmico sobre um tema totalmente novo ou resolva um problema técnico por 15-30 minutos para acalmar a fome cognitiva.
+        </div>
         <div class="criterio-legenda">1 = Tédio severo por falta de complexidade (definhar intelectualmente); 3 = Estímulos medianos; 5 = Nutrição intelectual ideal / Hiperfoco produtivo.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -473,7 +544,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="foco_estudos">
-        <div class="criterio-nome">Assincronia Executiva & Paralisia de Tarefas</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Assincronia Executiva & Paralisia de Tarefas</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Quebre a tarefa gigantesca num passo risivelmente pequeno (ex: "abrir o arquivo e escrever apenas 1 palavra/título"). Vença a fricção inicial de arranque.
+        </div>
         <div class="criterio-legenda">1 = A mente quer criar em nível avançado, mas o corpo/execução travam; 3 = Foco funcional sob esforço; 5 = Fluxo executivo alinhado com o pensamento.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -487,7 +564,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="produtividade_criativa">
-        <div class="criterio-nome">Fluxo Criativo & Realização (Renzulli)</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Fluxo Criativo & Realização (Renzulli)</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Elimine o julgamento do rascunho inicial. Dê a si mesmo a permissão explícita de produzir algo "imperfeito" apenas para desbloquear o canal de expressão criativa.
+        </div>
         <div class="criterio-legenda">1 = Bloqueio severo de expressão criativa / Frustração produtiva; 3 = Entregas mecânicas sem paixão; 5 = Imersão profunda e satisfação criativa.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -508,7 +591,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
     <div class="categoria-grupo recolhido">
       <div class="criterio-card" data-key="qualidade_sono">
-        <div class="criterio-nome">Higiene do Sono & Atividade Onírica</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Higiene do Sono & Atividade Onírica</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Estabeleça uma "gaveta de ideias" ao lado da cama. Escreva tudo o que o cérebro quer resolver para externalizar a informação e avisar ao cérebro que está seguro desligar.
+        </div>
         <div class="criterio-legenda">1 = Mente acelerada na hora de dormir / Insônia por hiperfoco noturno; 3 = Sono regular; 5 = Descanso profundo e restaurador.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -522,7 +611,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="rotinas_autocuidado">
-        <div class="criterio-nome">Pausas de Descompressão & Autocuidado</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Pausas de Descompressão & Autocuidado</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Programe pausas ativas obrigatorias (ex: levantar, levantar os braços, beber um copo de água) para desinterromper blocos de hiperfoco extenuantes.
+        </div>
         <div class="criterio-legenda">1 = Hiperfoco prolongado sem pausas biológicas (esqueceu de si); 3 = Cuidados básicos mantidos; 5 = Rituais de recarga respeitados.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -536,7 +631,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="alimentacao">
-        <div class="criterio-nome">Alimentação & Atenção Plena Corporal</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Alimentação & Atenção Plena Corporal</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Deixe lanches saudáveis e práticos visíveis. Evite a paralisia decisória sobre "o que preparar" quando já estiver em hipoglicemia por hiperfoco.
+        </div>
         <div class="criterio-legenda">1 = Desregulação alimentar por ansiedade ou esquecimento no hiperfoco; 3 = Alimentação funcional; 5 = Nutrição consciente e equilibrada.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -550,7 +651,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="hidratacao">
-        <div class="criterio-nome">Hidratação & Regulação Térmica</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Hidratação & Regulação Térmica</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Mantenha uma garrafa de água grande exatamente ao lado da sua estação de trabalho ou estudo para eliminar o esforço de deslocamento.
+        </div>
         <div class="criterio-legenda">1 = Desidratação severa por distração cognitiva; 3 = Ingestão mediana; 5 = Hidratação ideal mantida.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -564,7 +671,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="exercicios">
-        <div class="criterio-nome">Descarga Psicomotora / Movimento Físico</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Descarga Psicomotora / Movimento Físico</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Faça uma descarga física rápida de 5 minutos (alongamento intenso, polichinelos ou uma caminhada rápida) para escoar a energia motora presa.
+        </div>
         <div class="criterio-legenda">1 = Sedentarismo estático com mente acelerada (inquietude psicomotora presa); 3 = Movimento leve; 5 = Descarga física adequada realizada.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -578,7 +691,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="cuidados_medicos">
-        <div class="criterio-nome">Adesão Terapêutica & Automonitoramento</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Adesão Terapêutica & Automonitoramento</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Utilize alarmes sonoros vinculados a rotinas existentes (ex: tomar a medicação logo ao escovar os dentes) para mitigar falhas executivas.
+        </div>
         <div class="criterio-legenda">1 = Falhas na rotina de saúde por desatenção executiva; 3 = Cumprimento básico; 5 = Cuidado com a saúde rigoroso.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -592,7 +711,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="rotina_domestica">
-        <div class="criterio-nome">Gestão do Espaço Físico & Organização</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Gestão do Espaço Físico & Organização</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Limpe apenas a sua área imediata de visão (ex: o tampo da mesa). Não tente organizar a casa inteira se estiver sem energia.
+        </div>
         <div class="criterio-legenda">1 = Caos ambiental gerando ruído cognitivo extra; 3 = Organização funcional básica; 5 = Espaço estruturado e harmonioso.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -606,7 +731,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="gestao_financeira">
-        <div class="criterio-nome">Controle de Impulsos & Gestão Prática</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Controle de Impulsos & Gestão Prática</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Implemente a "regra das 48 horas" para novas compras ou cursos. Guarde o item num carrinho/lista e decida apenas após dois dias.
+        </div>
         <div class="criterio-legenda">1 = Gastos impulsivos motivados por tédio ou busca rápida de dopamina; 3 = Orçamento neutro; 5 = Planejamento financeiro consciente.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -627,7 +758,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
     <div class="categoria-grupo recolhido">
       <div class="criterio-card" data-key="relacionamento">
-        <div class="criterio-nome">Intensidade Relacional & Ruídos de Ritmo</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Intensidade Relacional & Ruídos de Ritmo</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Lembre-se de que ritmos diferentes não significam desinteresse alheio. Comunique a sua necessidade de profundidade sem exigir velocidade imediata do outro.
+        </div>
         <div class="criterio-legenda">1 = Sensação de profunda incompreensão ou conflito por assincronia de ritmo; 3 = Trocas educadas mas superficiais; 5 = Conexão simétrica e acolhedora.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -641,7 +778,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </div>
 
       <div class="criterio-card" data-key="conexao_social">
-        <div class="criterio-nome">Pertencimento & Exaustão por Mascaramento</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Pertencimento & Exaustão por Mascaramento</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Permita-se saídas sociais antecipadas ou momentos de recolhimento sem culpa quando sentir o início do esgotamento de empatia.
+        </div>
         <div class="criterio-legenda">1 = Burnout social severo / Exaustão por fingir normalidade; 3 = Interações funcionais isoladas; 5 = Pertença genuína e segura.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -651,11 +794,17 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quanto esforço social foi necessário para transitar nos grupos hoje? Houve esgotamento de empatia?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quanto effort social foi necessário para transitar nos grupos hoje? Houve esgotamento de empatia?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="hobbies">
-        <div class="criterio-nome">Nutrição Lúdica & Hobbies Profundos</div>
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Nutrição Lúdica & Hobbies Profundos</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Reserve ao menos 20 minutos de imersão num tema de interesse pessoal autêntico sem a obrigação de produzir resultados úteis/comerciais.
+        </div>
         <div class="criterio-legenda">1 = Sem tempo ou energia para interesses autênticos; 3 = Lazer passivo de tela; 5 = Imersão revigorante em paixões e interesses especiais.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
@@ -726,7 +875,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       <div style="font-size:0.82rem; color:var(--text-dimmed); margin-bottom: 10px;">
         Escreva abaixo os tópicos, reflexões ou perguntas gerais que deseja levar para a sua próxima sessão terapêutica. Este conteúdo será incorporado automaticamente no seu PDF mensal.
       </div>
-      <textarea id="input-pauta-sessao" class="anotacao-criterio" style="min-height: 150px;" placeholder="Digite aqui as anotações gerais para la terapia..."></textarea>
+      <textarea id="input-pauta-sessao" class="anotacao-criterio" style="min-height: 150px;" placeholder="Digite aqui as anotações gerais para a terapia..."></textarea>
       <button class="btn-guardar" style="margin-top: 12px;" onclick="salvarPauta()">Salvar Pauta</button>
     </div>
   </div>
@@ -980,6 +1129,21 @@ function toggleSecao(elementoTitulo) {
     seta.style.transform = 'rotate(-90deg)';
   } else {
     seta.style.transform = 'rotate(0deg)';
+  }
+}
+
+function toggleDicaPratica(elementoTitulo) {
+  const card = elementoTitulo.closest('.criterio-card');
+  const caixaDica = card.querySelector('.caixa-dica-pratica');
+  const seta = elementoTitulo.querySelector('.criterio-nome-seta');
+  
+  if (caixaDica) {
+    caixaDica.classList.toggle('aberta');
+    if (caixaDica.classList.contains('aberta')) {
+      seta.style.transform = 'rotate(90deg)';
+    } else {
+      seta.style.transform = 'rotate(0deg)';
+    }
   }
 }
 
