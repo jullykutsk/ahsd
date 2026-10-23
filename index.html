@@ -195,7 +195,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   color: var(--accent-color); margin-bottom: 6px; background: var(--cat-bg); padding: 2px 8px; border-radius: 4px;
 }
 
-/* Título de Criterio Clicável com Seta */
+/* Título de Critério Clicável com Seta */
 .criterio-nome {
   font-size: 0.95rem;
   font-weight: bold;
@@ -442,7 +442,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Rehaute o foco para a micro-escala. Não tente resolver o sentido do universo hoje; foque no impacto prático e útil para 1 pessoa ou em concluir uma micro-tarefa alinhada aos seus valores.
+          <strong>Estratégia de Regulação:</strong> Reajuste o foco para a micro-escala. Não tente resolver o sentido do universo hoje; foque no impacto prático e útil para 1 pessoa ou em concluir uma micro-tarefa alinhada aos seus valores.
         </div>
         <div class="criterio-legenda">1 = Desconexão total ("para que fazer isso se tudo é efêmero?"); 3 = Cumprindo obrigações de forma neutra; 5 = Senso claro de utilidade e alinhamento com valores profundos.</div>
         <div class="botoes-escala">
@@ -563,6 +563,48 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Onde ocorreu o descompasso entre o que você planejou mentalmente e o que conseguiu executar?"></textarea>
       </div>
 
+      <!-- NOVO CARTÃO: Atenção Sustentada & Estudos / Faculdade -->
+      <div class="criterio-card" data-key="atencao_estudos">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Atenção Sustentada & Absorção nos Estudos (Faculdade/Cursos)</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Em aulas expositivas lentas ou repetitivas, adote o "registro ativo" (crie esquemas, mapas mentais visuais ou tente traduzir o conteúdo para uma linguagem própria em tempo real). Isso mantém a rede de modo padrão do cérebro AH/SD ocupada de forma útil.
+        </div>
+        <div class="criterio-legenda">1 = Desdispersão severa / Aulas lentas gerando angústia; 3 = Atenção mantida com esforço consciente; 5 = Absorção profunda e aprendizagem significativa.</div>
+        <div class="botoes-escala">
+          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
+          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
+          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
+          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
+          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
+        </div>
+        <div class="atalhos-container"></div>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O ritmo da aula/exposição acadêmica esteve muito abaixo da sua velocidade de processamento? Como você reagiu ao tédio expositivo?"></textarea>
+      </div>
+
+      <!-- NOVO CARTÃO: Desempenho Profissional & Trabalho -->
+      <div class="criterio-card" data-key="ambiente_trabalho">
+        <div class="criterio-nome" onclick="toggleDicaPratica(this)">
+          <span>Desempenho Profissional & Dinâmica de Trabalho</span>
+          <span class="criterio-nome-seta">►</span>
+        </div>
+        <div class="caixa-dica-pratica">
+          <strong>Estratégia de Regulação:</strong> Se a burocracia ou lentidão de processos estiver exaurindo você, separe o "trabalho de entrega real" do "trabalho corporativo/social". Subdivida projetos grandes em micro-etapas e evite assumir responsabilidades extras apenas por ver lacunas na equipe.
+        </div>
+        <div class="criterio-legenda">1 = Frustração intensa com burocracia/sobrecarga de expectativas; 3 = Desempenho funcional regular; 5 = Autonomia produtiva e alinhamento com a equipe.</div>
+        <div class="botoes-escala">
+          <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
+          <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
+          <button class="btn-escala selected" onclick="selecionarValor(this, 3)">3</button>
+          <button class="btn-escala" onclick="selecionarValor(this, 4)">4</button>
+          <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
+        </div>
+        <div class="atalhos-container"></div>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Houve conflito ou desgaste por diferença de ritmo no trabalho? Você assumiu demandas alheias para resolver mais rápido?"></textarea>
+      </div>
+
       <div class="criterio-card" data-key="produtividade_criativa">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
           <span>Fluxo Criativo & Realização (Renzulli)</span>
@@ -616,7 +658,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Programe pausas ativas obrigatorias (ex: levantar, levantar os braços, beber um copo de água) para desinterromper blocos de hiperfoco extenuantes.
+          <strong>Estratégia de Regulação:</strong> Programe pausas ativas obrigatórias (ex: levantar, alongar os braços, beber um copo de água) para desinterromper blocos de hiperfoco extenuantes.
         </div>
         <div class="criterio-legenda">1 = Hiperfoco prolongado sem pausas biológicas (esqueceu de si); 3 = Cuidados básicos mantidos; 5 = Rituais de recarga respeitados.</div>
         <div class="botoes-escala">
@@ -656,7 +698,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Mantenha uma garrafa de água grande exatamente ao lado da sua estação de trabalho ou estudo para eliminar o esforço de deslocamento.
+          <strong>Estratégia de Regulação:</strong> Mantenha uma garrafa de água grande exatamente ao lado da sua estação de trabalho ou estudo para eliminar o effort de deslocamento.
         </div>
         <div class="criterio-legenda">1 = Desidratação severa por distração cognitiva; 3 = Ingestão mediana; 5 = Hidratação ideal mantida.</div>
         <div class="botoes-escala">
@@ -794,7 +836,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quanto effort social foi necessário para transitar nos grupos hoje? Houve esgotamento de empatia?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quanto esforço social foi necessário para transitar nos grupos hoje? Houve esgotamento de empatia?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="hobbies">
@@ -830,7 +872,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 
   <!-- ==================== ABA 2: EVOLUÇÃO (GRÁFICOS, PRONTUÁRIO, PAUTA & CONTROLES) ==================== -->
   <div id="aba-evolucao" class="aba-conteudo">
-    <!-- Ações Globais movidas para o topo da aba Evolução -->
+    <!-- Ações Globais no topo da aba Evolução -->
     <div class="acoes-globais-topo">
       <button class="btn-discreto" onclick="exportarBackupJSON()">Exportar</button>
       <label class="btn-discreto">
@@ -930,7 +972,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       
       <h3>2. Soberania e Armazenamento Local de Dados</h3>
       <p>Arquitetado com foco em privacidade digital (LGPD-compliant). Todos os registos diários, notas e métricas são armazenados <strong>estritamente no seu próprio navegador (LocalStorage)</strong>. Não recolhemos, visualizamos ou processamos os seus dados em servidores centrais.</p>
-      
+
       <h3>3. Backup e Portabilidade</h3>
       <p>A aplicação disponibiliza recursos de exportação e importação de backups em formato JSON. O utilizador é responsável por guardar e proteger as suas cópias de segurança caso limpe o cache do navegador.</p>
       
@@ -1197,6 +1239,20 @@ const opcoesAtalhos = {
     4: ["Fluxo de estudo bom", "Progresso consistente"],
     5: ["Imersão perfeita", "Execução alinhada ao pensamento"]
   },
+  atencao_estudos: {
+    1: ["Tédio em aula expositiva", "Mente distante", "Ritmo de aula lento", "Aulas repetitivas"],
+    2: ["Dificuldade de escuta passiva", "Foco oscilante na aula"],
+    3: ["Acompanhamento regular"],
+    4: ["Anotação ativa/visual", "Bom engajamento acadêmico"],
+    5: ["Absorção profunda", "Conexão de conteúdos rápida"]
+  },
+  ambiente_trabalho: {
+    1: ["Frustração com burocracia", "Sobrecarga por ser rápido", "Lentidão de processos", "Trabalho invisível extra"],
+    2: ["Conflito leve de ritmo", "Esforço de adaptação"],
+    3: ["Rotina de trabalho neutra"],
+    4: ["Boa produtividade com limites"],
+    5: ["Autonomia profissional", "Entregas fluidas e reconhecidas"]
+  },
   produtividade_criativa: {
     1: ["Bloqueio criativo", "Frustração produtiva", "Ideias presas"],
     2: ["Fluxo travado", "Dificuldade de entrega"],
@@ -1233,7 +1289,7 @@ const opcoesAtalhos = {
     5: ["Meta de água atingida"]
   },
   exercicios: {
-    1: ["Inquitetude psicomotora presa", "Sedentarismo tenso", "Corpo inerte e mente a mil"],
+    1: ["Inquietude psicomotora presa", "Sedentarismo tenso", "Corpo inerte e mente a mil"],
     2: ["Pouco movimento físico"],
     3: ["Movimento leve"],
     4: ["Atividade física realizada"],
@@ -1244,7 +1300,7 @@ const opcoesAtalhos = {
     2: ["Atraso em cuidados"],
     3: ["Saúde sob controle"],
     4: ["Cuidados em dia"],
-    5: ["Monitohamento e rotina médica perfeitos"]
+    5: ["Monitoramento e rotina médica perfeitos"]
   },
   rotina_domestica: {
     1: ["Caos físico gerando ruído mental", "Ambiente desorganizado"],
@@ -1284,21 +1340,21 @@ const opcoesAtalhos = {
 };
 
 const perfisFocoMap = {
-    excitabilidade_intelectual: ["nutricao_intelectual", "foco_estudos", "ansiedade", "crise_existencial"],
+    excitabilidade_intelectual: ["nutricao_intelectual", "foco_estudos", "atencao_estudos", "ansiedade", "crise_existencial"],
     excitabilidade_emocional: ["sobrecarga", "autocompaixao", "relacionamento", "conexao_social"],
     excitabilidade_imaginativa: ["nutricao_intelectual", "produtividade_criativa", "crise_existencial"],
     excitabilidade_psicomotora: ["vitalidade", "exercicios", "sobrecarga"],
     excitabilidade_sensorial: ["sobrecarga", "qualidade_sono", "hobbies"],
     assincronia_desenvolvimento: ["crise_existencial", "autocompaixao", "nutricao_intelectual", "ansiedade"],
-    habilidade_acima_media: ["nutricao_intelectual", "foco_estudos", "produtividade_criativa"],
-    comprometimento_tarefa: ["foco_estudos", "nutricao_intelectual", "qualidade_sono"],
+    habilidade_acima_media: ["nutricao_intelectual", "foco_estudos", "atencao_estudos", "ambiente_trabalho", "produtividade_criativa"],
+    comprometimento_tarefa: ["foco_estudos", "ambiente_trabalho", "nutricao_intelectual", "qualidade_sono"],
     criatividade: ["produtividade_criativa", "nutricao_intelectual", "hobbies"],
-    dupla_excepcionalidade_2e: ["foco_estudos", "sobrecarga", "rotina_domestica", "qualidade_sono"],
+    dupla_excepcionalidade_2e: ["foco_estudos", "atencao_estudos", "sobrecarga", "rotina_domestica", "qualidade_sono"],
     intensidade_relacional: ["relacionamento", "conexao_social", "autocompaixao"],
     exaustao_empatica: ["sobrecarga", "autocompaixao", "crise_existencial", "vitalidade"],
-    boreout: ["nutricao_intelectual", "vitalidade", "crise_existencial", "hobbies"],
-    burnout_mascaramento: ["sobrecarga", "vitalidade", "qualidade_sono", "autocompaixao"],
-    sindrome_impostor: ["autocompaixao", "ansiedade", "produtividade_criativa", "crise_existencial"],
+    boreout: ["nutricao_intelectual", "atencao_estudos", "ambiente_trabalho", "vitalidade", "crise_existencial", "hobbies"],
+    burnout_mascaramento: ["sobrecarga", "ambiente_trabalho", "vitalidade", "qualidade_sono", "autocompaixao"],
+    sindrome_impostor: ["autocompaixao", "ansiedade", "ambiente_trabalho", "produtividade_criativa", "crise_existencial"],
     crise_existencial: ["crise_existencial", "autocompaixao", "conexao_social", "ansiedade"]
 };
 
@@ -1310,6 +1366,8 @@ const nomesCriterios = {
   autocompaixao: "Perfeccionismo Destrutivo & Autocrítica",
   nutricao_intelectual: "Fome Cognitiva / Subestimulação (Boreout)",
   foco_estudos: "Assincronia Executiva & Paralisia de Tarefas",
+  atencao_estudos: "Atenção Sustentada & Absorção nos Estudos (Faculdade/Cursos)",
+  ambiente_trabalho: "Desempenho Profissional & Dinâmica de Trabalho",
   produtividade_criativa: "Fluxo Criativo & Realização (Renzulli)",
   qualidade_sono: "Higiene do Sono & Atividade Onírica",
   rotinas_autocuidado: "Pausas de Descompressão & Autocuidado",
@@ -1326,7 +1384,7 @@ const nomesCriterios = {
 
 const categoriasAreas = {
   "Dimensão Neuroemocional": ["ansiedade", "crise_existencial", "vitalidade", "sobrecarga", "autocompaixao"],
-  "Foco & Cognição": ["nutricao_intelectual", "foco_estudos", "produtividade_criativa"],
+  "Foco & Cognição": ["nutricao_intelectual", "foco_estudos", "atencao_estudos", "ambiente_trabalho", "produtividade_criativa"],
   "Saúde Integral & Rotina": ["qualidade_sono", "rotinas_autocuidado", "alimentacao", "hidratacao", "exercicios", "cuidados_medicos", "rotina_domestica", "gestao_financeira"],
   "Conexões & Lazer": ["relacionamento", "conexao_social", "hobbies"]
 };
