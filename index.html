@@ -387,9 +387,9 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Seção: Dimensão Neuroemocional -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Dimensão Neuroemocional</span>
-      <span class="categoria-seta">▼</span>
+      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
     </div>
-    <div class="categoria-grupo">
+    <div class="categoria-grupo recolhido">
       <div class="criterio-card" data-key="ansiedade">
         <div class="criterio-nome">Ruminação Mental & Hiperconexão de Ideias</div>
         <div class="criterio-legenda">1 = Mente travada em loop associativo / Exaustão analítica; 3 = Pensamento acelerado mas funcional; 5 = Clareza mental e fluxo fluido.</div>
@@ -464,9 +464,9 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Seção: Foco & Cognição -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Foco & Cognição</span>
-      <span class="categoria-seta">▼</span>
+      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
     </div>
-    <div class="categoria-grupo">
+    <div class="categoria-grupo recolhido">
       <div class="criterio-card" data-key="nutricao_intelectual">
         <div class="criterio-nome">Fome Cognitiva / Subestimulação (Boreout)</div>
         <div class="criterio-legenda">1 = Tédio severo por falta de complexidade (definhar intelectualmente); 3 = Estímulos medianos; 5 = Nutrição intelectual ideal / Hiperfoco produtivo.</div>
@@ -513,9 +513,9 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Seção: Saúde Integral & Rotina -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Saúde Integral & Rotina</span>
-      <span class="categoria-seta">▼</span>
+      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
     </div>
-    <div class="categoria-grupo">
+    <div class="categoria-grupo recolhido">
       <div class="criterio-card" data-key="qualidade_sono">
         <div class="criterio-nome">Higiene do Sono & Atividade Onírica</div>
         <div class="criterio-legenda">1 = Mente acelerada na hora de dormir / Insônia por hiperfoco noturno; 3 = Sono regular; 5 = Descanso profundo e restaurador.</div>
@@ -632,9 +632,9 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <!-- Seção: Conexões & Lazer -->
     <div class="categoria-titulo" onclick="toggleSecao(this)">
       <span>Conexões & Lazer</span>
-      <span class="categoria-seta">▼</span>
+      <span class="categoria-seta" style="transform: rotate(-90deg);">▼</span>
     </div>
-    <div class="categoria-grupo">
+    <div class="categoria-grupo recolhido">
       <div class="criterio-card" data-key="relacionamento">
         <div class="criterio-nome">Intensidade Relacional & Ruídos de Ritmo</div>
         <div class="criterio-legenda">1 = Sensação de profunda incompreensão ou conflito por assincronia de ritmo; 3 = Trocas educadas mas superficiais; 5 = Conexão simétrica e acolhedora.</div>
@@ -997,7 +997,6 @@ function toggleSecao(elementoTitulo) {
   }
 }
 
-// Atalhos adaptados para a realidade neuropsicológica AH/SD
 const opcoesAtalhos = {
   ansiedade: {
     1: ["Loop associativo", "Exaustão analítica", "Mente acelerada sem freio", "Tensão mental aguda", "Paralisia por excesso de ideias"],
