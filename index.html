@@ -264,14 +264,6 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 .btn-discreto:hover { background: var(--cat-bg); color: var(--text-main); border-color: var(--border-color); }
 .btn-discreto input[type="file"] { display: none; }
 
-.relatorio-item { background: var(--legenda-bg); border-radius: 8px; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border-color); }
-.relatorio-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-.relatorio-data { font-weight: bold; color: var(--accent-color); font-size: 0.9rem; }
-.btn-apagar-diario {
-  background: transparent; border: none; color: #ef4444; cursor: pointer; font-size: 0.8rem; padding: 4px 6px; border-radius: 4px; transition: background 0.2s; display: flex; align-items: center; gap: 4px;
-}
-.btn-apagar-diario:hover { background: rgba(239, 68, 68, 0.15); }
-
 .caixa-prontuario { background: var(--legenda-bg); border-left: 4px solid var(--accent-color); padding: 14px; border-radius: 8px; font-size: 0.88rem; line-height: 1.55; color: var(--text-dimmed); }
 .prontuario-subtitulo { font-size: 0.9rem; color: var(--text-dimmed); margin-bottom: 12px; }
 .prontuario-topico { margin-bottom: 8px; }
@@ -335,10 +327,9 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </button>
   </div>
 
-  <!-- Navegação por Abas -->
+  <!-- Navegação por Abas (Apenas Registro e Evolução) -->
   <div class="nav-tabs">
     <button class="tab-btn active" onclick="mudarAba('registro', this)">Registro</button>
-    <button class="tab-btn" onclick="mudarAba('relatorios', this)">Relatórios</button>
     <button class="tab-btn" onclick="mudarAba('evolucao', this)">Evolução</button>
   </div>
 
@@ -688,8 +679,9 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
   </div>
 
-  <!-- ==================== ABA 2: RELATÓRIOS ==================== -->
-  <div id="aba-relatorios" class="aba-conteudo">
+  <!-- ==================== ABA 2: EVOLUÇÃO (GRÁFICOS, PRONTUÁRIO, PAUTA & CONTROLES) ==================== -->
+  <div id="aba-evolucao" class="aba-conteudo">
+    <!-- Ações Globais movidas para o topo da aba Evolução -->
     <div class="acoes-globais-topo">
       <button class="btn-discreto" onclick="exportarBackupJSON()">Exportar</button>
       <label class="btn-discreto">
@@ -698,13 +690,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       </label>
       <button class="btn-discreto" onclick="gerarPDFMensal()">PDF do Mês</button>
     </div>
-    <div id="lista-relatorios">
-      <!-- Itens inseridos via JS -->
-    </div>
-  </div>
 
-  <!-- ==================== ABA 3: EVOLUÇÃO (GRÁFICOS, PRONTUÁRIO & PAUTA) ==================== -->
-  <div id="aba-evolucao" class="aba-conteudo">
     <div class="card">
       <div class="card-title">Análise Descritiva de Evolução (30 Dias)</div>
       <div id="caixa-resumo-evolucao" class="caixa-prontuario">
@@ -740,7 +726,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
       <div style="font-size:0.82rem; color:var(--text-dimmed); margin-bottom: 10px;">
         Escreva abaixo os tópicos, reflexões ou perguntas gerais que deseja levar para a sua próxima sessão terapêutica. Este conteúdo será incorporado automaticamente no seu PDF mensal.
       </div>
-      <textarea id="input-pauta-sessao" class="anotacao-criterio" style="min-height: 150px;" placeholder="Digite aqui as anotações gerais para a terapia..."></textarea>
+      <textarea id="input-pauta-sessao" class="anotacao-criterio" style="min-height: 150px;" placeholder="Digite aqui as anotações gerais para la terapia..."></textarea>
       <button class="btn-guardar" style="margin-top: 12px;" onclick="salvarPauta()">Salvar Pauta</button>
     </div>
   </div>
@@ -1285,7 +1271,6 @@ function mudarAba(abaId, btnElement) {
   document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
   document.getElementById(`aba-${abaId}`).classList.add('active');
   btnElement.classList.add('active');
-  if (abaId === 'relatorios') renderizarRelatorios();
   if (abaId === 'evolucao') {
     renderizarEvolucao();
     carregarPauta();
@@ -1451,57 +1436,6 @@ function carregarPauta() {
 function obterHistorico() {
   const dados = JSON.parse(localStorage.getItem('dashboard_clinica_dados') || '[]');
   return dados.sort((a,b) => a.data.localeCompare(b.data));
-}
-
-function renderizarRelatorios() {
-  const container = document.getElementById('lista-relatorios');
-  const historico = obterHistorico().slice().reverse();
-
-  if (historico.length === 0) {
-    container.innerHTML = '<div class="card" style="text-align:center; color:var(--text-muted);">Nenhum registro encontrado.</div>';
-    return;
-  }
-
-  let html = "";
-  historico.forEach(reg => {
-    const dataFormatada = new Date(reg.data + 'T00:00:00').toLocaleDateString('pt-BR');
-    let corSaldoBadge = reg.saldo > 0 ? '#10b981' : (reg.saldo < 0 ? '#ef4444' : '#b8866b');
-    let corTextoDescricao = reg.saldo > 0 ? 'var(--text-dimmed)' : (reg.saldo < 0 ? '#ef4444' : '#b8866b');
-    let descricaoSaldo = reg.saldo > 0
-      ? 'Saldo Positivo • Dia com predomínio de autorregulação e recursos preservados.'
-      : (reg.saldo < 0
-        ? 'Saldo Negativo • Dia com acúmulo de sobrecarga ou consumo excessivo de energia.'
-        : 'Saldo Neutro • Dia em equilíbrio básico entre desgastes e recuperação.');
-
-    html += `
-      <div class="relatorio-item">
-        <div class="relatorio-item-header">
-          <span class="relatorio-data">${dataFormatada}</span>
-          <span style="color: ${corSaldoBadge}; font-weight: bold; font-size:0.9rem;">
-            Saldo: ${reg.saldo > 0 ? '+' + reg.saldo : reg.saldo}
-          </span>
-          <button class="btn-apagar-diario" onclick="apagarRegistro('${reg.data}')">Apagar</button>
-        </div>
-        <div style="font-size:0.8em; color:${corTextoDescricao}; margin-top:4px; font-style:italic;">
-          ${descricaoSaldo}
-        </div>
-      </div>
-    `;
-  });
-
-  container.innerHTML = html;
-}
-
-function apagarRegistro(data) {
-  if (confirm(`Deseja apagar o registro do dia ${data}?`)) {
-    let historico = JSON.parse(localStorage.getItem('dashboard_clinica_dados') || '[]');
-    historico = historico.filter(item => item.data !== data);
-    localStorage.setItem('dashboard_clinica_dados', JSON.stringify(historico));
-    renderizarRelatorios();
-    if (document.getElementById('data-registro').value === data) {
-      carregarRegistroData(data);
-    }
-  }
 }
 
 function formatarDataBR(strData) {
@@ -1685,7 +1619,9 @@ function importarBackupJSON(event) {
       if (Array.isArray(dados)) {
         localStorage.setItem('dashboard_clinica_dados', JSON.stringify(dados));
         alert('Backup importado com sucesso!');
-        renderizarRelatorios();
+        if (document.getElementById('aba-evolucao').classList.contains('active')) {
+          renderizarEvolucao();
+        }
         const dataAtualInput = document.getElementById('data-registro').value;
         if (dataAtualInput) carregarRegistroData(dataAtualInput);
       } else {
