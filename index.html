@@ -266,7 +266,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   color: var(--accent-color);
 }
 
-/* Estrutura da Área de Anotação com Botão de Microfone */
+/* Estrutura da Área de Anotação com Botão de Gravador */
 .anotacao-wrapper {
   position: relative;
   display: flex;
@@ -278,13 +278,13 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   background: var(--btn-bg);
   border: 1px solid var(--border-light);
   color: var(--text-dimmed);
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 16px;
   font-size: 0.75rem;
+  font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
   transition: all 0.2s;
 }
 .btn-mic:hover {
@@ -393,7 +393,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   
   <div class="header-topo">
     <button class="btn-guia-sentimentos" onclick="abrirModalGuiaSentimentos()">
-      💡 Guia: Dificuldade com Sentimentos?
+      Guia: Dificuldade com Sentimentos?
     </button>
     <button class="theme-toggle-btn" id="theme-toggle" onclick="alternarTema()" title="Alternar tema claro/escuro">
       ☀️
@@ -472,7 +472,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual problema complexo travou seu processamento hoje? Onde no corpo a exaustão mental se manifestou?"></textarea>
         </div>
       </div>
@@ -495,7 +495,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Suas tarefas de hoje conversam com seus ideais éticos e intelectuais? O que gerou sensação de futilidade?"></textarea>
         </div>
       </div>
@@ -518,7 +518,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O esgotamento veio de interações sociais, excesso de estímulos ou tédio crônico? A bateria esvaziou do nada?"></textarea>
         </div>
       </div>
@@ -541,7 +541,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual estímulo do ambiente externo mais drenou sua tolerância hoje? Conseguiu refúgio sensorial?"></textarea>
         </div>
       </div>
@@ -564,7 +564,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Em que momento você se julgou com rigidez excessiva por não ser perfeito(a) de primeira?"></textarea>
         </div>
       </div>
@@ -594,7 +594,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Seu cérebro foi desafiado com complexidade suficiente hoje ou sofreu com tarefas repetitivas e lineares?"></textarea>
         </div>
       </div>
@@ -617,7 +617,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Onde ocorreu o descompasso entre o que você planejou mentalmente e o que conseguiu executar?"></textarea>
         </div>
       </div>
@@ -640,7 +640,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O ritmo da aula/exposição acadêmica esteve muito abaixo da sua velocidade de processamento? Como você reagiu ao tédio expositivo?"></textarea>
         </div>
       </div>
@@ -663,7 +663,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Houve conflito ou desgaste por diferença de ritmo no trabalho? Você assumiu demandas alheias para resolver mais rápido?"></textarea>
         </div>
       </div>
@@ -686,7 +686,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu aplicar seu comprometimento com a tarefa (hiperfoco) em algo significativo hoje?"></textarea>
         </div>
       </div>
@@ -716,7 +716,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O cérebro recusou desligar à noite processando ideias ou conversas do dia?"></textarea>
         </div>
       </div>
@@ -739,7 +739,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Você lembrou de fazer pausas para esvaziar a mente entre uma atividade intensa e outra?"></textarea>
         </div>
       </div>
@@ -762,7 +762,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O hiperfoco te fez pular refeições ou comer de forma impulsiva hoje?"></textarea>
         </div>
       </div>
@@ -785,7 +785,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Sentiu dores de cabeça ou fadiga por esquecer de beber água enquanto criava ou estudava?"></textarea>
         </div>
       </div>
@@ -808,7 +808,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O corpo precisou de movimento para descarregar a alta voltagem mental de hoje?"></textarea>
         </div>
       </div>
@@ -831,7 +831,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu manter suas medicações, suplementos ou consultas em dia sem esquecimentos?"></textarea>
         </div>
       </div>
@@ -854,7 +854,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: A desorganização do ambiente físico refletiu e aumentou a confusão na sua mente hoje?"></textarea>
         </div>
       </div>
@@ -877,7 +877,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Houve compra por impulso de cursos, livros ou itens gerada por picos de interesse repentino?"></textarea>
         </div>
       </div>
@@ -907,7 +907,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Sentiu que precisou 'mascarar' sua intensidade ou velocidade mental para se adaptar aos outros hoje?"></textarea>
         </div>
       </div>
@@ -930,7 +930,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quanto esforço social foi necessário para transitar nos grupos hoje? Houve esgotamento de empatia?"></textarea>
         </div>
       </div>
@@ -953,7 +953,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         </div>
         <div class="atalhos-container"></div>
         <div class="anotacao-wrapper">
-          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">Gravar Nota</button>
           <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Você conseguiu dedicar tempo aos seus hiperfocos saudáveis e fontes genuínas de recarga mental?"></textarea>
         </div>
       </div>
@@ -1017,7 +1017,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         Escreva abaixo os tópicos, reflexões ou perguntas gerais que deseja levar para a sua próxima sessão terapêutica. Este conteúdo será incorporado automaticamente no seu PDF semanal.
       </div>
       <div class="anotacao-wrapper">
-        <button type="button" class="btn-mic" onclick="alternarDitadoPauta(this)" title="Ditado por voz">🎙️ Gravar Pauta</button>
+        <button type="button" class="btn-mic" onclick="alternarDitadoPauta(this)" title="Ditado por voz">Gravar Pauta</button>
         <textarea id="input-pauta-sessao" class="anotacao-criterio" style="min-height: 150px;" placeholder="Digite aqui as anotações gerais para a terapia..."></textarea>
       </div>
       <button class="btn-guardar" style="margin-top: 12px;" onclick="salvarPauta()">Salvar Pauta</button>
@@ -1304,6 +1304,9 @@ function alternarDitado(btn) {
     return;
   }
 
+  const isPauta = btn.getAttribute('onclick') && btn.getAttribute('onclick').includes('alternarDitadoPauta');
+  const textoPadrao = isPauta ? 'Gravar Pauta' : 'Gravar Nota';
+
   if (btnMicAtivo === btn) {
     reconhecimentoVoz.stop();
     pararDitado();
@@ -1311,7 +1314,7 @@ function alternarDitado(btn) {
     if (btnMicAtivo) pararDitado();
     btnMicAtivo = btn;
     btnMicAtivo.classList.add('gravando');
-    btnMicAtivo.innerHTML = '🔴 Ouvindo...';
+    btnMicAtivo.innerHTML = 'Ouvindo...';
     try {
       reconhecimentoVoz.start();
     } catch (e) {
@@ -1326,8 +1329,9 @@ function alternarDitadoPauta(btn) {
 
 function pararDitado() {
   if (btnMicAtivo) {
+    const isPauta = btnMicAtivo.getAttribute('onclick') && btnMicAtivo.getAttribute('onclick').includes('alternarDitadoPauta');
     btnMicAtivo.classList.remove('gravando');
-    btnMicAtivo.innerHTML = '🎙️ Gravar Nota';
+    btnMicAtivo.innerHTML = isPauta ? 'Gravar Pauta' : 'Gravar Nota';
     btnMicAtivo = null;
   }
 }
