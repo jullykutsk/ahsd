@@ -191,7 +191,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 }
 .criterio-card.prioritario { border: 2px solid var(--accent-color); background: var(--card-prioritario); }
 .criterio-card.prioritario::before {
-  content: "Foco Clínico Selecionado"; display: inline-block; font-size: 0.72rem; font-weight: bold;
+  content: "Foco Clínico Selecionado (AH/SD)"; display: inline-block; font-size: 0.72rem; font-weight: bold;
   color: var(--accent-color); margin-bottom: 6px; background: var(--cat-bg); padding: 2px 8px; border-radius: 4px;
 }
 .criterio-nome { font-size: 0.95rem; font-weight: bold; color: var(--text-main); margin-bottom: 6px; }
@@ -391,8 +391,8 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
     <div class="categoria-grupo">
       <div class="criterio-card" data-key="ansiedade">
-        <div class="criterio-nome">Ansiedade, Inquietação & Ruminação</div>
-        <div class="criterio-legenda">1 = Nó no peito/pensamentos travados em loop; 3 = Desconforto leve, mas executando tarefas; 5 = Corpo calmo e pensamentos fluidos.</div>
+        <div class="criterio-nome">Ruminação Mental & Hiperconexão de Ideias</div>
+        <div class="criterio-legenda">1 = Mente travada em loop associativo / Exaustão analítica; 3 = Pensamento acelerado mas funcional; 5 = Clareza mental e fluxo fluido.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -401,12 +401,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O que gatilhou esse estado? Onde você sente no corpo? Qual pensamento se repete?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual problema complexo travou seu processamento hoje? Onde no corpo a exaustão mental se manifestou?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="crise_existencial">
-        <div class="criterio-nome">Sentido das Ações & Vazio Prático</div>
-        <div class="criterio-legenda">1 = Desconexão total ("para que fazer isso?"); 3 = Cumprindo tarefas por obrigação; 5 = Sensação clara de utilidade/propósito no dia.</div>
+        <div class="criterio-nome">Vazio de Propósito & Angústia Filosófica</div>
+        <div class="criterio-legenda">1 = Desconexão total ("para que fazer isso se tudo é efêmero?"); 3 = Cumprindo obrigações de forma neutra; 5 = Senso claro de utilidade e alinhamento com valores profundos.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -415,12 +415,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Suas tarefas hoje conversam com seus valores? O que te trouxe sensação de utilidade ou vazio?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Suas tarefas de hoje conversam com seus ideais éticos e intelectuais? O que gerou sensação de futilidade?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="vitalidade">
-        <div class="criterio-nome">Energia Corporal & Vitalidade</div>
-        <div class="criterio-legenda">1 = Sensação de peso físico, exaustão ao levantar; 3 = Bateria razoável para o básico; 5 = Disposição física e mental para agir sem esforço extremo.</div>
+        <div class="criterio-nome">Bateria Neurobiológica & Exaustão de Recursos</div>
+        <div class="criterio-legenda">1 = Colapso de energia por sobrecarga cognitiva; 3 = Bateria suficiente apenas para o essencial; 5 = Vigor físico e mental integrado.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -429,12 +429,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Em qual momento do dia sua energia caiu mais? O cansaço é mais mental ou físico?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O esgotamento veio de interações sociais, excesso de estímulos ou tédio crônico? A bateria esvaziou do nada?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="sobrecarga">
-        <div class="criterio-nome">Sobrecarga Sensorial</div>
-        <div class="criterio-legenda">1 = Hipersensibilidade/Irritação extrema; 3 = Desconforto pontual; 5 = Ambiente regulado.</div>
+        <div class="criterio-nome">Sensibilidade Ambiental & Sobrecarga Sensorial</div>
+        <div class="criterio-legenda">1 = Hipersensibilidade aguda a ruídos, luzes ou demandas sociais; 3 = Incômodo pontual tolerável; 5 = Ambiente regulado e seguro.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -443,12 +443,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual estímulo do ambiente mais incomodou (luz, som, rotina)? Conseguiu fazer pausas de descompressão?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual estímulo do ambiente externo mais drenou sua tolerância hoje? Conseguiu refúgio sensorial?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="autocompaixao">
-        <div class="criterio-nome">Autocompaixão & Flexibilidade</div>
-        <div class="criterio-legenda">1 = Autocrítica destrutiva; 3 = Aceitação razoável; 5 = Diálogo interno acolhedor.</div>
+        <div class="criterio-nome">Perfeccionismo Destrutivo & Autocrítica</div>
+        <div class="criterio-legenda">1 = Cobrança implacável por não atingir padrões inalcançáveis; 3 = Aceitação oscilante de falhas; 5 = Diálogo interno compassivo e realista.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -457,7 +457,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Como você falou consigo mesmo quando algo deu errado hoje? Exigiu de si mais do que devia?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Em que momento você se julgou com rigidez excessiva por não ser perfeito(a) de primeira?"></textarea>
       </div>
     </div>
 
@@ -468,8 +468,8 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
     <div class="categoria-grupo">
       <div class="criterio-card" data-key="nutricao_intelectual">
-        <div class="criterio-nome">Nutrição Intelectual / Estimulação</div>
-        <div class="criterio-legenda">1 = Tédio/Subestimulação severa; 3 = Aprendizado básico; 5 = Hiperfoco produtivo/Estímulo ideal.</div>
+        <div class="criterio-nome">Fome Cognitiva / Subestimulação (Boreout)</div>
+        <div class="criterio-legenda">1 = Tédio severo por falta de complexidade (definhar intelectualmente); 3 = Estímulos medianos; 5 = Nutrição intelectual ideal / Hiperfoco produtivo.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -478,12 +478,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Seu cérebro recebeu novidade/complexidade suficiente ou ficou entediado com tarefas repetitivas?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Seu cérebro foi desafiado com complexidade suficiente hoje ou sofreu com tarefas repetitivas e lineares?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="foco_estudos">
-        <div class="criterio-nome">Foco nos Estudos / Projetos</div>
-        <div class="criterio-legenda">1 = Dispersão total; 3 = Foco parcial; 5 = Execução fluida sem distrações.</div>
+        <div class="criterio-nome">Assincronia Executiva & Paralisia de Tarefas</div>
+        <div class="criterio-legenda">1 = A mente quer criar em nível avançado, mas o corpo/execução travam; 3 = Foco funcional sob esforço; 5 = Fluxo executivo alinhado com o pensamento.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -492,12 +492,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O que mais tirou sua atenção? Conseguiu iniciar sem travar no primeiro passo?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Onde ocorreu o descompasso entre o que você planejou mentalmente e o que conseguiu executar?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="produtividade_criativa">
-        <div class="criterio-nome">Produtividade Criativa / Trabalho</div>
-        <div class="criterio-legenda">1 = Bloqueio criativo; 3 = Entregas essenciais; 5 = Alto fluxo criativo e realização.</div>
+        <div class="criterio-nome">Fluxo Criativo & Realização (Renzulli)</div>
+        <div class="criterio-legenda">1 = Bloqueio severo de expressão criativa / Frustração produtiva; 3 = Entregas mecânicas sem paixão; 5 = Imersão profunda e satisfação criativa.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -506,7 +506,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Suas ideias fluíram ou houve bloqueio? Sentiu satisfação ao concluir as entregas de hoje?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu aplicar seu comprometimento com a tarefa (hiperfoco) em algo significativo hoje?"></textarea>
       </div>
     </div>
 
@@ -517,8 +517,8 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
     <div class="categoria-grupo">
       <div class="criterio-card" data-key="qualidade_sono">
-        <div class="criterio-nome">Qualidade do Sono</div>
-        <div class="criterio-legenda">1 = Insônia/Sono não reparador; 3 = Sono mediano; 5 = Descanso profundo e revigorante.</div>
+        <div class="criterio-nome">Higiene do Sono & Atividade Onírica</div>
+        <div class="criterio-legenda">1 = Mente acelerada na hora de dormir / Insônia por hiperfoco noturno; 3 = Sono regular; 5 = Descanso profundo e restaurador.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -527,12 +527,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Demorou para adormecer? Acordou muitas vezes durante a noite ou levantou descansado?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O cérebro recusou desligar à noite processando ideias ou conversas do dia?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="rotinas_autocuidado">
-        <div class="criterio-nome">Rotinas de Autocuidado</div>
-        <div class="criterio-legenda">1 = Abandono total de si; 3 = Higiene e cuidados básicos; 5 = Rituais de bem-estar completos.</div>
+        <div class="criterio-nome">Pausas de Descompressão & Autocuidado</div>
+        <div class="criterio-legenda">1 = Hiperfoco prolongado sem pausas biológicas (esqueceu de si); 3 = Cuidados básicos mantidos; 5 = Rituais de recarga respeitados.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -541,12 +541,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quais pequenos rituais de cuidado pessoal você conseguiu manter hoje? Faltou tempo para si?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Você lembrou de fazer pausas para esvaziar a mente entre uma atividade intensa e outra?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="alimentacao">
-        <div class="criterio-nome">Alimentação Equilibrada</div>
-        <div class="criterio-legenda">1 = Ultraprocessados/Compulsão; 3 = Alimentação razoável; 5 = Refeições nutritivas.</div>
+        <div class="criterio-nome">Alimentação & Atenção Plena Corporal</div>
+        <div class="criterio-legenda">1 = Desregulação alimentar por ansiedade ou esquecimento no hiperfoco; 3 = Alimentação funcional; 5 = Nutrição consciente e equilibrada.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -555,12 +555,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Comeu nos horários certos? Houve exagero ou pulou refeições por ansiedade/correria?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O hiperfoco te fez pular refeições ou comer de forma impulsiva hoje?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="hidratacao">
-        <div class="criterio-nome">Hidratação</div>
-        <div class="criterio-legenda">1 = Sem consumo de água; 3 = Ingestão moderada; 5 = Metas de hidratação atingidas.</div>
+        <div class="criterio-nome">Hidratação & Regulação Térmica</div>
+        <div class="criterio-legenda">1 = Desidratação severa por distração cognitiva; 3 = Ingestão mediana; 5 = Hidratação ideal mantida.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -569,12 +569,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Manteve uma garrafa por perto? Sentiu sinais de desidratação (boca seca, dor de cabeça)?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Sentiu dores de cabeça ou fadiga por esquecer de beber água enquanto criava ou estudava?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="exercicios">
-        <div class="criterio-nome">Exercícios / Movimento</div>
-        <div class="criterio-legenda">1 = Sedentarismo absoluto; 3 = Movimentação leve; 5 = Treino/Atividade completa.</div>
+        <div class="criterio-nome">Descarga Psicomotora / Movimento Físico</div>
+        <div class="criterio-legenda">1 = Sedentarismo estático com mente acelerada (inquietude psicomotora presa); 3 = Movimento leve; 5 = Descarga física adequada realizada.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -583,12 +583,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu colocar o corpo em movimento? Como o corpo reagiu após a atividade física?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O corpo precisou de movimento para descarregar a alta voltagem mental de hoje?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="cuidados_medicos">
-        <div class="criterio-nome">Cuidados Médicos & Medicação</div>
-        <div class="criterio-legenda">1 = Esqueceu medicação/sintomas ignorados; 3 = Parcialmente cumprido; 5 = Prescrições e rotina em dia.</div>
+        <div class="criterio-nome">Adesão Terapêutica & Automonitoramento</div>
+        <div class="criterio-legenda">1 = Falhas na rotina de saúde por desatenção executiva; 3 = Cumprimento básico; 5 = Cuidado com a saúde rigoroso.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -597,12 +597,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Tomou as medicações no horário correto? Observou algum sintoma físico que precisa relatar ao médico?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu manter suas medicações, suplementos ou consultas em dia sem esquecimentos?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="rotina_domestica">
-        <div class="criterio-nome">Rotina Doméstica / Organização</div>
-        <div class="criterio-legenda">1 = Caos/Acúmulo; 3 = Tarefas básicas em dia; 5 = Ambiente limpo e estruturado.</div>
+        <div class="criterio-nome">Gestão do Espaço Físico & Organização</div>
+        <div class="criterio-legenda">1 = Caos ambiental gerando ruído cognitivo extra; 3 = Organização funcional básica; 5 = Espaço estruturado e harmonioso.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -611,12 +611,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: A bagunça física do ambiente impactou sua clareza mental hoje? O que conseguiu manter organizado?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: A desorganização do ambiente físico refletiu e aumentou a confusão na sua mente hoje?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="gestao_financeira">
-        <div class="criterio-nome">Gestão Financeira</div>
-        <div class="criterio-legenda">1 = Impulsividade/Estresse financeiro; 3 = Gastos sob controle; 5 = Planejamento e economia rigorosos.</div>
+        <div class="criterio-nome">Controle de Impulsos & Gestão Prática</div>
+        <div class="criterio-legenda">1 = Gastos impulsivos motivados por tédio ou busca rápida de dopamina; 3 = Orçamento neutro; 5 = Planejamento financeiro consciente.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -625,7 +625,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Fez alguma compra por impulso emocional hoje? Conseguiu manter o foco nas suas metas de orçamento?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Houve compra por impulso de cursos, livros ou itens gerada por picos de interesse repentino?"></textarea>
       </div>
     </div>
 
@@ -636,8 +636,8 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
     <div class="categoria-grupo">
       <div class="criterio-card" data-key="relacionamento">
-        <div class="criterio-nome">Relacionamento Afetivo / Social</div>
-        <div class="criterio-legenda">1 = Isolamento doloroso/Conflito; 3 = Trocas superficiais; 5 = Conexão profunda e acolhedora.</div>
+        <div class="criterio-nome">Intensidade Relacional & Ruídos de Ritmo</div>
+        <div class="criterio-legenda">1 = Sensação de profunda incompreensão ou conflito por assincronia de ritmo; 3 = Trocas educadas mas superficiais; 5 = Conexão simétrica e acolhedora.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -646,12 +646,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Houve algum ruído ou mal-entendido na comunicação? Sentiu-se acolhido(a) nas suas trocas de hoje?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Sentiu que precisou 'mascarar' sua intensidade ou velocidade mental para se adaptar aos outros hoje?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="conexao_social">
-        <div class="criterio-nome">Conexão Social & Sentido de Pertencimento</div>
-        <div class="criterio-legenda">1 = Isolamento/Alienação; 3 = Interações funcionais/Rede limitada; 5 = Rede sólida e pertença clara.</div>
+        <div class="criterio-nome">Pertencimento & Exaustão por Mascaramento</div>
+        <div class="criterio-legenda">1 = Burnout social severo / Exaustão por fingir normalidade; 3 = Interações funcionais isoladas; 5 = Pertença genuína e segura.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -660,12 +660,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Sentiu-se parte do seu grupo ou preferiu se isolar? A energia social descarregou sua bateria?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quanto esforço social foi necessário para transitar nos grupos hoje? Houve esgotamento de empatia?"></textarea>
       </div>
 
       <div class="criterio-card" data-key="hobbies">
-        <div class="criterio-nome">Hobbies & Desconexão</div>
-        <div class="criterio-legenda">1 = Sem tempo para si/Cansaço; 3 = Lazer passivo; 5 = Imersão em hobbies/Desconexão real.</div>
+        <div class="criterio-nome">Nutrição Lúdica & Hobbies Profundos</div>
+        <div class="criterio-legenda">1 = Sem tempo ou energia para interesses autênticos; 3 = Lazer passivo de tela; 5 = Imersão revigorante em paixões e interesses especiais.</div>
         <div class="botoes-escala">
           <button class="btn-escala" onclick="selecionarValor(this, 1)">1</button>
           <button class="btn-escala" onclick="selecionarValor(this, 2)">2</button>
@@ -674,7 +674,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu se desligar das obrigações durante o momento de descanso? Teve tempo de qualidade com o que gosta?"></textarea>
+        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Você conseguiu dedicar tempo aos seus hiperfocos saudáveis e fontes genuínas de recarga mental?"></textarea>
       </div>
     </div>
 
@@ -997,139 +997,140 @@ function toggleSecao(elementoTitulo) {
   }
 }
 
+// Atalhos adaptados para a realidade neuropsicológica AH/SD
 const opcoesAtalhos = {
   ansiedade: {
-    1: ["Aperto/Nó no peito", "Pensamento em loop", "Agitação física", "Ombros tensos", "Medo de errar/falhar"],
-    2: ["Preocupação constante", "Inquietação motora", "Tensão muscular", "Respiração curta"],
-    3: ["Tensão leve", "Preocupação pontual", "Foco oscilante", "Previsível"],
-    4: ["Corpo calmo", "Pensamentos fluidos", "Sem nós no peito", "Sensação de controle"],
-    5: ["Mente serena", "Relaxamento pleno", "Pensamento claro", "Presença tranquila"]
+    1: ["Loop associativo", "Exaustão analítica", "Mente acelerada sem freio", "Tensão mental aguda", "Paralisia por excesso de ideias"],
+    2: ["Processamento intenso", "Inquietação cognitiva", "Várias abas mentais abertas", "Atenção hiperativa"],
+    3: ["Fluxo mental estável", "Foco controlado", "Ritmo gerenciável"],
+    4: ["Clareza de pensamento", "Mente organizada", "Fluidez analítica"],
+    5: ["Serenidade cognitiva", "Visão sistêmica clara", "Paz mental"]
   },
   crise_existencial: {
-    1: ["Sensação de rumo perdido", "Questionando escolhas", "Sensação de estar estagnado(a)", "Pra que fazer isso?"],
-    2: ["Dúvidas sutis sobre futuro", "Desânimo leve", "Questionamentos sem resposta"],
-    3: ["Dúvidas neutras", "Seguindo a rotina", "Propósito em construção"],
-    4: ["Clareza de objetivos", "Ação com intenção", "Sentido presente"],
-    5: ["Propósito claro", "Realização plena", "Conexão total com ações"]
+    1: ["Sensação de futilidade", "Para que fazer isso?", "Desconexão de valores", "Vazio intelectual"],
+    2: ["Questionamentos profundos", "Busca por sentido", "Desalinho com rotina"],
+    3: ["Rotina neutra", "Propósito em avaliação"],
+    4: ["Ação com sentido", "Alinhamento ético", "Utilidade clara"],
+    5: ["Propósito pleno", "Realização alinhada", "Significado profundo"]
   },
   vitalidade: {
-    1: ["Sensação de peso físico", "Exaustão ao levantar", "Corpo pesado como chumbo", "Sem forças"],
-    2: ["Cansaço acumulado", "Lenteza física", "Energia baixa"],
-    3: ["Bateria razoável para o básico", "Energia estável", "Cansaço comum"],
-    4: ["Boa disposição", "Corpo leve", "Pronto para agir"],
-    5: ["Disposição física total", "Energia alta", "Agilidade e vigor"]
+    1: ["Colapso de bateria", "Esgotamento cognitivo", "Cansaço profundo", "Sem recursos mentais"],
+    2: ["Bateria baixa", "Fadiga acumulada", "Lentidão executiva"],
+    3: ["Energia básica o suficiente", "Bateria mediana"],
+    4: ["Boa disposição", "Vigor mental ativo"],
+    5: ["Bateria 100%", "Disposição plena", "Energia criativa alta"]
   },
   sobrecarga: {
-    1: ["Irritação com barulho", "Luzes incomodando", "Necessidade de isolamento", "Sensibilidade ao toque"],
-    2: ["Desconforto com ambiente", "Sensibilidade elevada", "Cansaço sensorial"],
-    3: ["Ambiente tolerável", "Desconfortos pontuais", "Estabilidade leve"],
-    4: ["Ambiente agradável", "Sem incômodos", "Sensorial equilibrado"],
-    5: ["Conforto total no ambiente", "Sensorial calmo", "Regulação plena"]
+    1: ["Hipersensibilidade a ruídos", "Exaustão por ambiente", "Necessidade de isolamento", "Sobrecarga sensorial extrema"],
+    2: ["Incomodado com estímulos", "Sensibilidade moderada", "Fadiga sensorial"],
+    3: ["Ambiente tolerável", "Sem grandes ruídos"],
+    4: ["Ambiente confortável", "Regulação sensorial boa"],
+    5: ["Conforto absoluto", "Proteção sensorial ideal"]
   },
   autocompaixao: {
-    1: ["Autocrítica severa", "Sensação de culpa", "Cobrança excessiva", "Exigência extrema"],
-    2: ["Frustração com erros", "Diálogo interno rígido", "Dificuldade em aceitar falhas"],
-    3: ["Aceitação moderada", "Erros compreendidos", "Flexibilidade neutra"],
-    4: ["Paciência consigo mesmo", "Diálogo acolhedor", "Aceitação de limites"],
-    5: ["Autocompaixão plena", "Gentileza interna", "Aceitação total"]
+    1: ["Autocrítica implacável", "Exigência de perfeição", "Culpa por não render", "Juiz interno severo"],
+    2: ["Frustração com o próprio ritmo", "Cobrança alta", "Rigidez"],
+    3: ["Aceitação parcial", "Flexibilidade neutra"],
+    4: ["Compreensão dos próprios limites", "Autocuidado mental"],
+    5: ["Autocompaixão plena", "Gentileza consigo", "Paz com as próprias falhas"]
   },
   nutricao_intelectual: {
-    1: ["Tédio profundo", "Mente sem estímulo", "Sensação de esvaziamento"],
-    2: ["Desinteresse leve", "Falta de novidade", "Estímulo baixo"],
-    3: ["Estímulo básico", "Aprendizado comum", "Curiosidade moderada"],
-    4: ["Mente estimulada", "Leitura/Estudo fluido", "Interesse ativo"],
-    5: ["Hiperfoco produtivo", "Estímulo ideal", "Nutrição cognitiva alta"]
+    1: ["Boreout profundo", "Tédio por subestimulação", "Fome cognitiva não atendida", "Mente definhando"],
+    2: ["Falta de novidade", "Estímulo monótono", "Cansaço da rotina repetitiva"],
+    3: ["Aprendizado comum", "Estímulo mediano"],
+    4: ["Mente estimulada", "Curiosidade ativa"],
+    5: ["Hiperfoco produtivo", "Complexidade ideal", "Nutrição intelectual plena"]
   },
   foco_estudos: {
-    1: ["Dispersão total", "Impulsividade para trocar de tarefa", "Mente distante"],
-    2: ["Distração frequente", "Esforço grande para focar", "Lentidão nas tarefas"],
-    3: ["Foco razoável", "Pausas normais", "Cumprimento de metas simples"],
-    4: ["Concentração boa", "Poucas distrações", "Fluxo de estudo"],
-    5: ["Foco absoluto", "Fluidez total", "Sem distrações"]
+    1: ["Assincronia executiva", "Mente quer, corpo não faz", "Trava de início", "Paralisia de tarefas"],
+    2: ["Dificuldade de estruturação", "Foco oscilante", "Esforço executivo alto"],
+    3: ["Foco funcional", "Execução básica"],
+    4: ["Fluxo de estudo bom", "Progresso consistente"],
+    5: ["Imersão perfeita", "Execução alinhada ao pensamento"]
   },
   produtividade_criativa: {
-    1: ["Bloqueio total", "Sensação de incapacidade", "Procrastinação defensiva"],
-    2: ["Ideias travadas", "Execução lenta", "Dificuldade de início"],
-    3: ["Entregas básicas", "Criatividade moderada", "Trabalho contínuo"],
-    4: ["Ideias fluindo", "Boa execução", "Satisfação na entrega"],
-    5: ["Alto fluxo criativo", "Realização total", "Inspiração plena"]
+    1: ["Bloqueio criativo", "Frustração produtiva", "Ideias presas"],
+    2: ["Fluxo travado", "Dificuldade de entrega"],
+    3: ["Entregas mecânicas", "Trabalho regular"],
+    4: ["Ideias fluindo", "Boa realização (Renzulli)"],
+    5: ["Alto fluxo criativo", "Realização apaixonada", "Inspiração total"]
   },
   qualidade_sono: {
-    1: ["Insônia prolongada", "Acordou exausto(a)", "Pesadelos/Agitação"],
-    2: ["Sono leve", "Interrupções no sono", "Dificuldade para adormecer"],
-    3: ["Sono mediano", "Descanso razoável", "Cansaço leve"],
-    4: ["Sono reparador", "Acordou bem", "Sem interrupções"],
-    5: ["Sono profundo", "Descanso pleno", "Bateria 100% recarregada"]
+    1: ["Insônia por hiperfoco", "Mente ligada à noite", "Sono não reparador"],
+    2: ["Sono fragmentado", "Demorou a desligar"],
+    3: ["Sono mediano", "Descanso razoável"],
+    4: ["Sono reparador", "Acordou bem"],
+    5: ["Sono profundo", "Recarga neural completa"]
   },
   rotinas_autocuidado: {
-    1: ["Abandono de rotinas", "Sem tempo para si", "Sem cuidados essenciais"],
-    2: ["Autocuidado negligenciado", "Apenas o mínimo", "Correria diária"],
-    3: ["Higiene e rotina em dia", "Autocuidado básico", "Organização pessoal"],
-    4: ["Bons rituais", "Tempo para self-care", "Acolhimento diário"],
-    5: ["Rituais completos", "Bem-estar priorizado", "Cuidado integral"]
+    1: ["Esqueceu de si no hiperfoco", "Abandono de pausas", "Sem autocuidado"],
+    2: ["Autocuidado negligenciado", "Correria"],
+    3: ["Cuidados básicos ok"],
+    4: ["Pausas respeitadas", "Autocuidado presente"],
+    5: ["Rituais de recarga cumpridos", "Cuidado integral"]
   },
   alimentacao: {
-    1: ["Impulsividade/Compulsão", "Pulou refeições", "Alimentação desregulada"],
-    2: ["Excesso de ultraprocessados", "Horários irregulares", "Pouca nutrição"],
-    3: ["Alimentação razoável", "Refeições básicas", "Horários ok"],
-    4: ["Prato saudável", "Alimentação consciente", "Sem exageros"],
-    5: ["Refeições nutritivas", "Equilíbrio total", "Hidratação e nutrição integradas"]
+    1: ["Esqueceu de comer no hiperfoco", "Desregulação por ansiedade"],
+    2: ["Horários irregulares", "Alimentação sem atenção"],
+    3: ["Refeições básicas"],
+    4: ["Alimentação consciente"],
+    5: ["Nutrição equilibrada e atenta"]
   },
   hidratacao: {
-    1: ["Esqueceu de beber água", "Boca seca", "Zero consumo de água"],
-    2: ["Pouca ingestão de água", "Menos de 1 litro", "Sede presente"],
-    3: ["Consumo moderado", "Próximo da meta", "Hidratação básica"],
-    4: ["Meta atingida", "Ingestão constante", "Boa hidratação"],
-    5: ["Hidratação perfeita", "Mais de 2 litros", "Corpo hidratado"]
+    1: ["Esqueceu de beber água", "Sede intensa", "Fadiga por desidratação"],
+    2: ["Pouca água ingerida"],
+    3: ["Hidratação mediana"],
+    4: ["Boa hidratação"],
+    5: ["Meta de água atingida"]
   },
   exercicios: {
-    1: ["Sedentarismo absoluto", "Corpo rígido/Inerte", "Sem movimentação"],
-    2: ["Pouco movimento", "Caminhada curta apenas", "Preguiça corporal"],
-    3: ["Movimentação leve", "Alongamento/Atividade básica", "Exercício funcional"],
-    4: ["Treino concluído", "Boa movimentação", "Corpo ativo"],
-    5: ["Atividade intensa", "Energia física liberada", "Treino completo"]
+    1: ["Inquitetude psicomotora presa", "Sedentarismo tenso", "Corpo inerte e mente a mil"],
+    2: ["Pouco movimento físico"],
+    3: ["Movimento leve"],
+    4: ["Atividade física realizada"],
+    5: ["Descarga psicomotora completa", "Corpo ativo"]
   },
   cuidados_medicos: {
-    1: ["Esqueceu medicação", "Sintomas ignorados", "Desorganização na rotina médica"],
-    2: ["Medicação atrasada", "Esqueceu suplementos", "Parcialmente correto"],
-    3: ["Medicação em dia", "Cuidados básicos ok", "Acompanhamento estável"],
-    4: ["Prescrições rigorosas", "Rotina de saúde impecável", "Atenção ao corpo"],
-    5: ["Saúde e medicação em dia", "Automonitoramento perfeito", "Cuidado total"]
+    1: ["Esquecimentos por distração", "Rotina de saúde descuidada"],
+    2: ["Atraso em cuidados"],
+    3: ["Saúde sob controle"],
+    4: ["Cuidados em dia"],
+    5: ["Monitohamento e rotina médica perfeitos"]
   },
   rotina_domestica: {
-    1: ["Caos/Bagunça visível", "Tarefas acumuladas", "Ambiente desorganizado"],
-    2: ["Bagunça pontual", "Louça acumulada", "Atraso na organização"],
-    3: ["Ambiente organizado", "Tarefas básicas em dia", "Casa funcional"],
-    4: ["Ambiente limpo", "Organização fluida", "Espaço aconchegante"],
-    5: ["Ambiente impecável", "Estrutura e ordem", "Harmonia no lar"]
+    1: ["Caos físico gerando ruído mental", "Ambiente desorganizado"],
+    2: ["Bagunça acumulada"],
+    3: ["Casa funcional"],
+    4: ["Ambiente organizado"],
+    5: ["Espaço estruturado e limpo"]
   },
   gestao_financeira: {
-    1: ["Gastos por impulso", "Ansiedade com contas", "Falta de controle"],
-    2: ["Compras desnecessárias", "Preocupação financeira leve", "Orçamento apertado"],
-    3: ["Gastos sob controle", "Orçamento mantido", "Sem sobressaltos"],
-    4: ["Planejamento cumprido", "Economia realizada", "Tranquilidade financeira"],
-    5: ["Gestão rigorosa", "Metas financeiras atingidas", "Segurança total"]
+    1: ["Compra por impulso (busca de dopamina)", "Estresse financeiro"],
+    2: ["Gastos desatentos"],
+    3: ["Orçamento controlado"],
+    4: ["Planejamento mantido"],
+    5: ["Gestão financeira rigorosa"]
   },
   relacionamento: {
-    1: ["Conflito/Discussão", "Sensação de isolamento", "Ruído na comunicação"],
-    2: ["Distanciamento", "Trocas frias", "Desentendimento leve"],
-    3: ["Convivência harmônica", "Trocas funcionais", "Sem conflitos"],
-    4: ["Boa comunicação", "Acolhimento mútuo", "Carinho e atenção"],
-    5: ["Conexão profunda", "Apoio total", "Relacionamento regulado"]
+    1: ["Incompreensão de ritmo", "Sensação de isolamento social", "Conflito por intensidade"],
+    2: ["Distanciamento", "Trocas frias"],
+    3: ["Convivência pacífica"],
+    4: ["Boa troca afetiva"],
+    5: ["Conexão profunda e acolhedora"]
   },
   conexao_social: {
-    1: ["Sensação de não pertencimento", "Isolamento social", "Incompreensão"],
-    2: ["Pouca interação", "Sensação de deslocamento", "Rede distante"],
-    3: ["Interações sociais normais", "Contatos funcionais", "Rede presente"],
-    4: ["Sensação de pertencimento", "Boas conversas", "Apoio social"],
-    5: ["Rede sólida", "Conexão plena com amigos/grupo", "Acolhimento real"]
+    1: ["Burnout por mascaramento", "Exaustão social extrema", "Fingir normalidade"],
+    2: ["Esforço para pertencer", "Cansaço social"],
+    3: ["Interações funcionais"],
+    4: ["Pertencimento leve"],
+    5: ["Rede segura", "Zero mascaramento necessário"]
   },
   hobbies: {
-    1: ["Sem tempo para lazer", "Cansaço impedindo hobbies", "Sem momentos de respiro"],
-    2: ["Lazer passivo (redes sociais)", "Dificuldade para desconectar", "Pouco aproveitamento"],
-    3: ["Momento de pausa", "Lazer simples", "Descanso moderado"],
-    4: ["Imersão em hobby", "Desconexão produtiva", "Diversão e relaxamento"],
-    5: ["Plena imersão e lazer", "Recarga total através de hobbies", "Desconexão ideal"]
+    1: ["Sem tempo para hiperfocos", "Lazer zero"],
+    2: ["Apenas redes sociais (lazer passivo)"],
+    3: ["Descanso simples"],
+    4: ["Imersão em hobby"],
+    5: ["Recarga profunda em interesses autênticos"]
   }
 };
 
@@ -1153,25 +1154,25 @@ const perfisFocoMap = {
 };
 
 const nomesCriterios = {
-  ansiedade: "Ansiedade, Inquietação & Ruminação",
-  crise_existencial: "Sentido das Ações & Vazio Prático",
-  vitalidade: "Energia Corporal & Vitalidade",
-  sobrecarga: "Sobrecarga Sensorial",
-  autocompaixao: "Autocompaixão & Flexibilidade",
-  nutricao_intelectual: "Nutrição Intelectual / Estimulação",
-  foco_estudos: "Foco nos Estudos / Projetos",
-  produtividade_criativa: "Produtividade Criativa / Trabalho",
-  qualidade_sono: "Qualidade do Sono",
-  rotinas_autocuidado: "Rotinas de Autocuidado",
-  alimentacao: "Alimentação Equilibrada",
-  hidratacao: "Hidratação",
-  exercicios: "Exercícios / Movimento",
-  cuidados_medicos: "Cuidados Médicos & Medicação",
-  rotina_domestica: "Rotina Doméstica / Organização",
-  gestao_financeira: "Gestão Financeira",
-  relacionamento: "Relacionamento Afetivo / Social",
-  conexao_social: "Conexão Social & Sentido de Pertencimento",
-  hobbies: "Hobbies & Desconexão"
+  ansiedade: "Ruminação Mental & Hiperconexão de Ideias",
+  crise_existencial: "Vazio de Propósito & Angústia Filosófica",
+  vitalidade: "Bateria Neurobiológica & Exaustão de Recursos",
+  sobrecarga: "Sensibilidade Ambiental & Sobrecarga Sensorial",
+  autocompaixao: "Perfeccionismo Destrutivo & Autocrítica",
+  nutricao_intelectual: "Fome Cognitiva / Subestimulação (Boreout)",
+  foco_estudos: "Assincronia Executiva & Paralisia de Tarefas",
+  produtividade_criativa: "Fluxo Criativo & Realização (Renzulli)",
+  qualidade_sono: "Higiene do Sono & Atividade Onírica",
+  rotinas_autocuidado: "Pausas de Descompressão & Autocuidado",
+  alimentacao: "Alimentação & Atenção Plena Corporal",
+  hidratacao: "Hidratação & Regulação Térmica",
+  exercicios: "Descarga Psicomotora / Movimento Físico",
+  cuidados_medicos: "Adesão Terapêutica & Automonitoramento",
+  rotina_domestica: "Gestão do Espaço Físico & Organização",
+  gestao_financeira: "Controle de Impulsos & Gestão Prática",
+  relacionamento: "Intensidade Relacional & Ruídos de Ritmo",
+  conexao_social: "Pertencimento & Exaustão por Mascaramento",
+  hobbies: "Nutrição Lúdica & Hobbies Profundos"
 };
 
 const categoriasAreas = {
