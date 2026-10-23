@@ -266,6 +266,44 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
   color: var(--accent-color);
 }
 
+/* Estrutura da Área de Anotação com Botão de Microfone */
+.anotacao-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.btn-mic {
+  align-self: flex-end;
+  background: var(--btn-bg);
+  border: 1px solid var(--border-light);
+  color: var(--text-dimmed);
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+.btn-mic:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+.btn-mic.gravando {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #dc2626;
+  animation: pulse-mic 1.2s infinite;
+}
+
+@keyframes pulse-mic {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
 .anotacao-criterio {
   width: 100%; background: var(--btn-bg); border: 1px solid var(--border-light); border-radius: 6px;
   color: var(--text-main); padding: 8px; font-size: 0.82rem; resize: vertical; min-height: 44px;
@@ -433,7 +471,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual problema complexo travou seu processamento hoje? Onde no corpo a exaustão mental se manifestou?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual problema complexo travou seu processamento hoje? Onde no corpo a exaustão mental se manifestou?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="crise_existencial">
@@ -453,7 +494,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Suas tarefas de hoje conversam com seus ideais éticos e intelectuais? O que gerou sensação de futilidade?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Suas tarefas de hoje conversam com seus ideais éticos e intelectuais? O que gerou sensação de futilidade?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="vitalidade">
@@ -473,7 +517,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O esgotamento veio de interações sociais, excesso de estímulos ou tédio crônico? A bateria esvaziou do nada?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O esgotamento veio de interações sociais, excesso de estímulos ou tédio crônico? A bateria esvaziou do nada?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="sobrecarga">
@@ -493,7 +540,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual estímulo do ambiente externo mais drenou sua tolerância hoje? Conseguiu refúgio sensorial?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Qual estímulo do ambiente externo mais drenou sua tolerância hoje? Conseguiu refúgio sensorial?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="autocompaixao">
@@ -513,7 +563,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Em que momento você se julgou com rigidez excessiva por não ser perfeito(a) de primeira?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Em que momento você se julgou com rigidez excessiva por não ser perfeito(a) de primeira?"></textarea>
+        </div>
       </div>
     </div>
 
@@ -540,7 +593,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Seu cérebro foi desafiado com complexidade suficiente hoje ou sofreu com tarefas repetitivas e lineares?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Seu cérebro foi desafiado com complexidade suficiente hoje ou sofreu com tarefas repetitivas e lineares?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="foco_estudos">
@@ -560,10 +616,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Onde ocorreu o descompasso entre o que você planejou mentalmente e o que conseguiu executar?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Onde ocorreu o descompasso entre o que você planejou mentalmente e o que conseguiu executar?"></textarea>
+        </div>
       </div>
 
-      <!-- NOVO CARTÃO: Atenção Sustentada & Estudos / Faculdade -->
       <div class="criterio-card" data-key="atencao_estudos">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
           <span>Atenção Sustentada & Absorção nos Estudos (Faculdade/Cursos)</span>
@@ -581,10 +639,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O ritmo da aula/exposição acadêmica esteve muito abaixo da sua velocidade de processamento? Como você reagiu ao tédio expositivo?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O ritmo da aula/exposição acadêmica esteve muito abaixo da sua velocidade de processamento? Como você reagiu ao tédio expositivo?"></textarea>
+        </div>
       </div>
 
-      <!-- NOVO CARTÃO: Desempenho Profissional & Trabalho -->
       <div class="criterio-card" data-key="ambiente_trabalho">
         <div class="criterio-nome" onclick="toggleDicaPratica(this)">
           <span>Desempenho Profissional & Dinâmica de Trabalho</span>
@@ -602,7 +662,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Houve conflito ou desgaste por diferença de ritmo no trabalho? Você assumiu demandas alheias para resolver mais rápido?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Houve conflito ou desgaste por diferença de ritmo no trabalho? Você assumiu demandas alheias para resolver mais rápido?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="produtividade_criativa">
@@ -622,7 +685,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu aplicar seu comprometimento com a tarefa (hiperfoco) em algo significativo hoje?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu aplicar seu comprometimento com a tarefa (hiperfoco) em algo significativo hoje?"></textarea>
+        </div>
       </div>
     </div>
 
@@ -649,7 +715,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O cérebro recusou desligar à noite processando ideias ou conversas do dia?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O cérebro recusou desligar à noite processando ideias ou conversas do dia?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="rotinas_autocuidado">
@@ -669,7 +738,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Você lembrou de fazer pausas para esvaziar a mente entre uma atividade intensa e outra?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Você lembrou de fazer pausas para esvaziar a mente entre uma atividade intensa e outra?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="alimentacao">
@@ -689,7 +761,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O hiperfoco te fez pular refeições ou comer de forma impulsiva hoje?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O hiperfoco te fez pular refeições ou comer de forma impulsiva hoje?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="hidratacao">
@@ -698,7 +773,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <span class="criterio-nome-seta">►</span>
         </div>
         <div class="caixa-dica-pratica">
-          <strong>Estratégia de Regulação:</strong> Mantenha uma garrafa de água grande exatamente ao lado da sua estação de trabalho ou estudo para eliminar o effort de deslocamento.
+          <strong>Estratégia de Regulação:</strong> Mantenha uma garrafa de água grande exatamente ao lado da sua estação de trabalho ou estudo para eliminar o esforço de deslocamento.
         </div>
         <div class="criterio-legenda">1 = Desidratação severa por distração cognitiva; 3 = Ingestão mediana; 5 = Hidratação ideal mantida.</div>
         <div class="botoes-escala">
@@ -709,7 +784,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Sentiu dores de cabeça ou fadiga por esquecer de beber água enquanto criava ou estudava?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Sentiu dores de cabeça ou fadiga por esquecer de beber água enquanto criava ou estudava?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="exercicios">
@@ -729,7 +807,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O corpo precisou de movimento para descarregar a alta voltagem mental de hoje?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: O corpo precisou de movimento para descarregar a alta voltagem mental de hoje?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="cuidados_medicos">
@@ -749,7 +830,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu manter suas medicações, suplementos ou consultas em dia sem esquecimentos?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Conseguiu manter suas medicações, suplementos ou consultas em dia sem esquecimentos?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="rotina_domestica">
@@ -769,7 +853,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: A desorganização do ambiente físico refletiu e aumentou a confusão na sua mente hoje?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: A desorganização do ambiente físico refletiu e aumentou a confusão na sua mente hoje?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="gestao_financeira">
@@ -789,7 +876,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Houve compra por impulso de cursos, livros ou itens gerada por picos de interesse repentino?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Houve compra por impulso de cursos, livros ou itens gerada por picos de interesse repentino?"></textarea>
+        </div>
       </div>
     </div>
 
@@ -816,7 +906,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Sentiu que precisou 'mascarar' sua intensidade ou velocidade mental para se adaptar aos outros hoje?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Sentiu que precisou 'mascarar' sua intensidade ou velocidade mental para se adaptar aos outros hoje?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="conexao_social">
@@ -836,7 +929,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quanto esforço social foi necessário para transitar nos grupos hoje? Houve esgotamento de empatia?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Quanto esforço social foi necessário para transitar nos grupos hoje? Houve esgotamento de empatia?"></textarea>
+        </div>
       </div>
 
       <div class="criterio-card" data-key="hobbies">
@@ -856,7 +952,10 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
           <button class="btn-escala" onclick="selecionarValor(this, 5)">5</button>
         </div>
         <div class="atalhos-container"></div>
-        <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Você conseguiu dedicar tempo aos seus hiperfocos saudáveis e fontes genuínas de recarga mental?"></textarea>
+        <div class="anotacao-wrapper">
+          <button type="button" class="btn-mic" onclick="alternarDitado(this)" title="Ditado por voz">🎙️ Gravar Nota</button>
+          <textarea class="anotacao-criterio" placeholder="Perguntas estratégicas: Você conseguiu dedicar tempo aos seus hiperfocos saudáveis e fontes genuínas de recarga mental?"></textarea>
+        </div>
       </div>
     </div>
 
@@ -879,11 +978,11 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
         Importar
         <input type="file" accept=".json" onchange="importarBackupJSON(event)">
       </label>
-      <button class="btn-discreto" onclick="gerarPDFMensal()">PDF do Mês</button>
+      <button class="btn-discreto" onclick="gerarPDFSemanal()">PDF da Semana</button>
     </div>
 
     <div class="card">
-      <div class="card-title">Análise Descritiva de Evolução (30 Dias)</div>
+      <div class="card-title">Análise Descritiva do Ciclo Semanal (7 Dias)</div>
       <div id="caixa-resumo-evolucao" class="caixa-prontuario">
         Carregando prontuário de evolução...
       </div>
@@ -899,7 +998,7 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     </div>
 
     <div class="card">
-      <div class="card-title">Tendência do Saldo Emocional (30 Dias)</div>
+      <div class="card-title">Tendência do Saldo Emocional (Ciclo Atual)</div>
       <div class="chart-box">
         <canvas id="chartSaldoLinha"></canvas>
       </div>
@@ -915,9 +1014,12 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
     <div class="card">
       <div class="card-title">Pauta para a Sessão / Perguntas ao Terapeuta</div>
       <div style="font-size:0.82rem; color:var(--text-dimmed); margin-bottom: 10px;">
-        Escreva abaixo os tópicos, reflexões ou perguntas gerais que deseja levar para a sua próxima sessão terapêutica. Este conteúdo será incorporado automaticamente no seu PDF mensal.
+        Escreva abaixo os tópicos, reflexões ou perguntas gerais que deseja levar para a sua próxima sessão terapêutica. Este conteúdo será incorporado automaticamente no seu PDF semanal.
       </div>
-      <textarea id="input-pauta-sessao" class="anotacao-criterio" style="min-height: 150px;" placeholder="Digite aqui as anotações gerais para a terapia..."></textarea>
+      <div class="anotacao-wrapper">
+        <button type="button" class="btn-mic" onclick="alternarDitadoPauta(this)" title="Ditado por voz">🎙️ Gravar Pauta</button>
+        <textarea id="input-pauta-sessao" class="anotacao-criterio" style="min-height: 150px;" placeholder="Digite aqui as anotações gerais para a terapia..."></textarea>
+      </div>
       <button class="btn-guardar" style="margin-top: 12px;" onclick="salvarPauta()">Salvar Pauta</button>
     </div>
   </div>
@@ -1163,6 +1265,73 @@ body { background-color: var(--bg-body); color: var(--text-main); padding: 12px;
 </div>
 
 <script>
+/* ==================== SUPORTE À TRANSCRIÇÃO DE VOZ (WEB SPEECH API) ==================== */
+let reconhecimentoVoz = null;
+let btnMicAtivo = null;
+
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  reconhecimentoVoz = new SpeechRecognition();
+  reconhecimentoVoz.continuous = false;
+  reconhecimentoVoz.interimResults = false;
+  reconhecimentoVoz.lang = 'pt-BR';
+
+  reconhecimentoVoz.onresult = function(event) {
+    const transcricao = event.results[0][0].transcript;
+    if (btnMicAtivo) {
+      const wrapper = btnMicAtivo.closest('.anotacao-wrapper');
+      const textarea = wrapper.querySelector('.anotacao-criterio');
+      if (textarea) {
+        let textoAtual = textarea.value.trim();
+        textarea.value = textoAtual.length > 0 ? `${textoAtual} | ${transcricao}` : transcricao;
+      }
+    }
+  };
+
+  reconhecimentoVoz.onerror = function(event) {
+    console.error("Erro no reconhecimento de voz:", event.error);
+    pararDitado();
+  };
+
+  reconhecimentoVoz.onend = function() {
+    pararDitado();
+  };
+}
+
+function alternarDitado(btn) {
+  if (!reconhecimentoVoz) {
+    alert("O seu navegador não suporta a transcrição por voz nativa. Recomendamos utilizar o Google Chrome, Edge ou Safari.");
+    return;
+  }
+
+  if (btnMicAtivo === btn) {
+    reconhecimentoVoz.stop();
+    pararDitado();
+  } else {
+    if (btnMicAtivo) pararDitado();
+    btnMicAtivo = btn;
+    btnMicAtivo.classList.add('gravando');
+    btnMicAtivo.innerHTML = '🔴 Ouvindo...';
+    try {
+      reconhecimentoVoz.start();
+    } catch (e) {
+      pararDitado();
+    }
+  }
+}
+
+function alternarDitadoPauta(btn) {
+  alternarDitado(btn);
+}
+
+function pararDitado() {
+  if (btnMicAtivo) {
+    btnMicAtivo.classList.remove('gravando');
+    btnMicAtivo.innerHTML = '🎙️ Gravar Nota';
+    btnMicAtivo = null;
+  }
+}
+
 function toggleSecao(elementoTitulo) {
   const grupo = elementoTitulo.nextElementSibling;
   const seta = elementoTitulo.querySelector('.categoria-seta');
@@ -1660,27 +1829,42 @@ function obterHistorico() {
   return dados.sort((a,b) => a.data.localeCompare(b.data));
 }
 
+function obterDadosCicloAtual() {
+  const historico = obterHistorico();
+  const ultimaDataPdf = localStorage.getItem('dashboard_clinica_ultima_data_pdf');
+  
+  if (!ultimaDataPdf) {
+    return historico.slice(-7);
+  }
+  
+  const registrosPosPdf = historico.filter(item => item.data > ultimaDataPdf);
+  if (registrosPosPdf.length === 0) {
+    return historico.slice(-7);
+  }
+  return registrosPosPdf.slice(-7);
+}
+
 function formatarDataBR(strData) {
   const [ano, mes, dia] = strData.split('-');
   return `${dia}/${mes}/${ano}`;
 }
 
 function renderizarEvolucao() {
-  const historico = obterHistorico();
+  const historicoCiclo = obterDadosCicloAtual();
   const resumoContainer = document.getElementById('caixa-resumo-evolucao');
 
-  if (historico.length === 0) {
-    resumoContainer.innerHTML = 'Sem dados suficientes registrados para gerar a análise descritiva.';
+  if (historicoCiclo.length === 0) {
+    resumoContainer.innerHTML = 'Sem dados registrados no ciclo semanal atual para gerar a análise descritiva.';
     return;
   }
 
-  const ultimos30 = historico.slice(-30);
-  const qtdRegistros = ultimos30.length;
-  const dataInicio = formatarDataBR(ultimos30[0].data);
-  const dataFim = formatarDataBR(ultimos30[qtdRegistros - 1].data);
+  const ultimos7 = historicoCiclo;
+  const qtdRegistros = ultimos7.length;
+  const dataInicio = formatarDataBR(ultimos7[0].data);
+  const dataFim = formatarDataBR(ultimos7[qtdRegistros - 1].data);
 
   let diasSobrecargaOk = 0;
-  ultimos30.forEach(reg => {
+  ultimos7.forEach(reg => {
     const nivelSobrecarga = reg.criterios.sobrecarga ? reg.criterios.sobrecarga.valor : 3;
     if (nivelSobrecarga >= 3) diasSobrecargaOk++;
   });
@@ -1688,20 +1872,20 @@ function renderizarEvolucao() {
   const pctSobrecargaOk = Math.round((diasSobrecargaOk / qtdRegistros) * 100);
 
   let textoTendencia = "";
-  const regMaisRecente = ultimos30[qtdRegistros - 1];
+  const regMaisRecente = ultimos7[qtdRegistros - 1];
 
   if (qtdRegistros === 1) {
-    textoTendencia = `Início do acompanhamento diário. Em <strong>100% dos registros</strong>, os níveis de autorregulação apresentam estado inicial preservado.`;
+    textoTendencia = `Início de ciclo semanal. Em <strong>100% dos registros</strong>, os níveis de autorregulação apresentam estado inicial preservado.`;
   } else {
     if (pctSobrecargaOk >= 60) {
-      textoTendencia = `Observa-se uma <strong>melhora na estabilidade emocional</strong> nos registros mais recentes. Em <strong>${pctSobrecargaOk}% dos dias registrados</strong>, os níveis de sobrecarga mantiveram-se sob controle.`;
+      textoTendencia = `Observa-se uma <strong>melhora na estabilidade emocional</strong> na semana. Em <strong>${pctSobrecargaOk}% dos dias registrados</strong>, os níveis de sobrecarga mantiveram-se sob controle.`;
     } else {
-      textoTendencia = `Identifica-se período de <strong>maior vulnerabilidade neuroemocional</strong>. Em apenas <strong>${pctSobrecargaOk}% dos dias</strong> a sobrecarga esteve totalmente sob controle.`;
+      textoTendencia = `Identifica-se período de <strong>maior vulnerabilidade neuroemocional</strong> na semana. Em apenas <strong>${pctSobrecargaOk}% dos dias</strong> a sobrecarga esteve totalmente sob controle.`;
     }
   }
 
   let textoResumoAnotacoes = "";
-  const regComObs = ultimos30.slice().reverse().find(r => {
+  const regComObs = ultimos7.slice().reverse().find(r => {
     return Object.values(r.criterios).some(c => c.observacao && c.observacao.length > 0);
   });
 
@@ -1720,8 +1904,8 @@ function renderizarEvolucao() {
   }
 
   resumoContainer.innerHTML = `
-    <div class="prontuario-subtitulo">Acompanhamento do período de ${dataInicio} a ${dataFim} (${qtdRegistros} registro${qtdRegistros > 1 ? 's' : ''}):</div>
-    <div class="prontuario-topico">• <strong>Tendência:</strong> ${textoTendencia}</div>
+    <div class="prontuario-subtitulo">Acompanhamento Semanal (${dataInicio} a ${dataFim} - ${qtdRegistros} registro${qtdRegistros > 1 ? 's' : ''}):</div>
+    <div class="prontuario-topico">• <strong>Tendência Semanal:</strong> ${textoTendencia}</div>
     <div class="prontuario-topico">• <strong>Resumo das Anotações:</strong> ${textoResumoAnotacoes}</div>
   `;
 
@@ -1730,12 +1914,12 @@ function renderizarEvolucao() {
   const tickColor = isDark ? '#9ca3af' : '#8c7f73';
   const accentColor = isDark ? '#d4a373' : '#b8866b';
 
-  const labelsDatas = ultimos30.map(item => {
+  const labelsDatas = ultimos7.map(item => {
     const [ano, mes, dia] = item.data.split('-');
     return `${dia}/${mes}`;
   });
 
-  const valoresSaldos = ultimos30.map(item => item.saldo);
+  const valoresSaldos = ultimos7.map(item => item.saldo);
   const coresPontos = valoresSaldos.map(s => s > 0 ? '#10b981' : (s < 0 ? '#ef4444' : '#b8866b'));
 
   const ctxLinha = document.getElementById('chartSaldoLinha').getContext('2d');
@@ -1774,7 +1958,7 @@ function renderizarEvolucao() {
     let somaValores = 0;
     let countValores = 0;
 
-    ultimos30.forEach(reg => {
+    ultimos7.forEach(reg => {
       chaves.forEach(k => {
         if (reg.criterios[k]) {
           somaValores += reg.criterios[k].valor;
@@ -1856,34 +2040,34 @@ function importarBackupJSON(event) {
   reader.readAsText(file);
 }
 
-function gerarPDFMensal() {
+function gerarPDFSemanal() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-  const historico = obterHistorico().slice().reverse();
+  const historicoCiclo = obterDadosCicloAtual().slice().reverse();
 
-  if (historico.length === 0) {
-    alert('Sem dados para gerar relatório.');
+  if (historicoCiclo.length === 0) {
+    alert('Sem dados registrados para gerar o relatório semanal.');
     return;
   }
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
-  doc.text("RELATÓRIO PSICOEDUCATIVO DE AUTORREGULAÇÃO", 14, 18);
+  doc.text("RELATÓRIO PSICOEDUCATIVO SEMANAL DE AUTORREGULAÇÃO", 14, 18);
 
   doc.setFontSize(8.5);
   doc.setFont("helvetica", "normal");
-  doc.text(`Data de Emissão: ${new Date().toLocaleDateString('pt-BR')} | Monitoramento AH/SD`, 14, 24);
+  doc.text(`Data de Emissão: ${new Date().toLocaleDateString('pt-BR')} | Monitoramento AH/SD (Ciclo 7 Dias)`, 14, 24);
 
-  const ultimos30 = historico.slice(0, 30);
-  const qtdRegistros = ultimos30.length;
-  const dataInicio = formatarDataBR(ultimos30[qtdRegistros - 1].data);
-  const dataFim = formatarDataBR(ultimos30[0].data);
+  const ultimos7 = historicoCiclo;
+  const qtdRegistros = ultimos7.length;
+  const dataInicio = formatarDataBR(ultimos7[qtdRegistros - 1].data);
+  const dataFim = formatarDataBR(ultimos7[0].data);
 
   let contNivel1 = 0;
   let contPositivos = 0;
   let contNegativos = 0;
 
-  ultimos30.forEach(reg => {
+  ultimos7.forEach(reg => {
     Object.keys(reg.criterios).forEach(key => {
       const val = reg.criterios[key].valor;
       if (val === 1) contNivel1++;
@@ -1894,7 +2078,7 @@ function gerarPDFMensal() {
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(10);
-  doc.text("1. SÍNTESE DO PERÍODO E INCIDÊNCIAS", 14, 32);
+  doc.text("1. SÍNTESE DA SEMANA E INCIDÊNCIAS", 14, 32);
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8.5);
@@ -1911,7 +2095,7 @@ function gerarPDFMensal() {
   doc.text("2. HISTÓRICO DIÁRIO E NOTAS COMPORTAMENTAIS", 14, 67);
 
   let y = 74;
-  historico.forEach((reg) => {
+  historicoCiclo.forEach((reg) => {
     if (y > 265) {
       doc.addPage();
       y = 20;
@@ -1993,7 +2177,14 @@ function gerarPDFMensal() {
   const linhasAviso = doc.splitTextToSize(avisoLegal, 180);
   doc.text(linhasAviso, 14, y);
 
-  doc.save(`Relatorio_Psicoeducativo_${new Date().toISOString().split('T')[0]}.pdf`);
+  const dataUltimoRegistro = ultimos7[0].data;
+  localStorage.setItem('dashboard_clinica_ultima_data_pdf', dataUltimoRegistro);
+
+  doc.save(`Relatorio_Psicoeducativo_Semanal_${new Date().toISOString().split('T')[0]}.pdf`);
+
+  if (document.getElementById('aba-evolucao').classList.contains('active')) {
+    renderizarEvolucao();
+  }
 }
 
 window.onload = function() {
